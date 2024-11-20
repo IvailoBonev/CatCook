@@ -21,10 +21,6 @@ namespace CatCook.Infrastructure.Data
         [Comment("The user's last name")]
         public string LastName { get; set; } = string.Empty;
 
-        [Required]
-        [Comment("Is the user avaliable to the public or private")]
-        bool IsPrivate { get; set; }
-
         [Comment("How many cooking points does the user have")]
         public int Points { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CatCook.Infrastructure.Configuration;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,6 +15,7 @@ namespace CatCook.Infrastructure.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+
         }
 
         public DbSet<Recipe> Recipes { get; set; }
@@ -23,5 +25,19 @@ namespace CatCook.Infrastructure.Data
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Forum> Forums { get; set; }
         public DbSet<Image> Images { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new RecipeConfiguration());
+            builder.ApplyConfiguration(new TipConfiguration());
+            builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new DifficultyConfiguration());
+            builder.ApplyConfiguration(new CommentConfiguration());
+            builder.ApplyConfiguration(new ForumConfiguration());
+            builder.ApplyConfiguration(new ImageConfiguration());
+
+            base.OnModelCreating(builder);
+        }
     }
 }
