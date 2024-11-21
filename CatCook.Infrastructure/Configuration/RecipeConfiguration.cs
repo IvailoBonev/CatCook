@@ -42,7 +42,15 @@ namespace CatCook.Infrastructure.Configuration
                     PortionsCount = 2,
                     Rating = 4.6,
                     IsPrivate = false,
-                    UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
+                    UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8",
+                    Images = new List<Image>()
+                    {
+                        new Image()
+                        {
+                            Id = 1,
+                            UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
+                        }
+                    }
                 },
                 new Recipe()
                 {
@@ -67,7 +75,15 @@ namespace CatCook.Infrastructure.Configuration
                     TimeForCooking = 60,
                     Rating = 4.1,
                     IsPrivate = false,
-                    UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
+                    UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8",
+                    Images = new List<Image>()
+                    {
+                        new Image()
+                        {
+                            Id = 2,
+                            UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
+                        }
+                    }
                 }
             };
 

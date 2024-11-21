@@ -12,6 +12,7 @@ namespace CatCook.Infrastructure.Configuration
 {
     public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
+
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
             builder.HasData(CreateUsers());
@@ -31,7 +32,8 @@ namespace CatCook.Infrastructure.Configuration
                 NormalizedEmail = "guest@mail.com",
                 FirstName = "Guest",
                 LastName = "User",
-                City = "Sofia"
+                City = "Sofia",
+                SecurityStamp = Guid.NewGuid().ToString("D")
             };
 
             user.PasswordHash =
@@ -48,7 +50,8 @@ namespace CatCook.Infrastructure.Configuration
                 NormalizedEmail = "ivan.georgiev@example.com",
                 FirstName = "Ivan",
                 LastName = "Georgiev",
-                City = "Burgas"
+                City = "Burgas",
+                SecurityStamp = Guid.NewGuid().ToString("D")
             };
 
             user.PasswordHash =
