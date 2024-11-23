@@ -1,3 +1,4 @@
+using CatCook.Core.Contracts;
 using CatCook.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -7,15 +8,21 @@ namespace CatCook.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IRecipeService recipeService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(
+            ILogger<HomeController> logger,
+            IRecipeService _recipeService)
         {
             _logger = logger;
+            recipeService = _recipeService;
         }
 
         public async Task<IActionResult> Index()
         {
-            return View();
+            var model = await recipeService.LastSixRecipes();
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,3 +1,4 @@
+using CatCook.Extensions;
 using CatCook.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,7 @@ builder.Services.AddControllersWithViews()
     {
         options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
     });
-
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 

@@ -56,6 +56,8 @@ namespace CatCook.Infrastructure.Data
         [Comment("How many portions the recipe provides")]
         public int PortionsCount { get; set; }
 
+        public DateTime DateAdded { get; set; }
+
         [Required]
         public string UserId { get; set; } = string.Empty;
 

@@ -22,5 +22,12 @@ namespace CatCook.Infrastructure.Data
         [ForeignKey(nameof(UserId))]
         [Comment("Who uploaded the image")]
         public ApplicationUser User { get; set; } = null!;
+
+        [Required]
+        public int RecipeId { get; set; }
+
+        [ForeignKey(nameof(RecipeId))]
+        [Comment("The forum wheere the image was uploaded")]
+        public Recipe Recipe { get; set; } = null!;
     }
 }

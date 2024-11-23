@@ -4,6 +4,7 @@ using CatCook.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CatCook.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241123191632_DateAdded")]
+    partial class DateAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,7 +131,7 @@ namespace CatCook.Infrastructure.Migrations
                             Id = "0464d803-7820-4ec4-bb42-d75b5a1fcb7c",
                             AccessFailedCount = 0,
                             City = "Sofia",
-                            ConcurrencyStamp = "0ed644e6-8b82-4589-a6f4-f61f2034c39c",
+                            ConcurrencyStamp = "795fc472-94e4-4ccc-a27d-8ed712e58aa0",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Guest",
@@ -136,10 +139,10 @@ namespace CatCook.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEERe0e5w+rVXYpEZO1l8VgiQMk26vyYBwgYer7e4knzljq29INeCSnXmhKFFjL6Eaw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMOohjSuoqbC/DmE4huHwUjMlZv76IIx/uzPIZBDbZYmye6z6zwPzOrurvwCibO/Pw==",
                             PhoneNumberConfirmed = false,
                             Points = 0,
-                            SecurityStamp = "94418383-dfe7-4a09-bc88-9b3d1596f71f",
+                            SecurityStamp = "9f2f116f-c5d2-45f9-98f2-4abe2c0023b8",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         },
@@ -148,7 +151,7 @@ namespace CatCook.Infrastructure.Migrations
                             Id = "36998a40-6007-4cea-ac6e-c191880fa9e8",
                             AccessFailedCount = 0,
                             City = "Burgas",
-                            ConcurrencyStamp = "36dc245d-cea0-42e8-aa69-96f09527ee30",
+                            ConcurrencyStamp = "9e6746e2-0278-48be-a6b8-963bef35f6a3",
                             Email = "ivan.georgiev@example.com",
                             EmailConfirmed = false,
                             FirstName = "Ivan",
@@ -156,10 +159,10 @@ namespace CatCook.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ivan.georgiev@example.com",
                             NormalizedUserName = "ivan.georgiev@example.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAELgXEXG3pCH2JVai7x6E0fD1PvSU6ZkEmmpzpZe1xmpFydnPUlxYe6/IoCXT+t5y+g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA3bdCPC/tsVHKCVqvIlpiK563Gku7lkNqXMhEYd6P2ZbkCEOAHNetwHX60ftK5W3w==",
                             PhoneNumberConfirmed = false,
                             Points = 0,
-                            SecurityStamp = "15244b55-af24-49c3-826e-aae90a9d235e",
+                            SecurityStamp = "19e31ee0-52f4-404b-b8f4-ea917b0b6fb5",
                             TwoFactorEnabled = false,
                             UserName = "ivan.georgiev@example.com"
                         });
@@ -372,7 +375,7 @@ namespace CatCook.Infrastructure.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasComment("The url of the image");
 
-                    b.Property<int>("RecipeId")
+                    b.Property<int?>("RecipeId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -392,14 +395,12 @@ namespace CatCook.Infrastructure.Migrations
                         {
                             Id = 1,
                             ImageUrl = "https://feelgoodfoodie.net/wp-content/uploads/2020/04/Caesar-Salad-TIMG.jpg",
-                            RecipeId = 0,
                             UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
                         },
                         new
                         {
                             Id = 2,
                             ImageUrl = "https://cakesbymk.com/wp-content/uploads/2023/11/Template-Size-for-Blog-Photos-24.jpg",
-                            RecipeId = 0,
                             UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
                         });
                 });
@@ -478,7 +479,7 @@ namespace CatCook.Infrastructure.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
-                            DateAdded = new DateTime(2024, 11, 23, 22, 48, 49, 271, DateTimeKind.Local).AddTicks(5819),
+                            DateAdded = new DateTime(2024, 11, 23, 21, 16, 29, 397, DateTimeKind.Local).AddTicks(2157),
                             Descipriton = "A Caesar salad is a timeless dish known for its crisp romaine, creamy dressing, and bold flavors. Here’s how to make it step-by-step:\r\n\r\n    Prepare the Croutons: Preheat your oven to 375°F. Cut a baguette or bread into small cubes, toss with olive oil, garlic powder, and a pinch of salt, then bake for 10-15 minutes until golden and crispy.\r\n\r\n    Make the Dressing: In a bowl, whisk together 1 minced garlic clove, 2 anchovy fillets (mashed), 1 teaspoon Dijon mustard, 1 tablespoon fresh lemon juice, and 1 teaspoon Worcestershire sauce. Slowly whisk in ½ cup olive oil until emulsified. Stir in ½ cup grated Parmesan cheese for a creamy texture. Adjust seasoning with salt and pepper to taste.\r\n\r\n    Assemble the Salad: Wash and dry fresh romaine lettuce, then tear it into bite-sized pieces. Toss the lettuce with the dressing until evenly coated.\r\n\r\n    Add Toppings: Top with the homemade croutons and more grated Parmesan cheese for a finishing touch.\r\n\r\nServe immediately for the best texture and flavor. This classic Caesar salad pairs wonderfully with grilled chicken, shrimp, or as a standalone starter. Enjoy your fresh and flavorful creation!",
                             DifficultyId = 2,
                             IsPrivate = false,
@@ -494,7 +495,7 @@ namespace CatCook.Infrastructure.Migrations
                         {
                             Id = 2,
                             CategoryId = 3,
-                            DateAdded = new DateTime(2024, 11, 23, 22, 48, 49, 271, DateTimeKind.Local).AddTicks(5894),
+                            DateAdded = new DateTime(2024, 11, 23, 21, 16, 29, 397, DateTimeKind.Local).AddTicks(2237),
                             Descipriton = "Making a creamy, decadent cheesecake at home is easier than you think. Here’s a step-by-step guide to create the perfect cheesecake:\r\n\r\n    Prepare the Crust: Preheat your oven to 325°F. In a food processor, pulse 1 ½ cups of graham crackers with ¼ cup of sugar and ½ teaspoon of cinnamon. Add 6 tablespoons of melted butter and mix until combined. Press the mixture into the bottom of a greased 9-inch springform pan. Bake for 10 minutes, then set aside to cool.\r\n\r\n    Make the Filling: In a large mixing bowl, beat 4 packages (32 ounces) of cream cheese at room temperature until smooth. Add 1 cup of granulated sugar and beat until combined. Add 1 teaspoon of vanilla extract and 4 large eggs, one at a time, mixing well after each addition. Finally, blend in 1 cup of sour cream for richness.\r\n\r\n    Bake the Cheesecake: Pour the cream cheese mixture onto the cooled crust. Bake at 325°F for 55-60 minutes, or until the center is just set. Let it cool in the oven with the door slightly ajar for 1 hour, then refrigerate for at least 4 hours.\r\n\r\n    Serve: Top with fresh fruit, fruit compote, or a drizzle of caramel for extra flavor. Enjoy your homemade cheesecake!",
                             DifficultyId = 1,
                             IsPrivate = false,
@@ -735,19 +736,15 @@ namespace CatCook.Infrastructure.Migrations
 
             modelBuilder.Entity("CatCook.Infrastructure.Data.Image", b =>
                 {
-                    b.HasOne("CatCook.Infrastructure.Data.Recipe", "Recipe")
+                    b.HasOne("CatCook.Infrastructure.Data.Recipe", null)
                         .WithMany("Images")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RecipeId");
 
                     b.HasOne("CatCook.Infrastructure.Data.ApplicationUser", "User")
                         .WithMany("Images")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Recipe");
 
                     b.Navigation("User");
                 });

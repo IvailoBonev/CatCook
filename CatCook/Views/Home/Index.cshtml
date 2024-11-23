@@ -1,8 +1,42 @@
-﻿@{
+﻿@model IEnumerable<RecipeHomeModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to CatCook!</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">The best website for cookign recipes!</a>.</p>
+</div>
+<div class="container-lg">
+    @foreach (var recipe in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="carousel-inner">
+                @if (recipe.Images.Any())
+                {
+                    foreach (var img in recipe.Images)
+                    {
+                        <div class="carousel-item card-img-top">
+                            <img class="card-img-top" src="@img.ImageUrl" alt="First slide">
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="card-img-top">
+                        <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="First slide">
+                    </div>
+                }
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@recipe.Name</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Трудност: @recipe.DifficultyName</li>
+                <li class="list-group-item">Звезди: @recipe.Rating</li>
+                <li class="list-group-item">@recipe.DateAdded</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Сготви</a>
+        </div>
+    }
 </div>

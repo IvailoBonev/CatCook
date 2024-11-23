@@ -43,14 +43,7 @@ namespace CatCook.Infrastructure.Configuration
                     Rating = 4.6,
                     IsPrivate = false,
                     UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8",
-                    Images = new List<Image>()
-                    {
-                        new Image()
-                        {
-                            Id = 1,
-                            UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
-                        }
-                    }
+                    DateAdded = DateTime.Now
                 },
                 new Recipe()
                 {
@@ -76,14 +69,7 @@ namespace CatCook.Infrastructure.Configuration
                     Rating = 4.1,
                     IsPrivate = false,
                     UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8",
-                    Images = new List<Image>()
-                    {
-                        new Image()
-                        {
-                            Id = 2,
-                            UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
-                        }
-                    }
+                    DateAdded = DateTime.Now
                 }
             };
 
