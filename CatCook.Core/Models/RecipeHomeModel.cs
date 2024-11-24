@@ -23,6 +23,8 @@ namespace CatCook.Core.Models
 
         public string CategoryName { get; set; } = string.Empty;
 
+        public string UserName { get; set; } = string.Empty;
+
         public ICollection<Image> Images { get; set; } 
             = new List<Image>();
     }

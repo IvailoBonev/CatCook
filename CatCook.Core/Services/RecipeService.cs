@@ -58,7 +58,8 @@ namespace CatCook.Core.Services
                     Images = r.Images,
                     IsPrivate = r.IsPrivate,
                     Rating = r.Rating,
-                    DateAdded = r.DateAdded.ToString()
+                    DateAdded = r.DateAdded.ToString("dd/MM"),
+                    UserName = r.User.UserName
                 })
                 .Take(6)
                 .ToListAsync();

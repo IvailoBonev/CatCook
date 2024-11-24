@@ -1,0 +1,30 @@
+﻿
+$primary: #C65102;
+$body-bg: black;
+$body-color: white;
+$box-shadow: 0 .5rem 1rem rgba(white, .15);
+$card-bg: #212121;
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+.btn:focus, .btn:active {
+    background-color: #C65102;
+    outline: none !important;
+    box-shadow: none;
+    border: none;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+ul {
+    list-style-type: none;
+}
+
+@import '../scss/bootstrap.scss';
