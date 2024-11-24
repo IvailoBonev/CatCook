@@ -59,7 +59,7 @@ namespace CatCook.Core.Services
                     IsPrivate = r.IsPrivate,
                     Rating = r.Rating,
                     DateAdded = r.DateAdded.ToString("dd/MM"),
-                    UserName = r.User.UserName
+                    UserName = r.User.ProfileName
                 })
                 .Take(6)
                 .ToListAsync();

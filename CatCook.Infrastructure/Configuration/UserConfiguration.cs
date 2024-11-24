@@ -33,7 +33,8 @@ namespace CatCook.Infrastructure.Configuration
                 FirstName = "Guest",
                 LastName = "User",
                 City = "Sofia",
-                SecurityStamp = Guid.NewGuid().ToString("D")
+                SecurityStamp = Guid.NewGuid().ToString("D"),
+                ProfileName = "Guest"
             };
 
             user.PasswordHash =
@@ -51,7 +52,8 @@ namespace CatCook.Infrastructure.Configuration
                 FirstName = "Ivan",
                 LastName = "Georgiev",
                 City = "Burgas",
-                SecurityStamp = Guid.NewGuid().ToString("D")
+                SecurityStamp = Guid.NewGuid().ToString("D"),
+                ProfileName = "Ivan_G"
             };
 
             user.PasswordHash =

@@ -21,7 +21,7 @@ namespace CatCook.Infrastructure.Common
 
         public Repository(ApplicationDbContext context)
         {
-            Context = context;
+           Context = context;
         }
 
         public IQueryable<T> All<T>() where T : class

@@ -21,6 +21,11 @@ namespace CatCook.Infrastructure.Data
         [Comment("The user's last name")]
         public string LastName { get; set; } = string.Empty;
 
+        [Required]
+        [MaxLength(UserProfileNameMaxLength)]
+        [Comment("The user's profile name")]
+        public string ProfileName { get; set; } = string.Empty;
+
         [Comment("How many cooking points does the user have")]
         public int Points { get; set; }
 

@@ -15,6 +15,7 @@ namespace CatCook.Infrastructure.Common
         public const int UserCityNameMaxLength = 80;
         public const int UserUrlImageMaxLength = 200;
         public const int UserStatusMaxLength = 100;
+        public const int UserProfileNameMaxLength = 18;
         //Category
         public const int CategoryNameMaxLength = 40;
         //Comment
