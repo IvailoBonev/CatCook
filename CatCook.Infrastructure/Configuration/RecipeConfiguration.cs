@@ -40,7 +40,12 @@ namespace CatCook.Infrastructure.Configuration
                     TimeForPreparation = 10,
                     TimeForCooking = 15,
                     PortionsCount = 2,
-                    Rating = 4.6,
+                    Rating = new List<double>()
+                    {
+                        4.9,
+                        4.0,
+                        4.5
+                    },
                     IsPrivate = false,
                     UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8",
                     DateAdded = DateTime.Now
@@ -66,7 +71,12 @@ namespace CatCook.Infrastructure.Configuration
                     },
                     TimeForPreparation = 20,
                     TimeForCooking = 60,
-                    Rating = 4.1,
+                    Rating = new List<double>()
+                    {
+                        4.8,
+                        4.2,
+                        4.3
+                    },
                     IsPrivate = false,
                     UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8",
                     DateAdded = DateTime.Now

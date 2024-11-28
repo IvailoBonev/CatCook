@@ -18,16 +18,16 @@
 </div>
 <hr />
 <h2 style="font-size: 3rem; font-weight:bold; margin: 2rem 0rem;">Най-новите рецепти:</h2>
-<div class="card-deck row justify-content-between">
+<div class="card-deck row">
     @foreach (var recipe in Model)
     {
-        <div class="card col-2" style="min-width: 18rem;">
+        <div class="card col-3 recipe" style="max-width: 285px;">
             <div class="position-relative">
                 <p class="rounded p-2 m-2 fs-6 position-absolute" style="background-color: darkorange; text-align: center; color: white; font-weight: bold; max-width: 140px">@recipe.CategoryName</p>
                 @if (recipe.Images.Any())
                 {
-                    <div class="card-img-top">
-                        <img class="card-img-top" style="width: 260px; height: 250px;"src="@recipe.Images.First().ImageUrl" alt="First slide">
+                    <div class="card-img-top" style="width: 260px; height: 250px;">
+                        <img class="card-img-top" style="width: 260px; height: 250px;" src="@recipe.Images.First().ImageUrl" alt="First slide">
                     </div>
                 }
                 else

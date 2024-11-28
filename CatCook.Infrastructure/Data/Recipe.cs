@@ -49,8 +49,8 @@ namespace CatCook.Infrastructure.Data
         [Comment("Time needed for cooking")]
         public int TimeForCooking { get; set; }
 
-        [Comment("The average rating of the recipe by users")]
-        public double Rating { get; set; }
+        [Comment("The ratings of the recipe by users")]
+        public List<double> Rating { get; set; } = new List<double>();
 
         [Required]
         [Comment("How many portions the recipe provides")]

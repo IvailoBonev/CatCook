@@ -1,4 +1,5 @@
 ﻿using CatCook.Core.Models;
+using CatCook.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,16 @@ namespace CatCook.Core.Contracts
     {
         Task<IEnumerable<RecipeHomeModel>> LastSixRecipes();
 
+        Task<IEnumerable<RecipeHomeModel>> AllRecipesOrdered();
+
         Task<IEnumerable<RecipeCategoryModel>> AllCategories();
 
         Task<IEnumerable<RecipeDifficultyModel>> AllDifficulties();
+
+        Task<bool> CategoryExists(int categoryId);
+
+        Task<bool> DifficultyExists(int difficultyId);
+
+        Task<int> Create(RecipeModel model, string userId);
     }
 }

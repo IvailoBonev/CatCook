@@ -27,7 +27,9 @@ namespace CatCook.Infrastructure.Common
         //Image
         public const int ImageUrlMaxLength = 200;
         //Recipe
+        public const int RecipeNameMinLength = 4;
         public const int RecipeNameMaxLength = 80;
+        public const int RecipeDescriptionMinLength = 40;
         public const int RecipeDescriptionMaxLength = 2000;
         //Difficulty
         public const int DifficultyNameMaxLength = 30;

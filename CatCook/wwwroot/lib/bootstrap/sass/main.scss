@@ -16,6 +16,10 @@ $card-bg: #212121;
     border: none;
 }
 
+.recipe + .recipe {
+    margin-left: 2rem;
+}
+
 .overlay-text {
     position: absolute;
     top: 50%;
