@@ -46,10 +46,6 @@ namespace CatCook.Infrastructure.Data
             = new List<Recipe>();
 
         [Comment("All images posted from this user")]
-        public ICollection<Image> Images { get; set; } 
-            = new List<Image>();
-
-        [Comment("All images posted from this user")]
         public ICollection<Forum> Forums { get; set; } =
             new List<Forum>();
 

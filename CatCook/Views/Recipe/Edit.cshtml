@@ -1,0 +1,14 @@
+﻿@model RecipeModel
+
+<div class="container">
+    @{
+        ViewBag.Title = "Редактирай Рецепта";
+    }
+
+    <partial name="_RecipeFormPartial" model="@Model" />
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

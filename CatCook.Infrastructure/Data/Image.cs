@@ -17,13 +17,6 @@ namespace CatCook.Infrastructure.Data
         public string ImageUrl { get; set; } = string.Empty;
 
         [Required]
-        public string UserId { get; set; } = string.Empty;
-
-        [ForeignKey(nameof(UserId))]
-        [Comment("Who uploaded the image")]
-        public ApplicationUser User { get; set; } = null!;
-
-        [Required]
         public int RecipeId { get; set; }
 
         [ForeignKey(nameof(RecipeId))]

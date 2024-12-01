@@ -31,7 +31,7 @@ namespace CatCook.Infrastructure.Data
         public string Descipriton { get; set; } = string.Empty;
 
         [Comment("Products used for the recipe")]
-        public ICollection<string> Products { get; set; }
+        public List<string> Products { get; set; }
             = new List<string>();
 
         [Required]
@@ -73,7 +73,7 @@ namespace CatCook.Infrastructure.Data
         public Category Category { get; set; } = null!;
 
         [Comment("Images used for the recipe")]
-        public ICollection<Image> Images { get; set; }
+        public List<Image> Images { get; set; }
             = new List<Image>();
     }
 }

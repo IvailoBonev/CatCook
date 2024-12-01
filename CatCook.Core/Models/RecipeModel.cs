@@ -61,10 +61,10 @@ namespace CatCook.Core.Models
 
         public string? ImageUrls { get; set; }
 
-        public IEnumerable<RecipeCategoryModel> RecipeCategories { get; set; }
+        public ICollection<RecipeCategoryModel> RecipeCategories { get; set; }
             = new List<RecipeCategoryModel>();
 
-        public IEnumerable<RecipeDifficultyModel> RecipeDifficulties { get; set; }
+        public ICollection<RecipeDifficultyModel> RecipeDifficulties { get; set; }
             = new List<RecipeDifficultyModel>();
 
         public string UserId { get; set; } = string.Empty;

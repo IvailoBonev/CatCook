@@ -1,4 +1,5 @@
 using CatCook.Core.Contracts;
+using CatCook.Extensions;
 using CatCook.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -20,7 +21,7 @@ namespace CatCook.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var model = await recipeService.LastSixRecipes();
+            var model = await recipeService.LastSixRecipes(User.Id());
 
             return View(model);
         }
