@@ -47,7 +47,7 @@ namespace CatCook.Controllers
                 RecipeDifficulties = await recipeService.AllDifficulties()
             };
 
-            return View();
+            return View(model);
         }
 
         [HttpPost]
@@ -71,8 +71,9 @@ namespace CatCook.Controllers
                 return View(model);
             }
 
-            int id = await recipeService.Create(model, User.Id());
-            return RedirectToAction(nameof(Details), new { id = id });
+            model.UserId = User.Id();
+            int id = await recipeService.Create(model);
+            return RedirectToAction(nameof(All));
         }
     }
 }

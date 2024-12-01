@@ -22,6 +22,6 @@ namespace CatCook.Core.Contracts
 
         Task<bool> DifficultyExists(int difficultyId);
 
-        Task<int> Create(RecipeModel model, string userId);
+        Task<int> Create(RecipeModel model);
     }
 }

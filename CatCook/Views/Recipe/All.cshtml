@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<RecipeHomeModel>
-@{
 
+@{
+    ViewBag.Title = "Всички Рецепти";
 }
 
 <div class="card-deck row">
@@ -13,7 +14,7 @@
                 @if (recipe.Images.Any())
                 {
                     <div class="card-img-top">
-                        <img class="card-img-top" style="width: 260px; height: 250px;" src="@recipe.Images.First().ImageUrl" alt="First slide">
+                        <img class="card-img-top" style="width: 260px; height: 250px;" src="@recipe.Images.First().ImageUrl" alt="First image">
                     </div>
                 }
                 else
@@ -25,8 +26,8 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">@recipe.Name</h5>
-                <p class="card-text">Трудност: @recipe.DifficultyName<br />Публикувано на: @recipe.DateAdded<br />От @@@recipe.UserName</p>
-                <p class="card-text"><i class="fa-solid fa-star text-warning"></i> <b>@recipe.Rating.ToString("f2")</b></p>
+                <p class="card-text">Трудност: @recipe.DifficultyName<br />Публикувано на: @recipe.DateAdded<br />От <b>@@@recipe.UserName</b></p>
+                <p class="card-text"><i class="fa-solid fa-star text-warning"></i> <b>@recipe.Rating.ToString("F2")</b></p>
                 <a href="#" class="btn btn-primary">Сготви</a>
             </div>
         </div>

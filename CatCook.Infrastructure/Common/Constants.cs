@@ -28,9 +28,15 @@ namespace CatCook.Infrastructure.Common
         public const int ImageUrlMaxLength = 200;
         //Recipe
         public const int RecipeNameMinLength = 4;
-        public const int RecipeNameMaxLength = 80;
+        public const int RecipeNameMaxLength = 90;
         public const int RecipeDescriptionMinLength = 40;
         public const int RecipeDescriptionMaxLength = 2000;
+        public const int RecipePortionsCountMin = 1;
+        public const int RecipePortionsCountMax = 20;
+        public const int RecipeCookingTimeMin = 3;
+        public const int RecipeCookingTimeMax = 720;
+        public const int RecipePreparationTimeMin = 2;
+        public const int RecipePreparationTimeMax = 60;
         //Difficulty
         public const int DifficultyNameMaxLength = 30;
         //Tip

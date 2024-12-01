@@ -14,24 +14,25 @@ namespace CatCook.Core.Models
 {
     public class RecipeModel
     {
+        public int Id { get; set; }
+
         [Required]
         public bool IsPrivate { get; set; }
 
         [Required]
         [StringLength(RecipeNameMaxLength,
             MinimumLength = RecipeNameMinLength,
-            ErrorMessage = "Recipe name must be between {1} and {0} symbols!")]
+            ErrorMessage = "Recipe name must be between {2} and {1} symbols!")]
         public string Name { get; set; } = string.Empty;
 
         [Required]
         [StringLength(RecipeDescriptionMaxLength,
             MinimumLength = RecipeDescriptionMinLength,
-            ErrorMessage = "Recipe description must be between {1} and {0} symbols!")]
+            ErrorMessage = "Recipe description must be between {2} and {1} symbols!")]
         public string Description { get; set; } = string.Empty;
 
         [Required]
-        public ICollection<string> Products { get; set; }
-            = new List<string>();
+        public string Products { get; set; } = string.Empty;
 
         [Required]
         public int DifficultyId { get; set; }
@@ -40,21 +41,25 @@ namespace CatCook.Core.Models
         public int CategoryId { get; set; }
 
         [Required]
+        [Range(RecipePreparationTimeMin, RecipePreparationTimeMax,
+            ErrorMessage = "Recipe preparation time must be between {1} and {2} minutes!")]
         public int TimeForPreparation { get; set; }
 
         [Required]
+        [Range(RecipeCookingTimeMin, RecipeCookingTimeMax,
+            ErrorMessage = "Recipe cooking time must be between {1} and {2} minutes!")]
         public int TimeForCooking { get; set; }
 
-        public List<double> Rating { get; set; } = new List<double>();
 
         [Required]
+        [Range(RecipePortionsCountMin, RecipePortionsCountMax,
+            ErrorMessage = "Recipe portions must be between {1} and {2}!")]
         public int PortionsCount { get; set; }
 
         [Required]
         public DateTime DateAdded { get; set; }
 
-        public ICollection<Image> Images { get; set; }
-            = new List<Image>();
+        public string? ImageUrls { get; set; }
 
         public IEnumerable<RecipeCategoryModel> RecipeCategories { get; set; }
             = new List<RecipeCategoryModel>();
@@ -62,7 +67,6 @@ namespace CatCook.Core.Models
         public IEnumerable<RecipeDifficultyModel> RecipeDifficulties { get; set; }
             = new List<RecipeDifficultyModel>();
 
-        [Required]
         public string UserId { get; set; } = string.Empty;
     }
 }
