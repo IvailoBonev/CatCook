@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CatCook.Core.Models
+namespace CatCook.Core.Models.Recipe
 {
     public class RecipeCategoryModel
     {

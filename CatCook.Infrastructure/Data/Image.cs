@@ -20,7 +20,7 @@ namespace CatCook.Infrastructure.Data
         public int RecipeId { get; set; }
 
         [ForeignKey(nameof(RecipeId))]
-        [Comment("The forum wheere the image was uploaded")]
+        [Comment("The forum where the image was uploaded")]
         public Recipe Recipe { get; set; } = null!;
     }
 }

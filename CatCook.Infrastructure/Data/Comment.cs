@@ -22,6 +22,10 @@ namespace CatCook.Infrastructure.Data
         public string Title { get; set; } = string.Empty;
 
         [Required]
+        [Comment("Is the comment deleted (soft delete)")]
+        public bool IsDeleted { get; set; }
+
+        [Required]
         [Comment("The comment content")]
         [MaxLength(CommentTextMaxLength)]
         public string Text { get; set; } = string.Empty;

@@ -21,6 +21,10 @@ namespace CatCook.Infrastructure.Data
         public bool IsPrivate { get; set; }
 
         [Required]
+        [Comment("Is the recipe deleted (soft delete)")]
+        public bool IsDeleted { get; set; }
+
+        [Required]
         [Comment("The recipe name")]
         [MaxLength(RecipeNameMaxLength)]
         public string Name { get; set; } = string.Empty;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CatCook.Core.Models
+namespace CatCook.Core.Models.Recipe
 {
     public class RecipeHomeModel
     {
@@ -25,7 +25,7 @@ namespace CatCook.Core.Models
 
         public string UserName { get; set; } = string.Empty;
 
-        public ICollection<Image> Images { get; set; } 
+        public ICollection<Image> Images { get; set; }
             = new List<Image>();
     }
 }

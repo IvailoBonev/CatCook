@@ -40,7 +40,6 @@ namespace CatCook.Infrastructure.Common
         //Difficulty
         public const int DifficultyNameMaxLength = 30;
         //Tip
-        public const int TipImageUrlMaxLength = 200;
         public const int TipTitleMaxLength = 60;
         public const int TipDescriptionMaxLength = 1200;
     }

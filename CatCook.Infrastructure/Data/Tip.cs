@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,9 +15,6 @@ namespace CatCook.Infrastructure.Data
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(TipImageUrlMaxLength)]
-        public string? ImageUrl { get; set; }
-
         [Required]
         [MaxLength(TipTitleMaxLength)]
         public string Title { get; set; } = string.Empty;
@@ -24,6 +22,10 @@ namespace CatCook.Infrastructure.Data
         [Required]
         [MaxLength(TipDescriptionMaxLength)]
         public string Description { get; set; } = string.Empty;
+
+        [Required]
+        [Comment("Is the tip deleted (soft delete)")]
+        public bool IsDeleted { get; set; }
 
         [Required]
         public string UserId { get; set; } = string.Empty;

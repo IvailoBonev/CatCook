@@ -1,4 +1,4 @@
-﻿using CatCook.Core.Models;
+﻿using CatCook.Core.Models.Recipe;
 using CatCook.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
@@ -35,5 +35,7 @@ namespace CatCook.Core.Contracts
         Task<bool> Exists(int id, string userId);
 
         Task<bool> RecipeWithUserId(int id, string userId);
+
+        Task Delete(int id);
     }
 }

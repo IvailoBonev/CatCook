@@ -1,5 +1,5 @@
 ﻿using CatCook.Core.Contracts;
-using CatCook.Core.Models;
+using CatCook.Core.Models.Recipe;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
@@ -28,6 +28,11 @@ namespace CatCook.Controllers
             var model = await recipeService.AllRecipesOrdered(User.Id());
 
             return View(model);
+        }
+
+        public async Task<IActionResult> Test()
+        {
+            return View();
         }
 
         [HttpGet]
@@ -158,6 +163,47 @@ namespace CatCook.Controllers
             }
 
             await recipeService.Edit(model.Id, model);
+
+            return RedirectToAction(nameof(All));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if ((await recipeService.Exists(id, User.Id())) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            if ((await recipeService.RecipeWithUserId(id, User.Id())) == false)
+            {
+                return RedirectToPage("/Account/AccessDenied", new { area = "Identity" });
+            }
+
+            var house = await recipeService.RecipeDetailsById(id, User.Id());
+            var model = new RecipeDetailsModel
+            {
+                Name = house.Name,
+                DateAdded = house.DateAdded
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id, RecipeDetailsModel model)
+        {
+            if ((await recipeService.Exists(id, User.Id())) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            if ((await recipeService.RecipeWithUserId(id, User.Id())) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            await recipeService.Delete(id);
 
             return RedirectToAction(nameof(All));
         }

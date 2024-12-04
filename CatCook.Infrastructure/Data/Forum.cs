@@ -29,6 +29,10 @@ namespace CatCook.Infrastructure.Data
         [Required]
         public string UserId { get; set; } = string.Empty;
 
+        [Required]
+        [Comment("Is the forum deleted (soft delete)")]
+        public bool IsDeleted { get; set; }
+
         [ForeignKey(nameof(UserId))]
         [Comment("Which user posted the forum")]
         public ApplicationUser User { get; set; } = null!;

@@ -1,6 +1,6 @@
 ﻿using Azure.Identity;
 using CatCook.Core.Contracts;
-using CatCook.Core.Models;
+using CatCook.Core.Models.Recipe;
 using CatCook.Infrastructure.Common;
 using CatCook.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -51,7 +51,7 @@ namespace CatCook.Core.Services
         public async Task<ICollection<RecipeHomeModel>> LastSixRecipes(string userId)
         {
             return await repo.AllReadonly<Recipe>()
-                .Where(r => r.IsPrivate == false || r.UserId == userId)
+                .Where(r => (r.IsPrivate == false || r.UserId == userId) && r.IsDeleted == false)
                 .OrderByDescending(r => r.DateAdded)
                 .Select (r => new RecipeHomeModel()
                 {
@@ -72,7 +72,7 @@ namespace CatCook.Core.Services
         public async Task<ICollection<RecipeHomeModel>> AllRecipesOrdered(string userId)
         {
             return await repo.AllReadonly<Recipe>()
-                .Where(r => r.IsPrivate == false || r.UserId == userId)
+                .Where(r => (r.IsPrivate == false || r.UserId == userId) && r.IsDeleted == false)
                 .OrderByDescending(r => r.Rating)
                 .ThenByDescending(r => r.DateAdded)
                 .Select(r => new RecipeHomeModel()
@@ -132,7 +132,7 @@ namespace CatCook.Core.Services
         public async Task<RecipeDetailsModel> RecipeDetailsById(int id, string userId)
         {
             return await repo.AllReadonly<Recipe>()
-                .Where(r => r.IsPrivate == false || r.UserId == userId)
+                .Where(r => (r.IsPrivate == false || r.UserId == userId) && r.IsDeleted == false)
                 .Where(r => r.Id == id)
                 .Select(r => new RecipeDetailsModel()
                 {
@@ -156,7 +156,7 @@ namespace CatCook.Core.Services
         public async Task<bool> Exists(int id, string userId)
         {
             return await repo.AllReadonly<Recipe>()
-                .AnyAsync(r => r.Id == id && (r.IsPrivate == false || r.UserId == userId));
+                .AnyAsync(r => r.Id == id && (r.IsPrivate == false || r.UserId == userId) && r.IsDeleted == false);
         }
 
         public async Task<bool> RecipeWithUserId(int id, string userId)
@@ -209,6 +209,14 @@ namespace CatCook.Core.Services
         public async Task<int> GetRecipeDifficultyId(int recipeId)
         {
             return (await repo.GetByIdAsync<Recipe>(recipeId)).DifficultyId;
+        }
+
+        public async Task Delete(int id)
+        {
+            var recipe = await repo.GetByIdAsync<Recipe>(id);
+            recipe.IsDeleted = true;
+
+            await repo.SaveChangesAsync();
         }
     }
 }

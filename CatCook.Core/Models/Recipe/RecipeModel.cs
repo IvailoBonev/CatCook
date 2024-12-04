@@ -1,5 +1,4 @@
-﻿
-using CatCook.Infrastructure.Data;
+﻿using CatCook.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static CatCook.Infrastructure.Common.Constants;
 
-namespace CatCook.Core.Models
+namespace CatCook.Core.Models.Recipe
 {
     public class RecipeModel
     {

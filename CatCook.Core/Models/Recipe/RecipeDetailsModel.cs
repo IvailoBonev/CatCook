@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CatCook.Core.Models
+namespace CatCook.Core.Models.Recipe
 {
     public class RecipeDetailsModel
     {
@@ -19,7 +19,7 @@ namespace CatCook.Core.Models
         public string Description { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string DateAdded { get; set; } = string.Empty;
-        public int DifficultyId {  get; set; }
+        public int DifficultyId { get; set; }
         public int CategoryId { get; set; }
         public bool IsPrivate { get; set; }
     }
