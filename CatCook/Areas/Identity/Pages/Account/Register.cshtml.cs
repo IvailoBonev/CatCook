@@ -92,7 +92,7 @@ namespace CatCook.Areas.Identity.Pages.Account
             public string City { get; set; }
 
             [Display(Name = "Снимка на аватар")]
-            public string? AvatarImageUrl { get; set; }
+            public string AvatarImageUrl { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used

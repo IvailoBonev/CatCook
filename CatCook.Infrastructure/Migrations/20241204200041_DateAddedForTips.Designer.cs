@@ -4,6 +4,7 @@ using CatCook.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CatCook.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241204200041_DateAddedForTips")]
+    partial class DateAddedForTips
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,7 +137,7 @@ namespace CatCook.Infrastructure.Migrations
                             Id = "0464d803-7820-4ec4-bb42-d75b5a1fcb7c",
                             AccessFailedCount = 0,
                             City = "Sofia",
-                            ConcurrencyStamp = "a413247e-0ddc-42aa-aa9d-549695e00ef2",
+                            ConcurrencyStamp = "a7f8cf6d-222e-4946-a68f-2704a72bfcbb",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Guest",
@@ -142,11 +145,11 @@ namespace CatCook.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFKQ22iL9xd+kDoej+N/VoIuTDF7WA8N7IDUx9QoI+KR7CH0UUutRl22i0hqIMhgIQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKmkqaHw3mGs1lXrmfK6tvJTZx87PMDSz384ecuKal8KhENrANMI2ciIP1MmDyS9rQ==",
                             PhoneNumberConfirmed = false,
                             Points = 0,
                             ProfileName = "Guest",
-                            SecurityStamp = "95ec1405-a251-4433-b768-ad5fd0738cd7",
+                            SecurityStamp = "06678bed-08d1-4499-b4dd-f1f4d7db26b1",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         },
@@ -155,7 +158,7 @@ namespace CatCook.Infrastructure.Migrations
                             Id = "36998a40-6007-4cea-ac6e-c191880fa9e8",
                             AccessFailedCount = 0,
                             City = "Burgas",
-                            ConcurrencyStamp = "0eca05b8-e242-4e8b-b5c3-c2b70435a4d2",
+                            ConcurrencyStamp = "c7845285-b269-40a8-b38e-eb121fc7fe8a",
                             Email = "ivan.georgiev@example.com",
                             EmailConfirmed = false,
                             FirstName = "Ivan",
@@ -163,11 +166,11 @@ namespace CatCook.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ivan.georgiev@example.com",
                             NormalizedUserName = "ivan.georgiev@example.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAENeNh9fxVzdfNJfpm9RR/WwxkWhaRpK+PHNwjyF/5rzD0ubyl3j4MPiu6JCplc374Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEH6oGz/Hkxwxlwu95nSWb9qG+m2ZPXTpu/CeApxbYix3E4PmIojjpiGEM23MSbL8qw==",
                             PhoneNumberConfirmed = false,
                             Points = 0,
                             ProfileName = "Ivan_G",
-                            SecurityStamp = "18f9b5b9-4e22-49d4-bf9e-b6df23df0993",
+                            SecurityStamp = "1653db78-5f15-4ea5-be5e-806a351306d7",
                             TwoFactorEnabled = false,
                             UserName = "ivan.georgiev@example.com"
                         });
@@ -344,8 +347,8 @@ namespace CatCook.Infrastructure.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
                         .HasComment("The title of the forum");
 
                     b.Property<string>("UserId")
@@ -495,7 +498,7 @@ namespace CatCook.Infrastructure.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
-                            DateAdded = new DateTime(2024, 12, 7, 17, 22, 37, 439, DateTimeKind.Local).AddTicks(9696),
+                            DateAdded = new DateTime(2024, 12, 4, 22, 0, 38, 81, DateTimeKind.Local).AddTicks(7711),
                             Descipriton = "A Caesar salad is a timeless dish known for its crisp romaine, creamy dressing, and bold flavors. Here’s how to make it step-by-step:\r\n\r\n    Prepare the Croutons: Preheat your oven to 375°F. Cut a baguette or bread into small cubes, toss with olive oil, garlic powder, and a pinch of salt, then bake for 10-15 minutes until golden and crispy.\r\n\r\n    Make the Dressing: In a bowl, whisk together 1 minced garlic clove, 2 anchovy fillets (mashed), 1 teaspoon Dijon mustard, 1 tablespoon fresh lemon juice, and 1 teaspoon Worcestershire sauce. Slowly whisk in ½ cup olive oil until emulsified. Stir in ½ cup grated Parmesan cheese for a creamy texture. Adjust seasoning with salt and pepper to taste.\r\n\r\n    Assemble the Salad: Wash and dry fresh romaine lettuce, then tear it into bite-sized pieces. Toss the lettuce with the dressing until evenly coated.\r\n\r\n    Add Toppings: Top with the homemade croutons and more grated Parmesan cheese for a finishing touch.\r\n\r\nServe immediately for the best texture and flavor. This classic Caesar salad pairs wonderfully with grilled chicken, shrimp, or as a standalone starter. Enjoy your fresh and flavorful creation!",
                             DifficultyId = 2,
                             IsDeleted = false,
@@ -512,7 +515,7 @@ namespace CatCook.Infrastructure.Migrations
                         {
                             Id = 2,
                             CategoryId = 3,
-                            DateAdded = new DateTime(2024, 12, 7, 17, 22, 37, 439, DateTimeKind.Local).AddTicks(9736),
+                            DateAdded = new DateTime(2024, 12, 4, 22, 0, 38, 81, DateTimeKind.Local).AddTicks(7839),
                             Descipriton = "Making a creamy, decadent cheesecake at home is easier than you think. Here’s a step-by-step guide to create the perfect cheesecake:\r\n\r\n    Prepare the Crust: Preheat your oven to 325°F. In a food processor, pulse 1 ½ cups of graham crackers with ¼ cup of sugar and ½ teaspoon of cinnamon. Add 6 tablespoons of melted butter and mix until combined. Press the mixture into the bottom of a greased 9-inch springform pan. Bake for 10 minutes, then set aside to cool.\r\n\r\n    Make the Filling: In a large mixing bowl, beat 4 packages (32 ounces) of cream cheese at room temperature until smooth. Add 1 cup of granulated sugar and beat until combined. Add 1 teaspoon of vanilla extract and 4 large eggs, one at a time, mixing well after each addition. Finally, blend in 1 cup of sour cream for richness.\r\n\r\n    Bake the Cheesecake: Pour the cream cheese mixture onto the cooled crust. Bake at 325°F for 55-60 minutes, or until the center is just set. Let it cool in the oven with the door slightly ajar for 1 hour, then refrigerate for at least 4 hours.\r\n\r\n    Serve: Top with fresh fruit, fruit compote, or a drizzle of caramel for extra flavor. Enjoy your homemade cheesecake!",
                             DifficultyId = 1,
                             IsDeleted = false,
@@ -540,7 +543,8 @@ namespace CatCook.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1200)
+                        .HasColumnType("nvarchar(1200)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit")
@@ -548,8 +552,8 @@ namespace CatCook.Infrastructure.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -565,7 +569,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            DateAdded = new DateTime(2024, 12, 7, 17, 22, 37, 439, DateTimeKind.Local).AddTicks(9856),
+                            DateAdded = new DateTime(2024, 12, 4, 22, 0, 38, 81, DateTimeKind.Local).AddTicks(8912),
                             Description = "When cooking fish, lemons can be a game-changer for flavor! A great tip is to use lemon in layers throughout your cooking process. Start by marinating your fish with a mixture of lemon juice, olive oil, and your favorite herbs—this not only enhances the flavor but also tenderizes the fish.\r\n\r\nDuring cooking, add thin slices of lemon directly on top of the fish. This allows the zest and oils to seep in as it cooks, giving it a bright, citrusy aroma. Finally, finish with a squeeze of fresh lemon juice just before serving to add a vibrant, tangy kick.",
                             IsDeleted = false,
                             Title = "Elevate Your Fish Dishes with Lemon: A Simple Tip",
@@ -574,7 +578,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            DateAdded = new DateTime(2024, 12, 7, 17, 22, 37, 439, DateTimeKind.Local).AddTicks(9861),
+                            DateAdded = new DateTime(2024, 12, 4, 22, 0, 38, 81, DateTimeKind.Local).AddTicks(8924),
                             Description = "Want to bake cupcakes that are fluffy, moist, and perfectly domed? Here's a simple tip: start with room-temperature ingredients. Let your eggs, butter, and milk sit out for about 30 minutes before mixing. This ensures the batter blends smoothly, creating a light and even texture.\r\n\r\nAnother key is not to overmix your batter—stop as soon as the ingredients are combined. Overmixing can make your cupcakes dense and tough. For beautifully domed tops, fill your liners about two-thirds full and bake at a slightly higher temperature (around 375°F) for the first 5 minutes, then reduce to 350°F to finish baking.",
                             IsDeleted = false,
                             Title = "The Secret to Perfect Cupcakes Every Time",

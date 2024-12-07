@@ -13,6 +13,7 @@ namespace CatCook.Core.Models.Recipe
 {
     public class RecipeModel
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -21,13 +22,13 @@ namespace CatCook.Core.Models.Recipe
         [Required]
         [StringLength(RecipeNameMaxLength,
             MinimumLength = RecipeNameMinLength,
-            ErrorMessage = "Recipe name must be between {2} and {1} symbols!")]
+            ErrorMessage = RecipeNameErrorMessage)]
         public string Name { get; set; } = string.Empty;
 
         [Required]
         [StringLength(RecipeDescriptionMaxLength,
             MinimumLength = RecipeDescriptionMinLength,
-            ErrorMessage = "Recipe description must be between {2} and {1} symbols!")]
+            ErrorMessage = RecipeDescriptionErrorMessage)]
         public string Description { get; set; } = string.Empty;
 
         [Required]
@@ -41,18 +42,18 @@ namespace CatCook.Core.Models.Recipe
 
         [Required]
         [Range(RecipePreparationTimeMin, RecipePreparationTimeMax,
-            ErrorMessage = "Recipe preparation time must be between {1} and {2} minutes!")]
+            ErrorMessage = RecipePreparationErrorMessage)]
         public int TimeForPreparation { get; set; }
 
         [Required]
         [Range(RecipeCookingTimeMin, RecipeCookingTimeMax,
-            ErrorMessage = "Recipe cooking time must be between {1} and {2} minutes!")]
+            ErrorMessage = RecipeCookingErrorMessage)]
         public int TimeForCooking { get; set; }
 
 
         [Required]
         [Range(RecipePortionsCountMin, RecipePortionsCountMax,
-            ErrorMessage = "Recipe portions must be between {1} and {2}!")]
+            ErrorMessage = RecipePortionsErrorMessage)]
         public int PortionsCount { get; set; }
 
         [Required]

@@ -5,6 +5,58 @@ $body-color: white;
 $box-shadow: 0 .5rem 1rem rgba(white, .15);
 $card-bg: #212121;
 
+:root:root {
+    --ck-color-base-background: #212121;
+    --ck-color-base-border: #E26F33;
+    --ck-color-base-text: white;
+    --ck-color-focus-border-coordinates: #E26F33;
+    --ck-color-button-default-hover-background: #161616;
+    --ck-color-button-default-active-background: black;
+    --ck-color-button-default-disabled-background: #161616;
+    --ck-color-button-on-active-background: black;
+    --ck-color-button-on-hover-background: #161616;
+    --ck-color-button-on-background: #161616;
+    --ck-color-split-button-hover-background: #161616;
+    --ck-highlight-marker-yellow: #FFBA00;
+    --ck-highlight-marker-green: #004F02;
+    --ck-highlight-marker-pink: #C11C83;
+    --ck-highlight-marker-blue: #3251DF;
+    --ck-color-base-active: #F4C9B2;
+    --ck-color-button-on-color: #F4C9B2;
+    --ck-color-button-on-hover: #F4C9B2;
+    --ck-color-base-focus: #F4C9B2;
+}
+
+.pen-red {
+    color: var(--ck-highlight-pen-red);
+    background-color: transparent;
+}
+
+.pen-green {
+    color: var(--ck-highlight-pen-green);
+    background-color: transparent;
+}
+
+.marker-green {
+    color: white;
+    background-color: var(--ck-highlight-marker-green);
+}
+
+.marker-blue {
+    color: white;
+    background-color: var(--ck-highlight-marker-blue);
+}
+
+.marker-pink {
+    color: white;
+    background-color: var(--ck-highlight-marker-pink);
+}
+
+.marker-yellow {
+    color: white;
+    background-color: var(--ck-highlight-marker-yellow);
+}
+
 .image-container {
     position: relative;
     display: inline-block;

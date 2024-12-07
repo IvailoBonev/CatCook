@@ -1,0 +1,22 @@
+﻿@model IEnumerable<TipHomeModel>
+
+@{
+    ViewBag.Title = "Всички Съвети";
+}
+
+<div class="card-deck row">
+    <h1 class="text-center" style="margin-top: 10rem ; margin-bottom: 3rem;">Всички Съвети</h1>
+
+    @foreach (var tip in Model)
+    {
+        <div class="card col-12" style="width: 100%; margin-bottom: 3rem; border: #DE4D01 1px solid">
+            <div class="card-body">
+                <h3 class="card-title">
+                    <b>@tip.Title</b>
+                </h3>
+                <p class="card-text">Публикувано на: @tip.DateAdded<br />От <b>@@@tip.ProfileName</b></p>
+                <a href="#" class="btn btn-primary">Научи Повече</a>
+            </div>
+        </div>
+    }
+</div>

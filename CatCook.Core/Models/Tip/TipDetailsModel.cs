@@ -7,13 +7,19 @@ using System.Threading.Tasks;
 
 namespace CatCook.Core.Models.Tip
 {
-    public class TipHomeModel
+    public class TipDetailsModel
     {
+        [Key]
         public int Id { get; set; }
+
         public string Title { get; set; } = string.Empty;
+
         public string Description { get; set; } = string.Empty;
-        public bool IsDeleted { get; set; }
-        public string ProfileName { get; set; } = string.Empty;
+
         public string DateAdded { get; set; } = string.Empty;
+
+        public string AvatarImgUrl { get; set; } = string.Empty;
+
+        public string ProfileName { get; set; } = string.Empty;
     }
 }

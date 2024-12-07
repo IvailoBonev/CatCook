@@ -10,6 +10,7 @@ namespace CatCook.Extensions
         {
             services.AddScoped<IRepository, Repository>();
             services.AddScoped<IRecipeService, RecipeService>();
+            services.AddScoped<ITipService, TipService>();
 
             return services;
         }

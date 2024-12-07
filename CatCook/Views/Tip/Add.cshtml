@@ -1,0 +1,14 @@
+﻿@model TipModel
+
+<div class="container">
+    @{
+        ViewBag.Title = "Добави Съвет";
+    }
+
+    <partial name="_TipFormPartial" model="@Model" />
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

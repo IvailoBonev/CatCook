@@ -30,11 +30,6 @@ namespace CatCook.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Test()
-        {
-            return View();
-        }
-
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
