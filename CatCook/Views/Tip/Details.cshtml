@@ -1,5 +1,33 @@
 ﻿@model TipDetailsModel
 
 <div class="row">
+    <div class="row" style="margin-top: 10rem; gap: 12px;">
+        <div class="col-lg-2 col-md-4 text-center" style="border: #DE4D01 1px solid; min-height: 75vh;">
+           @if (Model.AvatarImgUrl != null)
+            {
+                <img class="w-50 p-2 mt-5" src="@Model.AvatarImgUrl" alt="Profile Photo" />
+            }
+            else {
+                <img class="w-50 p-2 mt-5" src="~/img/no-profile-picture-icon.png" alt="Profile Photo" />
+            }
+            <h4><b>@@@Model.ProfileName</b></h4>
 
+            <p><i class="fa-solid fa-clock"></i> @Model.DateAdded</p>
+
+            @if (Model.UserId == ViewBag.UserId)
+            {
+                <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 10px;">
+                    <a href="#" class="btn btn-warning w-75" style="margin: 0 auto;">Редактирай</a>
+                    <br />
+                    <a href="#" class="btn btn-danger w-75" style="margin: 0 auto;">Изтрий</a>
+                </div>
+            }
+        </div>
+        <div class="col-lg-9 col-md-8" style="border: #DE4D01 1px solid; padding: 10px;">
+            <h2>@Model.Title</h2>
+            <div>
+                @Html.Raw(Model.Description)
+            </div>
+        </div>
+    </div>
 </div>

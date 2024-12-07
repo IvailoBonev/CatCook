@@ -57,7 +57,13 @@ namespace CatCook.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
+            if ((await tipService.Exists(id)) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
             var model = await tipService.TipDetailsById(id);
+            ViewBag.UserId = User.Id();
 
             return View(model);
         }

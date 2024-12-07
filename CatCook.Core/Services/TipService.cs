@@ -56,6 +56,12 @@ namespace CatCook.Core.Services
             return model.Id;
         }
 
+        public async Task<bool> Exists(int id)
+        {
+            return await repo.AllReadonly<Tip>()
+                .AnyAsync(t => t.Id == id && t.IsDeleted == false);
+        }
+
         public async Task<TipDetailsModel> TipDetailsById(int id)
         {
              return await repo.AllReadonly<Tip>()
@@ -67,7 +73,8 @@ namespace CatCook.Core.Services
                     DateAdded = t.DateAdded.ToString("dd'.'MM'.'yyyy", CultureInfo.InvariantCulture),
                     Description = t.Description,
                     AvatarImgUrl = t.User.AvatarImageUrl,
-                    ProfileName = t.User.ProfileName
+                    ProfileName = t.User.ProfileName,
+                    UserId = t.UserId
                 }).FirstAsync();
         }
     }

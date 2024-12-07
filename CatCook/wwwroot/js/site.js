@@ -4,13 +4,11 @@ const {
 	Autoformat,
 	AutoImage,
 	Autosave,
-	BlockQuote,
 	Bold,
 	Essentials,
 	Heading,
 	Highlight,
 	ImageBlock,
-	ImageCaption,
 	ImageInline,
 	ImageInsert,
 	ImageInsertViaUrl,
@@ -26,7 +24,6 @@ const {
 	LinkImage,
 	List,
 	ListProperties,
-	MediaEmbed,
 	Paragraph,
 	PasteFromOffice,
 	SimpleUploadAdapter,
@@ -59,9 +56,7 @@ const editorConfig = {
 			'specialCharacters',
 			'link',
 			'insertImage',
-			'mediaEmbed',
 			'highlight',
-			'blockQuote',
 			'|',
 			'bulletedList',
 			'numberedList',
@@ -75,13 +70,11 @@ const editorConfig = {
 		Autoformat,
 		AutoImage,
 		Autosave,
-		BlockQuote,
 		Bold,
 		Essentials,
 		Heading,
 		Highlight,
 		ImageBlock,
-		ImageCaption,
 		ImageInline,
 		ImageInsert,
 		ImageInsertViaUrl,
@@ -97,7 +90,6 @@ const editorConfig = {
 		LinkImage,
 		List,
 		ListProperties,
-		MediaEmbed,
 		Paragraph,
 		PasteFromOffice,
 		SimpleUploadAdapter,
@@ -159,19 +151,18 @@ const editorConfig = {
 		]
 	},
 	image: {
+		insert: {
+			type: 'inline'
+		},
 		toolbar: [
-			'toggleImageCaption',
 			'imageTextAlternative',
 			'|',
-			'imageStyle:inline',
 			'imageStyle:wrapText',
 			'imageStyle:breakText',
 			'|',
 			'resizeImage'
 		]
 	},
-	initialData:
-		'<h2>Напишете информацията за рецептата тук.</h2>',
 	licenseKey: LICENSE_KEY,
 	link: {
 		addTargetToExternalLinks: true,
@@ -193,7 +184,7 @@ const editorConfig = {
 			reversed: true
 		}
 	},
-	placeholder: 'Type or paste your content here!',
+	placeholder: 'Напиши информацията тук!',
 	simpleUpload: {
 
 	},

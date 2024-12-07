@@ -15,5 +15,7 @@ namespace CatCook.Core.Contracts
         Task<int> Create(TipModel model);
 
         Task<TipDetailsModel> TipDetailsById(int id);
+
+        Task<bool> Exists(int id);
     }
 }
