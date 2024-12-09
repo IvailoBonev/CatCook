@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Description">Как да се сготви</label>
-                <textarea rows="5" asp-for="Description" class="form-control" placeholder="Описание..."></textarea>
+                <textarea id="editor" rows="5" asp-for="Description" class="form-control" placeholder="Описание..."></textarea>
                 <span asp-validation-for="Description" class="small text-danger"></span>
             </div>
             <div class="form-group">
@@ -37,14 +37,9 @@
                 <span asp-validation-for="PortionsCount" class="small text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Products">Нужни продукти /всеки продукт на нов ред/</label>
-                <textarea rows="5" asp-for="Products" class="form-control" placeholder="Сложи продукт..."></textarea>
-                <span asp-validation-for="Products" class="small text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrls">Линкове на снимки /всеки линк на нов ред/</label>
-                <textarea rows="5" asp-for="ImageUrls" class="form-control" placeholder="Твоите линкове тук..."></textarea>
-                <span asp-validation-for="ImageUrls" class="small text-danger"></span>
+                <label asp-for="ImageUrl">Снимка на рецептата</label>
+                <textarea rows="2" asp-for="ImageUrl" class="form-control" placeholder="Твоя линк тук..."></textarea>
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId">Категория</label>

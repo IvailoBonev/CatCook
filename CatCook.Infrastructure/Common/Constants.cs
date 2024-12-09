@@ -30,9 +30,6 @@ namespace CatCook.Infrastructure.Common
         public const int RecipeNameMinLength = 4;
         public const int RecipeNameMaxLength = 90;
         public const string RecipeNameErrorMessage = "Recipe name must be between {2} and {1} symbols!";
-        public const int RecipeDescriptionMinLength = 40;
-        public const int RecipeDescriptionMaxLength = 2000;
-        public const string RecipeDescriptionErrorMessage = "Recipe description must be between {2} and {1} symbols!";
         public const int RecipePortionsCountMin = 1;
         public const int RecipePortionsCountMax = 20;
         public const string RecipePortionsErrorMessage = "Recipe portions must be between {1} and {2}!";

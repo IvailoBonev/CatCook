@@ -25,7 +25,6 @@ namespace CatCook.Core.Models.Recipe
 
         public string UserName { get; set; } = string.Empty;
 
-        public ICollection<Image> Images { get; set; }
-            = new List<Image>();
+        public string ImageUrl { get; set; } = string.Empty;
     }
 }

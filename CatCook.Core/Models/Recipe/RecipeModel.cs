@@ -26,13 +26,7 @@ namespace CatCook.Core.Models.Recipe
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        [StringLength(RecipeDescriptionMaxLength,
-            MinimumLength = RecipeDescriptionMinLength,
-            ErrorMessage = RecipeDescriptionErrorMessage)]
         public string Description { get; set; } = string.Empty;
-
-        [Required]
-        public string Products { get; set; } = string.Empty;
 
         [Required]
         public int DifficultyId { get; set; }
@@ -59,7 +53,7 @@ namespace CatCook.Core.Models.Recipe
         [Required]
         public DateTime DateAdded { get; set; }
 
-        public string? ImageUrls { get; set; }
+        public string? ImageUrl { get; set; }
 
         public ICollection<RecipeCategoryModel> RecipeCategories { get; set; }
             = new List<RecipeCategoryModel>();

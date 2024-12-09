@@ -5,16 +5,16 @@
     <div class="card col-3 recipe" style="max-width: 285px;">
         <div class="position-relative">
             <p class="rounded p-2 m-2 fs-6 position-absolute" style="background-color: darkorange; text-align: center; color: white; font-weight: bold; max-width: 140px">@recipe.CategoryName</p>
-            @if (recipe.Images.Any())
+            @if (!(recipe.ImageUrl == string.Empty))
             {
                 <div class="card-img-top" style="width: 260px; height: 250px;">
-                    <img class="card-img-top" style="width: 260px; height: 250px;" src="@recipe.Images.First().ImageUrl" alt="First slide">
+                    <img class="card-img-top" style="width: 260px; height: 250px;" src="@recipe.ImageUrl" alt="Recipe image">
                 </div>
             }
             else
             {
                 <div class="card-img-top">
-                    <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="First slide">
+                    <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="Recipe image">
                 </div>
             }
         </div>

@@ -31,12 +31,7 @@ namespace CatCook.Infrastructure.Data
 
         [Required]
         [Comment("A description of the recipe")]
-        [MaxLength(RecipeDescriptionMaxLength)]
         public string Descipriton { get; set; } = string.Empty;
-
-        [Comment("Products used for the recipe")]
-        public List<string> Products { get; set; }
-            = new List<string>();
 
         [Required]
         public int DifficultyId { get; set; }
@@ -77,7 +72,6 @@ namespace CatCook.Infrastructure.Data
         public Category Category { get; set; } = null!;
 
         [Comment("Images used for the recipe")]
-        public List<Image> Images { get; set; }
-            = new List<Image>();
+        public string ImageUrl { get; set; } = string.Empty;
     }
 }

@@ -59,7 +59,7 @@ namespace CatCook.Core.Services
                     Name = r.Name,
                     DifficultyName = r.Difficulty.Name,
                     CategoryName = r.Category.Name,
-                    Images = r.Images,
+                    ImageUrl = r.ImageUrl,
                     IsPrivate = r.IsPrivate,
                     Rating = r.Rating.Average(),
                     DateAdded = r.DateAdded.ToString("dd/MM"),
@@ -81,7 +81,7 @@ namespace CatCook.Core.Services
                     Name = r.Name,
                     DifficultyName = r.Difficulty.Name,
                     CategoryName = r.Category.Name,
-                    Images = r.Images,
+                    ImageUrl = r.ImageUrl,
                     IsPrivate = r.IsPrivate,
                     Rating = r.Rating.Any() ? r.Rating.Average() : 0,
                     DateAdded = r.DateAdded.ToString("dd/MM"),
@@ -92,22 +92,19 @@ namespace CatCook.Core.Services
 
         public async Task<int> Create(RecipeModel model)
         {
-            List<string> products = model.Products.Split(Environment.NewLine).ToList();
 
             var recipe = new Recipe()
             {
                 Name = model.Name,
                 Descipriton = model.Description,
                 DateAdded = DateTime.Now,
-                Images = GetModelImages(model),
                 IsPrivate = model.IsPrivate,
                 DifficultyId = model.DifficultyId,
                 CategoryId = model.CategoryId,
                 TimeForCooking = model.TimeForCooking,
                 TimeForPreparation = model.TimeForPreparation,
                 UserId = model.UserId,
-                PortionsCount = model.PortionsCount,
-                Products = products
+                PortionsCount = model.PortionsCount
             };
 
             await repo.AddAsync(recipe);
@@ -139,11 +136,10 @@ namespace CatCook.Core.Services
                     AvatarImgUrl = r.User.AvatarImageUrl,
                     ProfileName = r.User.ProfileName,
                     Points = r.User.Points,
-                    ImagesUrl = r.Images.Select(i => i.ImageUrl).ToList(),
+                    ImageUrl = r.ImageUrl,
                     TimeForPreparation = r.TimeForPreparation,
                     TimeForCooking = r.TimeForCooking,
                     PortionsCount = r.PortionsCount,
-                    Products = r.Products,
                     Description = r.Descipriton,
                     Name = r.Name,
                     DateAdded = r.DateAdded.ToString("dd'.'MM'.'yyyy", CultureInfo.InvariantCulture),
@@ -172,33 +168,14 @@ namespace CatCook.Core.Services
             recipe.Name = model.Name;
             recipe.IsPrivate = model.IsPrivate;
             recipe.Descipriton = model.Description;
-            recipe.Images = GetModelImages(model);
+            recipe.ImageUrl = model.ImageUrl;
             recipe.PortionsCount = model.PortionsCount;
-            recipe.Products = model.Products.Split(Environment.NewLine).ToList();
             recipe.TimeForCooking = model.TimeForCooking;
             recipe.TimeForPreparation = model.TimeForPreparation;
             recipe.DifficultyId = model.DifficultyId;
             recipe.CategoryId = model.CategoryId;
 
             await repo.SaveChangesAsync();
-        }
-
-        private List<Image> GetModelImages(RecipeModel model)
-        {
-            List<Image> images = new List<Image>();
-
-            foreach (var imageUrl in model.ImageUrls.Split(Environment.NewLine))
-            {
-                Image img = new()
-                {
-                    ImageUrl = imageUrl,
-                    RecipeId = model.Id
-                };
-
-                images.Add(img);
-            }
-
-            return images;
         }
 
         public async Task<int> GetRecipeCategoryId(int recipeId)

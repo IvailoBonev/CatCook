@@ -11,11 +11,10 @@ namespace CatCook.Core.Models.Recipe
         public string AvatarImgUrl { get; set; } = string.Empty;
         public string ProfileName { get; set; } = string.Empty;
         public int Points { get; set; }
-        public ICollection<string> ImagesUrl { get; set; } = new List<string>();
+        public string ImageUrl { get; set; } = string.Empty;
         public int TimeForPreparation { get; set; }
         public int TimeForCooking { get; set; }
         public int PortionsCount { get; set; }
-        public ICollection<string> Products { get; set; } = new List<string>();
         public string Description { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string DateAdded { get; set; } = string.Empty;

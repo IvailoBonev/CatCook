@@ -104,12 +104,11 @@ namespace CatCook.Controllers
                 DifficultyId = recipe.DifficultyId,
                 Name = recipe.Name,
                 UserId = User.Id(),
-                ImageUrls = string.Join(Environment.NewLine, recipe.ImagesUrl),
+                ImageUrl = recipe.ImageUrl,
                 IsPrivate = recipe.IsPrivate,
                 TimeForCooking = recipe.TimeForCooking,
                 TimeForPreparation = recipe.TimeForPreparation,
                 Description = recipe.Description,
-                Products = string.Join(Environment.NewLine, recipe.Products),
                 PortionsCount = recipe.PortionsCount
             };
 
