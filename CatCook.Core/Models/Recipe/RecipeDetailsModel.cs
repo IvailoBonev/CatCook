@@ -8,6 +8,7 @@ namespace CatCook.Core.Models.Recipe
 {
     public class RecipeDetailsModel
     {
+        public int Id { get; set; }
         public string AvatarImgUrl { get; set; } = string.Empty;
         public string ProfileName { get; set; } = string.Empty;
         public int Points { get; set; }

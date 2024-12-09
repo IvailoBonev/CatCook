@@ -121,5 +121,47 @@ namespace CatCook.Controllers
 
             return RedirectToAction(nameof(Details), new { id = model.Id });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if ((await tipService.Exists(id)) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            if ((await tipService.TipWithUserId(id, User.Id())) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            var tip = await tipService.TipDetailsById(id);
+            var model = new TipDetailsModel
+            {
+                Id = tip.Id,
+                Title = tip.Title,
+                DateAdded = tip.DateAdded
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id, RecipeDetailsModel model)
+        {
+            if ((await tipService.Exists(id)) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            if ((await tipService.TipWithUserId(id, User.Id())) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            await tipService.Delete(id);
+
+            return RedirectToAction(nameof(All));
+        }
     }
 }

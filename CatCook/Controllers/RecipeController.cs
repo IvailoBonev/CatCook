@@ -171,14 +171,15 @@ namespace CatCook.Controllers
 
             if ((await recipeService.RecipeWithUserId(id, User.Id())) == false)
             {
-                return RedirectToPage("/Account/AccessDenied", new { area = "Identity" });
+                return RedirectToAction(nameof(All));
             }
 
-            var house = await recipeService.RecipeDetailsById(id, User.Id());
+            var recipe = await recipeService.RecipeDetailsById(id, User.Id());
             var model = new RecipeDetailsModel
             {
-                Name = house.Name,
-                DateAdded = house.DateAdded
+                Id = recipe.Id,
+                Name = recipe.Name,
+                DateAdded = recipe.DateAdded
             };
 
             return View(model);
