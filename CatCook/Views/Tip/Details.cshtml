@@ -18,14 +18,14 @@
             @if (Model.UserId == ViewBag.UserId)
             {
                 <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 10px;">
-                    <a href="#" class="btn btn-warning w-75" style="margin: 0 auto;">Редактирай</a>
+                    <a asp-area="" asp-controller="Tip" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning w-75" style="margin: 0 auto;">Редактирай</a>
                     <br />
                     <a href="#" class="btn btn-danger w-75" style="margin: 0 auto;">Изтрий</a>
                 </div>
             }
         </div>
         <div class="col-lg-9 col-md-8" style="border: #DE4D01 1px solid; padding: 10px;">
-            <h1 style="margin-bottom: 10px; padding: 8px;">@Model.Title</h1>
+            <h1 style="margin-bottom: 12px; padding: 8px;"><b>@Model.Title</b></h1>
             <textarea id="editor" disabled="disabled">@Html.Raw(Model.Description)</textarea>
         </div>
     </div>

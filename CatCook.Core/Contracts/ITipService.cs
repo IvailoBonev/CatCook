@@ -10,12 +10,20 @@ namespace CatCook.Core.Contracts
 {
     public interface ITipService
     {
-        Task<ICollection<TipHomeModel>> AllRecipesOrdered();
+        Task<ICollection<TipHomeModel>> LastFourTips(string userId);
+
+        Task<ICollection<TipHomeModel>> AllTipsOrdered();
 
         Task<int> Create(TipModel model);
 
         Task<TipDetailsModel> TipDetailsById(int id);
 
         Task<bool> Exists(int id);
+
+        Task Edit(int tipId, TipModel model);
+
+        Task<bool> TipWithUserId(int id, string userId);
+
+        Task Delete(int id);
     }
 }

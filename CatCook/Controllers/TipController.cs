@@ -25,7 +25,7 @@ namespace CatCook.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> All()
         {
-            var model = await tipService.AllRecipesOrdered();
+            var model = await tipService.AllTipsOrdered();
 
             return View(model);
         }
@@ -66,6 +66,60 @@ namespace CatCook.Controllers
             ViewBag.UserId = User.Id();
 
             return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            if ((await tipService.Exists(id)) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            if ((await tipService.TipWithUserId(id, User.Id())) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            var tip = await tipService.TipDetailsById(id);
+
+            var model = new TipModel()
+            {
+                Id = id,
+                Title = tip.Title,
+                Description = tip.Description,
+                UserId = tip.UserId
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, TipModel model)
+        {
+            if (id != model.Id)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            if ((await tipService.Exists(model.Id)) == false)
+            {
+                return View(model);
+            }
+
+            if ((await tipService.TipWithUserId(model.Id, User.Id())) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            if (ModelState.IsValid == false)
+            {
+                return View(model);
+            }
+
+            await tipService.Edit(model.Id, model);
+
+            return RedirectToAction(nameof(Details), new { id = model.Id });
         }
     }
 }

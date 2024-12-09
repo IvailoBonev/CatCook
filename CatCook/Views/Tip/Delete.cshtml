@@ -1,0 +1,21 @@
+﻿@model TipDetailsModel
+@{
+    ViewBag.Title = "Изтрий Съвет";
+}
+<div class="row align-content-center">
+    <h2 class="text-center" style="margin-top: 10rem;  margin-bottom: 3rem;">@ViewBag.Title</h2>
+    <hr />
+
+    <form asp-action="Delete">
+        <div class="card" style="width: 18rem; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">Сигурни ли сте, че искате да изтриете съвета <b>@Model.Title</b>?</p>
+                <div class="form-group">
+                    <input type="submit" value="Изтрий" class="btn btn-danger" />
+                    <a class="btn btn-secondary" asp-area="" asp-controller="Recipe" asp-action="All">Отказ</a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

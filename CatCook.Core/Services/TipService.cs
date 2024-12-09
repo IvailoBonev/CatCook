@@ -24,7 +24,7 @@ namespace CatCook.Core.Services
             repo = _repo;
         }
 
-        public async Task<ICollection<TipHomeModel>> AllRecipesOrdered()
+        public async Task<ICollection<TipHomeModel>> AllTipsOrdered()
         {
             return await repo.AllReadonly<Tip>()
                 .Where(t => t.IsDeleted == false)
@@ -56,10 +56,46 @@ namespace CatCook.Core.Services
             return model.Id;
         }
 
+        public async Task Delete(int id)
+        {
+            var tip = await repo.GetByIdAsync<Tip>(id);
+            tip.IsDeleted = true;
+
+            await repo.SaveChangesAsync();
+        }
+
+        public async Task Edit(int tipId, TipModel model)
+        {
+            var tip = await repo.GetByIdAsync<Tip>(tipId);
+
+            tip.Title = model.Title;
+            tip.Description = model.Description;
+
+            await repo.SaveChangesAsync();
+        }
+
         public async Task<bool> Exists(int id)
         {
             return await repo.AllReadonly<Tip>()
                 .AnyAsync(t => t.Id == id && t.IsDeleted == false);
+        }
+
+        public async Task<ICollection<TipHomeModel>> LastFourTips(string userId)
+        {
+            return await repo.AllReadonly<Tip>()
+                .Where(r => r.IsDeleted == false)
+                .OrderByDescending(r => r.DateAdded)
+                .Select(r => new TipHomeModel()
+                {
+                    Id = r.Id,
+                    Title = r.Title,
+                    Description = r.Description,
+                    DateAdded = r.DateAdded.ToString("dd'.'MM'.'yyyy", CultureInfo.InvariantCulture),
+                    IsDeleted = r.IsDeleted,
+                    ProfileName = r.User.ProfileName
+                })
+                .Take(4)
+                .ToListAsync();
         }
 
         public async Task<TipDetailsModel> TipDetailsById(int id)
@@ -76,6 +112,12 @@ namespace CatCook.Core.Services
                     ProfileName = t.User.ProfileName,
                     UserId = t.UserId
                 }).FirstAsync();
+        }
+
+        public async Task<bool> TipWithUserId(int id, string userId)
+        {
+            return await repo.AllReadonly<Tip>()
+                .AnyAsync(t => t.Id == id && t.UserId == userId);
         }
     }
 }
