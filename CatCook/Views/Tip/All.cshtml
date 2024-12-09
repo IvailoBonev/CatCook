@@ -5,7 +5,7 @@
 }
 
 <div class="card-deck row">
-    <h1 class="text-center" style="margin-top: 10rem ; margin-bottom: 3rem;">Всички Съвети</h1>
+    <h1 class="text-center" style="margin-top: 10rem ; margin-bottom: 2rem;">Всички Съвети</h1>
 
     @foreach (var tip in Model)
     {
@@ -15,7 +15,7 @@
                     <b>@tip.Title</b>
                 </h3>
                 <p class="card-text">Публикувано на: @tip.DateAdded<br />От <b>@@@tip.ProfileName</b></p>
-                <a href="#" class="btn btn-primary">Научи Повече</a>
+                <a asp-area="" asp-controller="Tip" asp-action="Details" asp-route-id="@tip.Id" class="btn btn-primary">Научи Повече</a>
             </div>
         </div>
     }

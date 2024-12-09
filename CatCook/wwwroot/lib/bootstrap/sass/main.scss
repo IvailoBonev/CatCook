@@ -26,6 +26,22 @@ $card-bg: #212121;
     --ck-color-button-on-color: #F4C9B2;
     --ck-color-button-on-hover: #F4C9B2;
     --ck-color-base-focus: #F4C9B2;
+    --ck-color-button-on-disabled-background: #161616;
+}
+
+.image_resized {
+    height: 100% !important
+}
+
+figure img {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.todo-list__label__description {
+    font-size: 18px;
+    padding: 5px;
 }
 
 .pen-red {

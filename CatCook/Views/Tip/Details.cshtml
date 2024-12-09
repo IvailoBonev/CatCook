@@ -1,5 +1,6 @@
 ﻿@model TipDetailsModel
 
+<div id="read__only"></div>
 <div class="row">
     <div class="row" style="margin-top: 10rem; gap: 12px;">
         <div class="col-lg-2 col-md-4 text-center" style="border: #DE4D01 1px solid; min-height: 75vh;">
@@ -24,10 +25,8 @@
             }
         </div>
         <div class="col-lg-9 col-md-8" style="border: #DE4D01 1px solid; padding: 10px;">
-            <h2>@Model.Title</h2>
-            <div>
-                @Html.Raw(Model.Description)
-            </div>
+            <h1 style="margin-bottom: 10px; padding: 8px;">@Model.Title</h1>
+            <textarea id="editor" disabled="disabled">@Html.Raw(Model.Description)</textarea>
         </div>
     </div>
 </div>

@@ -13,6 +13,7 @@ const {
 	ImageInsert,
 	ImageInsertViaUrl,
 	ImageResize,
+	ImageResizeHandles,
 	ImageStyle,
 	ImageTextAlternative,
 	ImageToolbar,
@@ -79,6 +80,7 @@ const editorConfig = {
 		ImageInsert,
 		ImageInsertViaUrl,
 		ImageResize,
+		ImageResizeHandles,
 		ImageStyle,
 		ImageTextAlternative,
 		ImageToolbar,
@@ -229,15 +231,15 @@ const editorConfig = {
 	}
 };
 
+var elementExists = document.getElementById("read__only");
+
 ClassicEditor.create(document.querySelector('#editor'), editorConfig)
 	.then(editor => {
-		const toolbarElement = editor.ui.view.toolbar.element;
-
-		editor.on('change:isReadOnly', (evt, propertyName, isReadOnly) => {
-			if (isReadOnly) {
-				toolbarElement.style.display = 'none';
-			} else {
-				toolbarElement.style.display = 'flex';
-			}
-		});
+		if (elementExists === null) {
+			editor.disableReadOnlyMode("docs-snippet")
+		}
+		else {
+			editor.enableReadOnlyMode("docs-snippet");
+		}
 	});
+
