@@ -48,7 +48,7 @@ namespace CatCook.Core.Services
                 .ToListAsync();
         }
 
-        public async Task<ICollection<RecipeHomeModel>> LastSixRecipes(string userId)
+        public async Task<ICollection<RecipeHomeModel>> LastFourRecipes(string userId)
         {
             return await repo.AllReadonly<Recipe>()
                 .Where(r => (r.IsPrivate == false || r.UserId == userId) && r.IsDeleted == false)
@@ -61,11 +61,11 @@ namespace CatCook.Core.Services
                     CategoryName = r.Category.Name,
                     ImageUrl = r.ImageUrl,
                     IsPrivate = r.IsPrivate,
-                    Rating = r.Rating.Average(),
+                    Rating = r.Rating.Any() ? r.Rating.Average() : 0,
                     DateAdded = r.DateAdded.ToString("dd/MM"),
                     UserName = r.User.ProfileName
                 })
-                .Take(6)
+                .Take(4)
                 .ToListAsync();
         }
 
@@ -108,8 +108,11 @@ namespace CatCook.Core.Services
             };
 
             await repo.AddAsync(recipe);
+
+            var user = await repo.GetByIdAsync<ApplicationUser>(recipe.UserId);
+            user.Points += 10;
+
             await repo.SaveChangesAsync();
-            recipe.User.Points += 10;
 
             return recipe.Id;
         }
@@ -133,9 +136,9 @@ namespace CatCook.Core.Services
                 .Where(r => r.Id == id)
                 .Select(r => new RecipeDetailsModel()
                 {
+                    Id = r.Id,
                     AvatarImgUrl = r.User.AvatarImageUrl,
                     ProfileName = r.User.ProfileName,
-                    Points = r.User.Points,
                     ImageUrl = r.ImageUrl,
                     TimeForPreparation = r.TimeForPreparation,
                     TimeForCooking = r.TimeForCooking,
@@ -144,7 +147,9 @@ namespace CatCook.Core.Services
                     Name = r.Name,
                     DateAdded = r.DateAdded.ToString("dd'.'MM'.'yyyy", CultureInfo.InvariantCulture),
                     CategoryId = r.CategoryId,
-                    DifficultyId = r.DifficultyId
+                    DifficultyId = r.DifficultyId,
+                    UserId = r.UserId,
+                    UserPoints = r.User.Points
                 })
                 .FirstAsync();
         }

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<TipHomeModel>
+
+@foreach (var tip in Model)
+{
+    <div class="card col-6" style="max-width: 600px;">
+        <div class="card-body">
+            <h5 class="card-title">
+                @tip.Title
+            </h5>
+            <p class="card-text">Публикувано на: @tip.DateAdded<br />От @@<b>@tip.ProfileName</b></p>
+            <a asp-area="" asp-controller="Tip" asp-action="Details" asp-route-id="@tip.Id" class="btn btn-primary">Научи повече</a>
+        </div>
+    </div>
+}

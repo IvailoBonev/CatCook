@@ -10,7 +10,7 @@ namespace CatCook.Core.Contracts
 {
     public interface ITipService
     {
-        Task<ICollection<TipHomeModel>> LastFourTips(string userId);
+        Task<ICollection<TipHomeModel>> LastFourTips();
 
         Task<ICollection<TipHomeModel>> AllTipsOrdered();
 

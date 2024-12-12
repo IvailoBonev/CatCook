@@ -23,5 +23,7 @@ namespace CatCook.Core.Models.Tip
         public string AvatarImgUrl { get; set; } = string.Empty;
 
         public string ProfileName { get; set; } = string.Empty;
+
+        public int UserPoints { get; set; }
     }
 }

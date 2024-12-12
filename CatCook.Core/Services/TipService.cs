@@ -52,6 +52,10 @@ namespace CatCook.Core.Services
             };
             
             await repo.AddAsync(tip);
+
+            var user = await repo.GetByIdAsync<ApplicationUser>(tip.UserId);
+            user.Points += 5;
+
             await repo.SaveChangesAsync();
             return model.Id;
         }
@@ -80,7 +84,7 @@ namespace CatCook.Core.Services
                 .AnyAsync(t => t.Id == id && t.IsDeleted == false);
         }
 
-        public async Task<ICollection<TipHomeModel>> LastFourTips(string userId)
+        public async Task<ICollection<TipHomeModel>> LastFourTips()
         {
             return await repo.AllReadonly<Tip>()
                 .Where(r => r.IsDeleted == false)
@@ -110,7 +114,8 @@ namespace CatCook.Core.Services
                     Description = t.Description,
                     AvatarImgUrl = t.User.AvatarImageUrl,
                     ProfileName = t.User.ProfileName,
-                    UserId = t.UserId
+                    UserId = t.UserId,
+                    UserPoints = t.User.Points
                 }).FirstAsync();
         }
 

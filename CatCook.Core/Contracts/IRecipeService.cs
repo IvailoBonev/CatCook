@@ -10,7 +10,7 @@ namespace CatCook.Core.Contracts
 {
     public interface IRecipeService
     {
-        Task<ICollection<RecipeHomeModel>> LastSixRecipes(string userId);
+        Task<ICollection<RecipeHomeModel>> LastFourRecipes(string userId);
 
         Task<ICollection<RecipeHomeModel>> AllRecipesOrdered(string userId);
 

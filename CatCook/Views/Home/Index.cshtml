@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RecipeHomeModel>
+﻿@model Tuple<ICollection<RecipeHomeModel>, ICollection<TipHomeModel>>
 @{
 
 }
@@ -19,5 +19,9 @@
 <hr />
 <h2 style="font-size: 3rem; font-weight:bold; margin: 2rem 0rem;">Най-новите рецепти:</h2>
 <div class="card-deck row">
-    <partial name="_RecipeCardPartial" model="@Model" />
+    <partial name="_RecipeCardPartial" model="@Model.Item1" />
+</div>
+<h2 style="font-size: 3rem; font-weight:bold; margin: 2rem 0rem;">Най-новите съвети:</h2>
+<div class="card-deck row justify-content-between" style="gap: 30px;">
+    <partial name="_TipCardPartial" model="@Model.Item2" />   
 </div>

@@ -50,7 +50,7 @@ namespace CatCook.Controllers
             model.DateAdded = DateTime.Now;
 
             int id = await tipService.Create(model);
-            return RedirectToAction(nameof(All));
+            return RedirectToAction(nameof(Details), new { id = id });
         }
 
         [HttpGet]

@@ -40,6 +40,7 @@ namespace CatCook.Controllers
             }
 
             var model = await recipeService.RecipeDetailsById(id, User.Id());
+            ViewBag.UserId = User.Id();
 
             return View(model);
         }
@@ -79,7 +80,8 @@ namespace CatCook.Controllers
 
             model.UserId = User.Id();
             int id = await recipeService.Create(model);
-            return RedirectToAction(nameof(All));
+
+            return RedirectToAction(nameof(Details), new { id = id });
         }
 
         [HttpGet]

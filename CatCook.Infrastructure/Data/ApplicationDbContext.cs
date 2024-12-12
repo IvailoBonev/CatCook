@@ -25,7 +25,6 @@ namespace CatCook.Infrastructure.Data
         public DbSet<Difficulty> Difficulties { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Forum> Forums { get; set; }
-        public DbSet<Image> Images { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -36,7 +35,6 @@ namespace CatCook.Infrastructure.Data
             builder.ApplyConfiguration(new DifficultyConfiguration());
             builder.ApplyConfiguration(new CommentConfiguration());
             builder.ApplyConfiguration(new ForumConfiguration());
-            builder.ApplyConfiguration(new ImageConfiguration());
 
             base.OnModelCreating(builder);
         }

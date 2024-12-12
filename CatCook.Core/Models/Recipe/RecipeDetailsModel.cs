@@ -11,7 +11,8 @@ namespace CatCook.Core.Models.Recipe
         public int Id { get; set; }
         public string AvatarImgUrl { get; set; } = string.Empty;
         public string ProfileName { get; set; } = string.Empty;
-        public int Points { get; set; }
+        public int UserPoints { get; set; }
+        public string UserId { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
         public int TimeForPreparation { get; set; }
         public int TimeForCooking { get; set; }
