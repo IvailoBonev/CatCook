@@ -4,6 +4,7 @@ using CatCook.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CatCook.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241212073633_DateAddedForForum")]
+    partial class DateAddedForForum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,7 +137,7 @@ namespace CatCook.Infrastructure.Migrations
                             Id = "0464d803-7820-4ec4-bb42-d75b5a1fcb7c",
                             AccessFailedCount = 0,
                             City = "Sofia",
-                            ConcurrencyStamp = "0c5c6da5-68aa-48c0-aab7-d922ce51ccb9",
+                            ConcurrencyStamp = "e98195c8-30f3-419a-a2f3-a0d81efb1e88",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Guest",
@@ -142,11 +145,11 @@ namespace CatCook.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBs+4+mTviB2pVy0uezjv02GuhlqnEfpZHrv3roNRDWzI3WuP5DBkxKQSlMsm/cx8w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKe5ZD0QlfTqeZVMxY/RdDMkRsAid75KczvUcMBoa5yy4TftUB4Za9iv2Vz3cxvr4w==",
                             PhoneNumberConfirmed = false,
                             Points = 0,
                             ProfileName = "Guest",
-                            SecurityStamp = "b4b6ad26-c7b2-482a-bf39-440e1607a523",
+                            SecurityStamp = "eec2e182-9bb7-40ad-bda7-dd493debdb6c",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         },
@@ -155,7 +158,7 @@ namespace CatCook.Infrastructure.Migrations
                             Id = "36998a40-6007-4cea-ac6e-c191880fa9e8",
                             AccessFailedCount = 0,
                             City = "Burgas",
-                            ConcurrencyStamp = "1ad51cd3-6162-48a4-ba5c-0b1d9db7a7ca",
+                            ConcurrencyStamp = "01825ae4-5e1c-4ae3-9726-df416014551c",
                             Email = "ivan.georgiev@example.com",
                             EmailConfirmed = false,
                             FirstName = "Ivan",
@@ -163,11 +166,11 @@ namespace CatCook.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ivan.georgiev@example.com",
                             NormalizedUserName = "ivan.georgiev@example.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEH8VWko6q59a13IkkqCjNJCev9NjrwaRYsXvq+hsS7c91OUvj2/9/iMdCkRPPXqA7w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC2Jq5R1/Xl3hwBRwWZ+mM3F4nPUAaKffz/q7GeJBYUFkcF8qLJKMS6HoHXlI5oxLQ==",
                             PhoneNumberConfirmed = false,
                             Points = 0,
                             ProfileName = "Ivan_G",
-                            SecurityStamp = "21f43b66-edf4-4076-b90a-eed375f5fcf0",
+                            SecurityStamp = "cbf88655-d651-4573-bcd0-87a705992d4b",
                             TwoFactorEnabled = false,
                             UserName = "ivan.georgiev@example.com"
                         });
@@ -365,7 +368,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            DateAdded = new DateTime(2024, 12, 12, 9, 39, 20, 353, DateTimeKind.Local).AddTicks(1424),
+                            DateAdded = new DateTime(2024, 12, 12, 9, 36, 29, 907, DateTimeKind.Local).AddTicks(7073),
                             IsDeleted = false,
                             Text = "Hi everyone! I'm trying to make a classic Caesar salad at home, but I’m struggling with the dressing. My main issue is getting the right balance of flavors—it’s either too tangy or too mild. I’m using anchovies, garlic, Dijon mustard, olive oil, lemon juice, and Parmesan, but something feels off. Should I adjust the ratios, or am I missing a key ingredient? Also, any tips for getting the texture just right? Thanks in advance!",
                             Title = "Need Help Perfecting My Caesar Salad Dressing!",
@@ -374,7 +377,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            DateAdded = new DateTime(2024, 12, 12, 9, 39, 20, 353, DateTimeKind.Local).AddTicks(1432),
+                            DateAdded = new DateTime(2024, 12, 12, 9, 36, 29, 907, DateTimeKind.Local).AddTicks(7093),
                             IsDeleted = false,
                             Text = "Hey yall! I’m trying to make a classic cheesecake, but I’m running into a few issues. My main problem is getting the texture right—it’s either too dense or ends up cracking on top. I’m using cream cheese, eggs, sugar, and a graham cracker crust. Should I adjust baking time or temperature? Also, do I need to use a water bath, or is there another trick to keep it smooth? Any advice would be greatly appreciated. Thanks!",
                             Title = "Help Needed with Cheesecake Recipe!",
@@ -460,7 +463,7 @@ namespace CatCook.Infrastructure.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
-                            DateAdded = new DateTime(2024, 12, 12, 9, 39, 20, 353, DateTimeKind.Local).AddTicks(619),
+                            DateAdded = new DateTime(2024, 12, 12, 9, 36, 29, 907, DateTimeKind.Local).AddTicks(4730),
                             Descipriton = "A Caesar salad is a timeless dish known for its crisp romaine, creamy dressing, and bold flavors. Here’s how to make it step-by-step:\r\n\r\n    Prepare the Croutons: Preheat your oven to 375°F. Cut a baguette or bread into small cubes, toss with olive oil, garlic powder, and a pinch of salt, then bake for 10-15 minutes until golden and crispy.\r\n\r\n    Make the Dressing: In a bowl, whisk together 1 minced garlic clove, 2 anchovy fillets (mashed), 1 teaspoon Dijon mustard, 1 tablespoon fresh lemon juice, and 1 teaspoon Worcestershire sauce. Slowly whisk in ½ cup olive oil until emulsified. Stir in ½ cup grated Parmesan cheese for a creamy texture. Adjust seasoning with salt and pepper to taste.\r\n\r\n    Assemble the Salad: Wash and dry fresh romaine lettuce, then tear it into bite-sized pieces. Toss the lettuce with the dressing until evenly coated.\r\n\r\n    Add Toppings: Top with the homemade croutons and more grated Parmesan cheese for a finishing touch.\r\n\r\nServe immediately for the best texture and flavor. This classic Caesar salad pairs wonderfully with grilled chicken, shrimp, or as a standalone starter. Enjoy your fresh and flavorful creation!",
                             DifficultyId = 2,
                             ImageUrl = "https://natashaskitchen.com/wp-content/uploads/2019/01/Caesar-Salad-Recipe-3.jpg",
@@ -477,7 +480,7 @@ namespace CatCook.Infrastructure.Migrations
                         {
                             Id = 2,
                             CategoryId = 3,
-                            DateAdded = new DateTime(2024, 12, 12, 9, 39, 20, 353, DateTimeKind.Local).AddTicks(677),
+                            DateAdded = new DateTime(2024, 12, 12, 9, 36, 29, 907, DateTimeKind.Local).AddTicks(4831),
                             Descipriton = "Making a creamy, decadent cheesecake at home is easier than you think. Here’s a step-by-step guide to create the perfect cheesecake:\r\n\r\n    Prepare the Crust: Preheat your oven to 325°F. In a food processor, pulse 1 ½ cups of graham crackers with ¼ cup of sugar and ½ teaspoon of cinnamon. Add 6 tablespoons of melted butter and mix until combined. Press the mixture into the bottom of a greased 9-inch springform pan. Bake for 10 minutes, then set aside to cool.\r\n\r\n    Make the Filling: In a large mixing bowl, beat 4 packages (32 ounces) of cream cheese at room temperature until smooth. Add 1 cup of granulated sugar and beat until combined. Add 1 teaspoon of vanilla extract and 4 large eggs, one at a time, mixing well after each addition. Finally, blend in 1 cup of sour cream for richness.\r\n\r\n    Bake the Cheesecake: Pour the cream cheese mixture onto the cooled crust. Bake at 325°F for 55-60 minutes, or until the center is just set. Let it cool in the oven with the door slightly ajar for 1 hour, then refrigerate for at least 4 hours.\r\n\r\n    Serve: Top with fresh fruit, fruit compote, or a drizzle of caramel for extra flavor. Enjoy your homemade cheesecake!",
                             DifficultyId = 1,
                             ImageUrl = "https://natashaskitchen.com/wp-content/uploads/2019/01/Caesar-Salad-Recipe-3.jpg",
@@ -530,7 +533,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            DateAdded = new DateTime(2024, 12, 12, 9, 39, 20, 353, DateTimeKind.Local).AddTicks(861),
+                            DateAdded = new DateTime(2024, 12, 12, 9, 36, 29, 907, DateTimeKind.Local).AddTicks(5704),
                             Description = "When cooking fish, lemons can be a game-changer for flavor! A great tip is to use lemon in layers throughout your cooking process. Start by marinating your fish with a mixture of lemon juice, olive oil, and your favorite herbs—this not only enhances the flavor but also tenderizes the fish.\r\n\r\nDuring cooking, add thin slices of lemon directly on top of the fish. This allows the zest and oils to seep in as it cooks, giving it a bright, citrusy aroma. Finally, finish with a squeeze of fresh lemon juice just before serving to add a vibrant, tangy kick.",
                             IsDeleted = false,
                             Title = "Elevate Your Fish Dishes with Lemon: A Simple Tip",
@@ -539,7 +542,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            DateAdded = new DateTime(2024, 12, 12, 9, 39, 20, 353, DateTimeKind.Local).AddTicks(867),
+                            DateAdded = new DateTime(2024, 12, 12, 9, 36, 29, 907, DateTimeKind.Local).AddTicks(5712),
                             Description = "Want to bake cupcakes that are fluffy, moist, and perfectly domed? Here's a simple tip: start with room-temperature ingredients. Let your eggs, butter, and milk sit out for about 30 minutes before mixing. This ensures the batter blends smoothly, creating a light and even texture.\r\n\r\nAnother key is not to overmix your batter—stop as soon as the ingredients are combined. Overmixing can make your cupcakes dense and tough. For beautifully domed tops, fill your liners about two-thirds full and bake at a slightly higher temperature (around 375°F) for the first 5 minutes, then reduce to 350°F to finish baking.",
                             IsDeleted = false,
                             Title = "The Secret to Perfect Cupcakes Every Time",
@@ -694,7 +697,7 @@ namespace CatCook.Infrastructure.Migrations
             modelBuilder.Entity("CatCook.Infrastructure.Data.Comment", b =>
                 {
                     b.HasOne("CatCook.Infrastructure.Data.Forum", "Forum")
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("ForumId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -831,11 +834,6 @@ namespace CatCook.Infrastructure.Migrations
             modelBuilder.Entity("CatCook.Infrastructure.Data.Difficulty", b =>
                 {
                     b.Navigation("Recipes");
-                });
-
-            modelBuilder.Entity("CatCook.Infrastructure.Data.Forum", b =>
-                {
-                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

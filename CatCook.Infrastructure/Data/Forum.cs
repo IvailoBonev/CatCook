@@ -33,8 +33,14 @@ namespace CatCook.Infrastructure.Data
         [Comment("Is the forum deleted (soft delete)")]
         public bool IsDeleted { get; set; }
 
+        [Required]
+        public DateTime DateAdded { get; set; }
+
         [ForeignKey(nameof(UserId))]
         [Comment("Which user posted the forum")]
         public ApplicationUser User { get; set; } = null!;
+
+        public ICollection<Comment> Comments { get; set; }
+            = new List<Comment>();
     }
 }

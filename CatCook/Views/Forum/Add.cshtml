@@ -1,0 +1,14 @@
+﻿@model ForumModel
+
+<div class="container">
+    @{
+        ViewBag.Title = "Добави Форум";
+    }
+
+    <partial name="_ForumFormPartial" model="@Model" />
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,38 @@
+﻿@model ICollection<ForumHomeModel>
+
+@{
+    ViewBag.Title = "Всички Форуми";
+}
+
+<div class="card-deck row">
+    <h1 class="text-center" style="margin-top: 10rem ; margin-bottom: 2rem;">@ViewBag.Title</h1>
+
+    @foreach (var forum in Model)
+    {
+        <div class="card col-12" style="width: 100%; margin-bottom: 3rem; border: #DE4D01 1px solid">
+            <div class="card-body">
+                <h3 class="card-title">
+                    <b>@forum.Title</b>
+                </h3>
+                <p class="card-text">
+                    <i class="fa-solid fa-clock"></i> @forum.DateAdded
+                    <br />
+                    <div>
+                        @if (forum.AvatarUrlImage != null)
+                        {
+                            <img src="@forum.AvatarUrlImage" alt="UserPhoto" style="width: 30px; height: 30px; object-fit: cover;" />
+                        }
+                        else
+                        {
+                            <img src="~/img/no-profile-picture-icon.png" alt="UserPhoto" style="width: 30px; height: 30px; object-fit: cover;" />
+                        }<b> @@@forum.ProfileName</b>
+                    </div>
+                </p>
+                <a asp-area="" asp-controller="Forum" asp-action="Details" asp-route-id="@forum.Id" class="btn btn-primary">Погледни</a>
+                <p class="card-text text-secondary" style="text-align: right;">
+                    <i>Коментари (@forum.CommentsCount)</i>
+                </p>
+            </div>
+        </div>
+    }
+</div>
