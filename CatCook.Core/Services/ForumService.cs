@@ -61,6 +61,33 @@ namespace CatCook.Core.Services
             return model.Id;
         }
 
+        public async Task Edit(int forumId, ForumModel model)
+        {
+            var forum = await repo.GetByIdAsync<Forum>(forumId);
+
+            forum.Title = model.Title;
+            forum.Text = model.Text;
+
+            await repo.SaveChangesAsync();
+        }
+
+        public async Task<bool> Exists(int id)
+        {
+            return await repo.AllReadonly<Forum>()
+                 .AnyAsync(t => t.Id == id && t.IsDeleted == false);
+        }
+
+        public Task<ForumDetailsModel> ForumDetailsById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> ForumWithUserId(int id, string userId)
+        {
+            return await repo.AllReadonly<Forum>()
+                .AnyAsync(t => t.Id == id && t.UserId == userId && t.IsDeleted == false);
+        }
+
         public async Task<ICollection<ForumHomeModel>> LastFourForums()
         {
             return await repo.AllReadonly<Forum>()

@@ -15,5 +15,13 @@ namespace CatCook.Core.Contracts
         Task<ICollection<ForumHomeModel>> AllForumsOrdered();
 
         Task<int> Create(ForumModel model);
+
+        Task<ForumDetailsModel> ForumDetailsById(int id);
+
+        Task<bool> Exists(int id);
+
+        Task Edit(int forumId, ForumModel model);
+
+        Task<bool> ForumWithUserId(int id, string userId);
     }
 }

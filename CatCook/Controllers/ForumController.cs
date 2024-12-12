@@ -1,5 +1,6 @@
 ﻿using CatCook.Core.Contracts;
 using CatCook.Core.Models.Forum;
+using CatCook.Core.Models.Tip;
 using CatCook.Core.Services;
 using CatCook.Extensions;
 using Microsoft.AspNetCore.Authorization;
@@ -52,6 +53,32 @@ namespace CatCook.Controllers
 
             int id = await forumService.Create(model);
             return RedirectToAction(nameof(All));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            if ((await forumService.Exists(id)) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            if ((await forumService.ForumWithUserId(id, User.Id())) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            var tip = await forumService.ForumDetailsById(id);
+
+            var model = new TipModel()
+            {
+                Id = id,
+                Title = tip.Title,
+                Description = tip.Description,
+                UserId = tip.UserId
+            };
+
+            return View(model);
         }
     }
 }
