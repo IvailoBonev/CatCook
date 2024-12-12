@@ -147,7 +147,7 @@ namespace CatCook.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(int id, RecipeDetailsModel model)
+        public async Task<IActionResult> Delete(int id, TipDetailsModel model)
         {
             if ((await tipService.Exists(id)) == false)
             {

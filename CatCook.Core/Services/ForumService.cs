@@ -61,6 +61,14 @@ namespace CatCook.Core.Services
             return model.Id;
         }
 
+        public async Task Delete(int id)
+        {
+            var forum = await repo.GetByIdAsync<Forum>(id);
+            forum.IsDeleted = true;
+
+            await repo.SaveChangesAsync();
+        }
+
         public async Task Edit(int forumId, ForumModel model)
         {
             var forum = await repo.GetByIdAsync<Forum>(forumId);
@@ -77,15 +85,27 @@ namespace CatCook.Core.Services
                  .AnyAsync(t => t.Id == id && t.IsDeleted == false);
         }
 
-        public Task<ForumDetailsModel> ForumDetailsById(int id)
+        public async Task<ForumDetailsModel> ForumDetailsById(int id)
         {
-            throw new NotImplementedException();
+            return await repo.AllReadonly<Forum>()
+                .Where(f => f.Id == id && f.IsDeleted == false)
+                .Select(f => new ForumDetailsModel
+                {
+                    Id = f.Id,
+                    Title = f.Title,
+                    DateAdded = f.DateAdded.ToString("dd'.'MM'.'yyyy", CultureInfo.InvariantCulture),
+                    Text = f.Text,
+                    AvatarImageUrl = f.User.AvatarImageUrl,
+                    CommentCount = f.Comments.Count(),
+                    ProfileName = f.User.ProfileName,
+                    UserId = f.User.Id
+                }).FirstAsync();
         }
 
         public async Task<bool> ForumWithUserId(int id, string userId)
         {
             return await repo.AllReadonly<Forum>()
-                .AnyAsync(t => t.Id == id && t.UserId == userId && t.IsDeleted == false);
+                .AnyAsync(f => f.Id == id && f.UserId == userId && f.IsDeleted == false);
         }
 
         public async Task<ICollection<ForumHomeModel>> LastFourForums()
@@ -107,7 +127,5 @@ namespace CatCook.Core.Services
                 .Take(4)
                 .ToListAsync();
         }
-
-
     }
 }
