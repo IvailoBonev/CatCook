@@ -1,0 +1,48 @@
+﻿@model ForumDetailsModel
+
+<div class="row">
+    <div class="row col-12" style="margin-top: 10rem; gap: 12px;">
+        <div class="col-lg-2 col-md-4 text-center" style="border: #DE4D01 1px solid; min-height: 45vh;">
+            @if (Model.AvatarImageUrl != null)
+            {
+                <img class="w-50 p-2 mt-5" style="object-fit: cover" src="@Model.AvatarImageUrl" alt="Profile Photo" />
+            }
+            else
+            {
+                <img class="w-50 p-2 mt-5" style="object-fit: cover" src="~/img/no-profile-picture-icon.png" alt="Profile Photo" />
+            }
+            <h4><b>@@@Model.ProfileName</b></h4>
+
+            <p><i class="fa-solid fa-clock"></i> @Model.DateAdded</p>
+            <p><i class="fa-solid fa-bolt text-warning"></i> Точки: @Model.UserPoints</p>
+
+            @if (Model.UserId == ViewBag.UserId)
+            {
+                <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 10px;">
+                    <a asp-area="" asp-controller="Tip" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning w-75" style="margin: 0 auto;">Редактирай</a>
+                    <br />
+                    <a asp-area="" asp-controller="Tip" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger w-75" style="margin: 0 auto;">Изтрий</a>
+                </div>
+            }
+        </div>
+        <div class="col-lg-9 col-md-8" style="border: #DE4D01 1px solid; padding: 10px;">
+            <h1 style="margin-bottom: 12px; padding: 8px;"><b>@Model.Title</b></h1>
+            <h5 style="margin: 0 auto; width: 90%;">@Model.Text</h5>
+        </div>
+    </div>
+    <div class ="row col-12" style="margin-top: 2rem; gap: 12px;">
+        <h2>Коментари (@Model.CommentCount)</h2>
+        @* TODO: @foreach (var comment in Model.Comments)
+        {
+            <div class="card col-12">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @comment.Title
+                    </h5>
+                    <p class="card-text">Публикувано на: @comment.DateAdded<br />От @@<b>@comment.User.ProfileName</b></p>
+                    <p>@comment.Text</p>
+                </div>
+            </div>
+        } *@
+    </div>
+</div>

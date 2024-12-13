@@ -98,7 +98,9 @@ namespace CatCook.Core.Services
                     AvatarImageUrl = f.User.AvatarImageUrl,
                     CommentCount = f.Comments.Count(),
                     ProfileName = f.User.ProfileName,
-                    UserId = f.User.Id
+                    UserId = f.User.Id,
+                    UserPoints = f.User.Points,
+                    Comments = f.Comments.ToList()
                 }).FirstAsync();
         }
 

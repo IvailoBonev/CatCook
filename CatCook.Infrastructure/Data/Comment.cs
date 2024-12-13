@@ -31,6 +31,9 @@ namespace CatCook.Infrastructure.Data
         public string Text { get; set; } = string.Empty;
 
         [Required]
+        public DateTime DateAdded { get; set; }
+
+        [Required]
         public string UserId { get; set; } = string.Empty;
 
         [ForeignKey(nameof(UserId))]

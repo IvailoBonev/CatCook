@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CatCook.Infrastructure.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,5 +26,10 @@ namespace CatCook.Core.Models.Forum
         public string DateAdded { get; set; } = string.Empty;
 
         public string AvatarImageUrl { get; set; } = string.Empty;
+
+        public int UserPoints { get; set; }
+
+        public List<Comment> Comments { get; set; }
+            = new List<Comment>();
     }
 }
