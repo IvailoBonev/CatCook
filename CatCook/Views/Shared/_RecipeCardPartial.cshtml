@@ -1,6 +1,6 @@
-﻿@model IEnumerable<RecipeHomeModel>
+﻿@model AllRecipesQueryModel
 
-@foreach (var recipe in Model)
+@foreach (var recipe in Model.Recipes)
 {
     <div class="card col-3 recipe" style="max-width: 285px;">
         <div class="position-relative">

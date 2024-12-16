@@ -1,4 +1,5 @@
-﻿using CatCook.Infrastructure.Data;
+﻿using CatCook.Core.Models.Comment;
+using CatCook.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -29,7 +30,7 @@ namespace CatCook.Core.Models.Forum
 
         public int UserPoints { get; set; }
 
-        public List<Comment> Comments { get; set; }
-            = new List<Comment>();
+        public List<CommentViewModel> Comments { get; set; }
+            = new List<CommentViewModel>();
     }
 }

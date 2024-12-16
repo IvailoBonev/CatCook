@@ -1,9 +1,10 @@
 ﻿using CatCook.Core.Contracts;
+using CatCook.Core.Models.Comment;
 using CatCook.Core.Models.Forum;
-using CatCook.Core.Models.Recipe;
-using CatCook.Core.Models.Tip;
 using CatCook.Core.Services;
 using CatCook.Extensions;
+using CatCook.Models;
+using CatCook.NewFolder;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
@@ -26,17 +27,26 @@ namespace CatCook.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery]AllForumsQueryModel query)
         {
-            var model = await forumService.AllForumsOrdered();
+            var result = await forumService.AllForums(
+                query.SearchTerm,
+                query.CurrentPage,
+                AllForumsQueryModel.ForumsPerPage);
 
-            return View(model);
+            query.TotalForumsCount = result.TotalForumsCount;
+            query.Forums = result.Forums;
+
+            return View(query);
         }
 
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-            var model = new ForumModel();
+            var model = new ForumModel()
+            {
+                UserId = User.Id()
+            };
 
             return View(model);
         }
@@ -49,23 +59,31 @@ namespace CatCook.Controllers
                 return View(model);
             }
 
-            model.UserId = User.Id();
             model.DateAdded = DateTime.Now;
 
             int id = await forumService.Create(model);
             return RedirectToAction(nameof(All));
         }
 
+        [RestoreModelStateFromTempData]
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
+
             if ((await forumService.Exists(id)) == false)
             {
                 return RedirectToAction(nameof(All));
             }
 
-            var model = await forumService.ForumDetailsById(id);
+            var item1 = await forumService.ForumDetailsById(id);
+            var item2 = new CommentModel()
+            {
+                ForumId = item1.Id,
+                UserId = User.Id()
+            };
+
+            var model = new Tuple<ForumDetailsModel, CommentModel>(item1, item2);
             ViewBag.UserId = User.Id();
 
             return View(model);

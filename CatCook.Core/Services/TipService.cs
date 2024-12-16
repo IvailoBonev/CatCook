@@ -1,6 +1,7 @@
 ﻿using AngleSharp;
 using AngleSharp.Html.Parser;
 using CatCook.Core.Contracts;
+using CatCook.Core.Models.Recipe;
 using CatCook.Core.Models.Tip;
 using CatCook.Infrastructure.Common;
 using CatCook.Infrastructure.Data;
@@ -12,6 +13,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CatCook.Core.Services
 {
@@ -24,20 +26,38 @@ namespace CatCook.Core.Services
             repo = _repo;
         }
 
-        public async Task<ICollection<TipHomeModel>> AllTipsOrdered()
+        public async Task<TipQueryModel> AllTips(
+            string? searchTerm = null,
+            int currentPage = 1, int tipsPerPage = 1)
         {
-            return await repo.AllReadonly<Tip>()
-                .Where(t => t.IsDeleted == false)
-                .OrderByDescending(t => t.DateAdded)
-                .Select(t => new TipHomeModel
+            var result = new TipQueryModel();
+            var tips = repo.AllReadonly<Tip>()
+                .Where(t => t.IsDeleted == false);
+
+            if (string.IsNullOrEmpty(searchTerm) == false)
+            {
+                searchTerm = $"%{searchTerm.ToLower()}%";
+
+                tips = tips
+                    .Where(t => EF.Functions.Like(t.Title.ToLower(), searchTerm));
+            }
+
+            result.Tips = await tips
+                .Skip((currentPage - 1) * tipsPerPage)
+                .Take(tipsPerPage)
+                .Select(t => new TipHomeModel()
                 {
-                    Id = t.Id,
                     Title = t.Title,
                     Description = t.Description,
+                    DateAdded = t.DateAdded.ToString("dd/MM"),
                     ProfileName = t.User.ProfileName,
-                    IsDeleted = t.IsDeleted,
-                    DateAdded = t.DateAdded.ToString("dd/MM")
-                }).ToListAsync();
+                    Id = t.Id
+                })
+                .ToListAsync();
+
+            result.TotalTipsCount = await tips.CountAsync();
+
+            return result;
         }
 
         public async Task<int> Create(TipModel model)

@@ -1,48 +1,66 @@
-﻿@model ForumDetailsModel
+﻿@model Tuple<ForumDetailsModel, CommentModel>
 
 <div class="row">
     <div class="row col-12" style="margin-top: 10rem; gap: 12px;">
         <div class="col-lg-2 col-md-4 text-center" style="border: #DE4D01 1px solid; min-height: 45vh;">
-            @if (Model.AvatarImageUrl != null)
+            @if (Model.Item1.AvatarImageUrl != null)
             {
-                <img class="w-50 p-2 mt-5" style="object-fit: cover" src="@Model.AvatarImageUrl" alt="Profile Photo" />
+                <img class="w-50 p-2 mt-5" style="object-fit: cover" src="@Model.Item1.AvatarImageUrl" alt="Profile Photo" />
             }
             else
             {
                 <img class="w-50 p-2 mt-5" style="object-fit: cover" src="~/img/no-profile-picture-icon.png" alt="Profile Photo" />
             }
-            <h4><b>@@@Model.ProfileName</b></h4>
+            <h4><b>@@@Model.Item1.ProfileName</b></h4>
 
-            <p><i class="fa-solid fa-clock"></i> @Model.DateAdded</p>
-            <p><i class="fa-solid fa-bolt text-warning"></i> Точки: @Model.UserPoints</p>
+            <p><i class="fa-solid fa-clock"></i> @Model.Item1.DateAdded</p>
+            <p><i class="fa-solid fa-bolt text-warning"></i> Точки: @Model.Item1.UserPoints</p>
 
-            @if (Model.UserId == ViewBag.UserId)
+            @if (Model.Item1.UserId == ViewBag.UserId)
             {
                 <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 10px;">
-                    <a asp-area="" asp-controller="Tip" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning w-75" style="margin: 0 auto;">Редактирай</a>
+                    <a asp-area="" asp-controller="Tip" asp-action="Edit" asp-route-id="@Model.Item1.Id" class="btn btn-warning w-75" style="margin: 0 auto;">Редактирай</a>
                     <br />
-                    <a asp-area="" asp-controller="Tip" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger w-75" style="margin: 0 auto;">Изтрий</a>
+                    <a asp-area="" asp-controller="Tip" asp-action="Delete" asp-route-id="@Model.Item1.Id" class="btn btn-danger w-75" style="margin: 0 auto;">Изтрий</a>
                 </div>
             }
         </div>
         <div class="col-lg-9 col-md-8" style="border: #DE4D01 1px solid; padding: 10px;">
-            <h1 style="margin-bottom: 12px; padding: 8px;"><b>@Model.Title</b></h1>
-            <h5 style="margin: 0 auto; width: 90%;">@Model.Text</h5>
+            <h1 style="margin-bottom: 12px; padding: 8px;"><b>@Model.Item1.Title</b></h1>
+            <h5 style="margin: 0 auto; width: 90%;">@Model.Item1.Text</h5>
         </div>
     </div>
+    @if (User.Identity.IsAuthenticated) 
+    {
+        <div style="margin: 24px 0px">
+            <h2 class="text-center">Добави Коментар</h2>
+            <partial name="_CommentFormPartial" model="@Model.Item2" />
+        </div>
+    }
     <div class ="row col-12" style="margin-top: 2rem; gap: 12px;">
-        <h2>Коментари (@Model.CommentCount)</h2>
-        @* TODO: @foreach (var comment in Model.Comments)
+        <h2>Коментари (@Model.Item1.CommentCount)</h2>
+        @foreach (var comment in Model.Item1.Comments)
         {
             <div class="card col-12">
                 <div class="card-body">
-                    <h5 class="card-title">
-                        @comment.Title
-                    </h5>
-                    <p class="card-text">Публикувано на: @comment.DateAdded<br />От @@<b>@comment.User.ProfileName</b></p>
+                    <h3 class="card-title">
+                        <b>@comment.Title</b>
+                    </h3>
+                    <p class="card-text">Публикувано на: @comment.DateAdded<br />От @@<b>@comment.ProfileName</b></p>
                     <p>@comment.Text</p>
+                    @if (comment.UserId == ViewBag.UserId)
+                    {
+                        <p class="card-text row" style="text-align: right; width: 10%; margin-left: auto; margin-right: 0; flex-direction: row">
+                            <a class="col-6" asp-area="" asp-controller="Comment" asp-action="Edit" asp-route-id="@comment.Id" style="margin: 0 auto;"><i class="fa-solid fa-pencil text-warning" style="font-size: 22px;"></i></a>
+                            <a class="col-6" asp-area="" asp-controller="Comment" asp-action="Delete" asp-route-id="@comment.Id" style="margin: 0 auto;"><i class="fa-solid fa-trash text-danger col-6" style="font-size: 22px;"></i></a>
+                        </p>
+                    }
                 </div>
             </div>
-        } *@
+        }
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -12,7 +12,8 @@ namespace CatCook.Core.Contracts
     {
         Task<ICollection<ForumHomeModel>> LastFourForums();
 
-        Task<ICollection<ForumHomeModel>> AllForumsOrdered();
+        Task<ForumQueryModel> AllForums(string? searchTerm = null,
+            int currentPage = 1, int forumsPerPage = 1);
 
         Task<int> Create(ForumModel model);
 

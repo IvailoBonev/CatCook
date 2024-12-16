@@ -1,0 +1,22 @@
+﻿@model CommentViewModel
+@{
+    ViewBag.Title = "Изтрий Коментар";
+}
+<div class="row align-content-center">
+    <h2 class="text-center" style="margin-top: 10rem;  margin-bottom: 2rem;">@ViewBag.Title</h2>
+    <hr />
+
+    <form asp-action="Delete">
+        <div class="card" style="width: 18rem; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">Сигурни ли сте, че искате да изтриете коментара <b>@Model.Title</b>?</p>
+                <div class="form-group">
+                    <input type="hidden" asp-for="@Model.ForumId" />
+                    <input type="submit" value="Изтрий" class="btn btn-danger" />
+                    <a class="btn btn-secondary" asp-controller="Forum" asp-action="Details" asp-route-id="@Model.ForumId">Отказ</a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

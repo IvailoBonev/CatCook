@@ -12,11 +12,20 @@ namespace CatCook.Core.Contracts
     {
         Task<ICollection<RecipeHomeModel>> LastFourRecipes(string userId);
 
-        Task<ICollection<RecipeHomeModel>> AllRecipesOrdered(string userId);
+        Task<RecipeQueryModel> AllRecipes(string userId,
+            string? category = null,
+            string? difficulty = null,
+            string? searchTerm = null, 
+            RecipeSorting sorting = RecipeSorting.Newest, 
+            int currentPage = 1, int recipesPerPage = 1);
 
         Task<ICollection<RecipeCategoryModel>> AllCategories();
 
+        Task<ICollection<string>> AllCategoriesNames();
+
         Task<ICollection<RecipeDifficultyModel>> AllDifficulties();
+
+        Task<ICollection<string>> AllDifficultiesNames();
 
         Task<int> GetRecipeCategoryId(int recipeId);
 

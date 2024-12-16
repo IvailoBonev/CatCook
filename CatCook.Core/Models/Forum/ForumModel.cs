@@ -32,6 +32,7 @@ namespace CatCook.Core.Models.Forum
         [Required]
         public DateTime DateAdded { get; set; }
 
+        [Required]
         public string UserId { get; set; } = string.Empty;
     }
 }

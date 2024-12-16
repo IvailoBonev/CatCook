@@ -12,7 +12,8 @@ namespace CatCook.Core.Contracts
     {
         Task<ICollection<TipHomeModel>> LastFourTips();
 
-        Task<ICollection<TipHomeModel>> AllTipsOrdered();
+        Task<TipQueryModel> AllTips(string? searchTerm = null,
+            int currentPage = 1, int tipsPerPage = 1);
 
         Task<int> Create(TipModel model);
 

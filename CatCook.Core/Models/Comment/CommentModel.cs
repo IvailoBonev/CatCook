@@ -6,21 +6,24 @@ using System.Text;
 using System.Threading.Tasks;
 using static CatCook.Infrastructure.Common.Constants;
 
-namespace CatCook.Core.Models.Tip
+namespace CatCook.Core.Models.Comment
 {
-    public class TipModel
+    public class CommentModel
     {
-        [Key]
+        [Required]
         public int Id { get; set; }
 
         [Required]
-        [StringLength(TipTitleMaxLength,
-            MinimumLength = TipTitleMinLength,
-            ErrorMessage = TipTitleErrorMessage)]
+        [StringLength(CommentTitleMaxLength,
+            MinimumLength = CommentTitleMinLength,
+            ErrorMessage = CommentTitleErrorMessage)]
         public string Title { get; set; } = string.Empty;
 
         [Required]
-        public string Description { get; set; } = string.Empty;
+        [StringLength(CommentTextMaxLength,
+            MinimumLength = CommentTextMinLength,
+            ErrorMessage = CommentTextErrorMessage)]
+        public string Text { get; set; } = string.Empty;
 
         [Required]
         public bool IsDeleted { get; set; }
@@ -30,5 +33,8 @@ namespace CatCook.Core.Models.Tip
 
         [Required]
         public string UserId { get; set; } = string.Empty;
+
+        [Required]
+        public int ForumId { get; set; }
     }
 }

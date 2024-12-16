@@ -1,7 +1,4 @@
 ﻿@model Tuple<ICollection<RecipeHomeModel>, ICollection<TipHomeModel>>
-@{
-
-}
 
 <div class="text-center image-container">
     <img src="~/img/background_index.png" alt="background" style="width: 100%; filter: brightness(30%);" />
@@ -18,7 +15,38 @@
 <hr />
 <h2 style="font-size: 3rem; font-weight:bold; margin: 2rem 0rem;">Най-новите рецепти:</h2>
 <div class="card-deck row">
-    <partial name="_RecipeCardPartial" model="@Model.Item1" />
+    @foreach (var recipe in Model.Item1)
+    {
+        <div class="card col-3 recipe" style="max-width: 285px;">
+            <div class="position-relative">
+                <p class="rounded p-2 m-2 fs-6 position-absolute" style="background-color: darkorange; text-align: center; color: white; font-weight: bold; max-width: 140px">@recipe.CategoryName</p>
+                @if (!(recipe.ImageUrl == string.Empty))
+                {
+                    <div class="card-img-top" style="width: 260px; height: 250px; ">
+                        <img class="card-img-top" style="width: 260px; height: 250px; object-fit: cover;" src="@recipe.ImageUrl" alt="Recipe image">
+                    </div>
+                }
+                else
+                {
+                    <div class="card-img-top">
+                        <img class="card-img-top" src="~/img/No_Image_Available.jpg" alt="Recipe image" style="width: 260px; height: 250px; object-fit: cover;">
+                    </div>
+                }
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    @recipe.Name
+                    @if (recipe.IsPrivate)
+                    {
+                        <span class="text-secondary"><b>Частен</b></span>
+                    }
+                </h5>
+                <p class="card-text">Трудност: @recipe.DifficultyName<br />Публикувано на: @recipe.DateAdded<br />От @@<b>@recipe.UserName</b></p>
+                <p class="card-text"><i class="fa-solid fa-star text-warning"></i> <b>@recipe.Rating.ToString("F2")</b></p>
+                <a asp-area="" asp-controller="Recipe" asp-action="Details" asp-route-id="@recipe.Id" class="btn btn-primary">Сготви</a>
+            </div>
+        </div>
+    }
 </div>
 <h2 style="font-size: 3rem; font-weight:bold; margin: 2rem 0rem;">Най-новите съвети:</h2>
 <div class="card-deck row justify-content-between" style="gap: 30px;">

@@ -1,6 +1,6 @@
 ﻿using CatCook.Core.Contracts;
+using CatCook.Core.Models.Comment;
 using CatCook.Core.Models.Forum;
-using CatCook.Core.Models.Tip;
 using CatCook.Infrastructure.Common;
 using CatCook.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -22,23 +22,41 @@ namespace CatCook.Core.Services
             repo = _repo;
         }
 
-        public async Task<ICollection<ForumHomeModel>> AllForumsOrdered()
+        public async Task<ForumQueryModel> AllForums(
+            string? searchTerm = null,
+            int currentPage = 1, int forumsPerPage = 1)
         {
-            return await repo.AllReadonly<Forum>()
-                .Where(f => f.IsDeleted == false)
-                .OrderByDescending(r => r.DateAdded)
+            var result = new ForumQueryModel();
+            var forums = repo.AllReadonly<Forum>()
+                .Where(t => t.IsDeleted == false);
+
+            if (string.IsNullOrEmpty(searchTerm) == false)
+            {
+                searchTerm = $"%{searchTerm.ToLower()}%";
+
+                forums = forums
+                    .Where(t => EF.Functions.Like(t.Title.ToLower(), searchTerm));
+            }
+
+            result.Forums = await forums
+                .Skip((currentPage - 1) * forumsPerPage)
+                .Take(forumsPerPage)
                 .Select(f => new ForumHomeModel()
                 {
-                    Id = f.Id,
                     Title = f.Title,
                     Text = f.Text,
-                    DateAdded = f.DateAdded.ToString("dd'.'MM'.'yyyy", CultureInfo.InvariantCulture),
+                    DateAdded = f.DateAdded.ToString("dd/MM"),
                     ProfileName = f.User.ProfileName,
-                    UserId = f.User.Id,
+                    Id = f.Id,
                     AvatarUrlImage = f.User.AvatarImageUrl,
-                    CommentsCount = f.Comments.Count
+                    CommentsCount = f.Comments.Where(c => c.IsDeleted == false).Count(),
+                    UserId = f.UserId
                 })
                 .ToListAsync();
+
+            result.TotalForumsCount = await forums.CountAsync();
+
+            return result;
         }
 
         public async Task<int> Create(ForumModel model)
@@ -96,11 +114,24 @@ namespace CatCook.Core.Services
                     DateAdded = f.DateAdded.ToString("dd'.'MM'.'yyyy", CultureInfo.InvariantCulture),
                     Text = f.Text,
                     AvatarImageUrl = f.User.AvatarImageUrl,
-                    CommentCount = f.Comments.Count(),
+                    CommentCount = f.Comments.Where(c => c.IsDeleted == false).Count(),
                     ProfileName = f.User.ProfileName,
                     UserId = f.User.Id,
                     UserPoints = f.User.Points,
-                    Comments = f.Comments.ToList()
+                    Comments = f.Comments
+                        .Where(c => c.IsDeleted == false && c.ForumId == f.Id)
+                        .OrderByDescending(c => c.DateAdded)
+                        .Select(c => new CommentViewModel
+                        {
+                            Id = c.Id,
+                            Title = c.Title,
+                            Text = c.Text,
+                            ForumId = c.ForumId,
+                            DateAdded = c.DateAdded.ToString("dd/MM"),
+                            AvatarImgUrl = c.User.AvatarImageUrl,
+                            ProfileName = c.User.ProfileName,
+                            UserId = c.UserId
+                        }).ToList()
                 }).FirstAsync();
         }
 

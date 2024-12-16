@@ -1,5 +1,6 @@
 ﻿using CatCook.Core.Contracts;
 using CatCook.Core.Models.Recipe;
+using CatCook.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
@@ -23,11 +24,23 @@ namespace CatCook.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery]AllRecipesQueryModel query)
         {
-            var model = await recipeService.AllRecipesOrdered(User.Id());
+            var result = await recipeService.AllRecipes(
+                User.Id(),
+                query.Category,
+                query.Difficulty,
+                query.SearchTerm,
+                query.Sorting,
+                query.CurrentPage,
+                AllRecipesQueryModel.RecipesPerPage);
 
-            return View(model);
+            query.TotalRecipesCount = result.TotalRecipesCount;
+            query.Categories = await recipeService.AllCategoriesNames();
+            query.Difficulties = await recipeService.AllDifficultiesNames();
+            query.Recipes = result.Recipes;
+
+            return View(query);
         }
 
         [HttpGet]
@@ -51,7 +64,8 @@ namespace CatCook.Controllers
             var model = new RecipeModel()
             {
                 RecipeCategories = await recipeService.AllCategories(),
-                RecipeDifficulties = await recipeService.AllDifficulties()
+                RecipeDifficulties = await recipeService.AllDifficulties(),
+                UserId = User.Id()
             };
 
             return View(model);

@@ -19,8 +19,12 @@ namespace CatCook.Infrastructure.Common
         //Category
         public const int CategoryNameMaxLength = 40;
         //Comment
-        public const int CommentTitleMaxLength = 40;
-        public const int CommentTextMaxLength = 900;
+        public const int CommentTitleMinLength = 20;
+        public const int CommentTitleMaxLength = 100;
+        public const string CommentTitleErrorMessage = "Comment title must be between {2} and {1} symbols!";
+        public const int CommentTextMinLength = 60;
+        public const int CommentTextMaxLength = 1400;
+        public const string CommentTextErrorMessage = "Comment text must be between {2} and {1} symbols!";
         //Forum
         public const int ForumTitleMinLength = 10;
         public const int ForumTitleMaxLength = 100;

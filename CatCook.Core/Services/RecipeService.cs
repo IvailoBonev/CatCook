@@ -69,30 +69,71 @@ namespace CatCook.Core.Services
                 .ToListAsync();
         }
 
-        public async Task<ICollection<RecipeHomeModel>> AllRecipesOrdered(string userId)
+        public async Task<RecipeQueryModel> AllRecipes(string userId,
+            string? category = null,
+            string? difficulty = null,
+            string? searchTerm = null,
+            RecipeSorting sorting = RecipeSorting.Newest, 
+            int currentPage = 1, int recipesPerPage = 1)
         {
-            return await repo.AllReadonly<Recipe>()
-                .Where(r => (r.IsPrivate == false || r.UserId == userId) && r.IsDeleted == false)
-                .OrderByDescending(r => r.Rating)
-                .ThenByDescending(r => r.DateAdded)
+            var result = new RecipeQueryModel();
+            var recipes = repo.AllReadonly<Recipe>()
+                .Where(r => (r.IsPrivate == false || r.UserId == userId) && r.IsDeleted == false);
+
+            if (string.IsNullOrEmpty(category) == false)
+            {
+                recipes = recipes
+                    .Where(h => h.Category.Name == category);
+            }
+
+            if (string.IsNullOrEmpty(difficulty) == false)
+            {
+                recipes = recipes
+                    .Where(h => h.Difficulty.Name == difficulty);
+            }
+
+            if (string.IsNullOrEmpty(searchTerm) == false)
+            {
+                searchTerm = $"%{searchTerm.ToLower()}%";
+
+                recipes = recipes
+                    .Where(r => EF.Functions.Like(r.Name.ToLower(), searchTerm) ||
+                        EF.Functions.Like(r.Descipriton.ToLower(), searchTerm));
+            }
+
+            recipes = sorting switch
+            {
+                RecipeSorting.Newest => recipes
+                    .OrderByDescending(r => r.DateAdded),
+                RecipeSorting.Rating => recipes
+                    .OrderByDescending(r => r.Rating.Average()),
+                _ => recipes.OrderByDescending(r => r.Rating.Average())
+                        .ThenByDescending(r => r.DateAdded)
+            };
+
+            result.Recipes = await recipes
+                .Skip((currentPage - 1) * recipesPerPage)
+                .Take(recipesPerPage)
                 .Select(r => new RecipeHomeModel()
                 {
-                    Id = r.Id,
                     Name = r.Name,
-                    DifficultyName = r.Difficulty.Name,
-                    CategoryName = r.Category.Name,
-                    ImageUrl = r.ImageUrl,
                     IsPrivate = r.IsPrivate,
-                    Rating = r.Rating.Any() ? r.Rating.Average() : 0,
+                    CategoryName = r.Category.Name,
+                    DifficultyName = r.Difficulty.Name,
                     DateAdded = r.DateAdded.ToString("dd/MM"),
+                    ImageUrl = r.ImageUrl,
+                    Rating = r.Rating.Average(),
                     UserName = r.User.ProfileName
                 })
                 .ToListAsync();
+
+            result.TotalRecipesCount = await recipes.CountAsync();
+
+            return result;
         }
 
         public async Task<int> Create(RecipeModel model)
         {
-
             var recipe = new Recipe()
             {
                 Name = model.Name,
@@ -199,6 +240,22 @@ namespace CatCook.Core.Services
             recipe.IsDeleted = true;
 
             await repo.SaveChangesAsync();
+        }
+
+        public async Task<ICollection<string>> AllCategoriesNames()
+        {
+            return await repo.AllReadonly<Category>()
+                .OrderBy(c => c.Name)
+                .Select(c => c.Name)
+                .ToListAsync();
+        }
+
+        public async Task<ICollection<string>> AllDifficultiesNames()
+        {
+            return await repo.AllReadonly<Difficulty>()
+                .OrderBy(d=> d.Name)
+                .Select(d => d.Name)
+                .ToListAsync();
         }
     }
 }

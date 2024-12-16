@@ -61,6 +61,7 @@ namespace CatCook.Core.Models.Recipe
         public ICollection<RecipeDifficultyModel> RecipeDifficulties { get; set; }
             = new List<RecipeDifficultyModel>();
 
+        [Required]
         public string UserId { get; set; } = string.Empty;
     }
 }

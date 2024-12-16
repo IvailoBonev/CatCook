@@ -3,6 +3,7 @@ using CatCook.Core.Models.Recipe;
 using CatCook.Core.Models.Tip;
 using CatCook.Core.Services;
 using CatCook.Extensions;
+using CatCook.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,8 @@ namespace CatCook.Controllers
         private readonly ILogger<TipController> _logger;
         private readonly ITipService tipService;
 
-        public TipController(ITipService _tipService,
+        public TipController(
+            ITipService _tipService,
             ILogger<TipController> logger)
         {
             _logger = logger;
@@ -23,17 +25,26 @@ namespace CatCook.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery]AllTipsQueryModel query)
         {
-            var model = await tipService.AllTipsOrdered();
+            var result = await tipService.AllTips(
+                query.SearchTerm,
+                query.CurrentPage,
+                AllTipsQueryModel.TipsPerPage);
 
-            return View(model);
+            query.TotalTipsCount = result.TotalTipsCount;
+            query.Tips = result.Tips;
+
+            return View(query);
         }
 
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-            var model = new TipModel();
+            var model = new TipModel()
+            {
+                UserId = User.Id()
+            };
 
             return View(model);
         }
