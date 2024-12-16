@@ -14,6 +14,7 @@ namespace CatCook.Extensions
             services.AddScoped<IForumService, ForumService>();
             services.AddScoped<ICommentService, CommentService>();
 
+
             return services;
         }
     }

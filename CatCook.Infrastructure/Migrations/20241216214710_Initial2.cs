@@ -6,202 +6,206 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CatCook.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class ExtendedTitleComment : Migration
+    public partial class Initial2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Title",
-                table: "Comments",
-                type: "nvarchar(100)",
-                maxLength: 100,
-                nullable: false,
-                comment: "Title of comment",
+                name: "Status",
+                table: "AspNetUsers",
+                type: "nvarchar(120)",
+                maxLength: 120,
+                nullable: true,
+                comment: "The user's status for today",
                 oldClrType: typeof(string),
-                oldType: "nvarchar(40)",
-                oldMaxLength: 40,
-                oldComment: "Title of comment");
+                oldType: "nvarchar(100)",
+                oldMaxLength: 100,
+                oldNullable: true,
+                oldComment: "The user's status for today");
 
             migrationBuilder.AlterColumn<string>(
-                name: "Text",
-                table: "Comments",
-                type: "nvarchar(1400)",
-                maxLength: 1400,
-                nullable: false,
-                comment: "The comment content",
+                name: "AvatarImageUrl",
+                table: "AspNetUsers",
+                type: "nvarchar(800)",
+                maxLength: 800,
+                nullable: true,
+                comment: "The user avatar image",
                 oldClrType: typeof(string),
-                oldType: "nvarchar(900)",
-                oldMaxLength: 900,
-                oldComment: "The comment content");
+                oldType: "nvarchar(200)",
+                oldMaxLength: 200,
+                oldNullable: true,
+                oldComment: "The user avatar image");
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "0464d803-7820-4ec4-bb42-d75b5a1fcb7c",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "08bd2f19-0f53-419f-9a06-0629e8df8483", "AQAAAAIAAYagAAAAEGC16nxe004dx9amSS7sa6HBDmc+gnBNyB1nlIH44vkF1S5C811NfA0XxEMMCxh6dA==", "bce5be81-2c70-4e1d-b066-c19ad470f3a8" });
+                values: new object[] { "1f5bedbd-441a-4140-8053-fdec25b7e999", "AQAAAAIAAYagAAAAEC/kWpLJT4wkFQEyO8ZchJ9F8Dv04R+zNOCtjS6SEyjdMqVnbg6af1Tp/UuNI71TmA==", "72bd6429-a50d-4a9f-b9a5-a5ad6482c613" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "36998a40-6007-4cea-ac6e-c191880fa9e8",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "2cd89399-ed86-4972-9cc2-2f95b5099647", "AQAAAAIAAYagAAAAEBDgwhFoQpiLkvje2KwN4fDSDJKYzihVect97iLLUAsOjs4unOWuj1JqWLUUFoGupw==", "ffd0d5c8-cb7b-4e07-a2de-9e5dd5c3dc2a" });
+                values: new object[] { "448d3c49-a207-459b-9b33-0bd6bc77f35e", "AQAAAAIAAYagAAAAEC77nnO7QLFJxdn+PHymFAVTtlIdqyCdjl+w6MhfZjTP4ayoyuGeO0X/ZPQiLEHIcA==", "649b89cf-27c4-4e8a-9e42-1306c513315f" });
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 16, 13, 36, 16, 33, DateTimeKind.Local).AddTicks(4401));
+                value: new DateTime(2024, 12, 16, 23, 47, 9, 974, DateTimeKind.Local).AddTicks(3863));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 16, 13, 36, 16, 33, DateTimeKind.Local).AddTicks(4424));
+                value: new DateTime(2024, 12, 16, 23, 47, 9, 974, DateTimeKind.Local).AddTicks(4118));
 
             migrationBuilder.UpdateData(
                 table: "Forums",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 16, 13, 36, 16, 33, DateTimeKind.Local).AddTicks(4591));
+                value: new DateTime(2024, 12, 16, 23, 47, 9, 974, DateTimeKind.Local).AddTicks(8120));
 
             migrationBuilder.UpdateData(
                 table: "Forums",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 16, 13, 36, 16, 33, DateTimeKind.Local).AddTicks(4597));
+                value: new DateTime(2024, 12, 16, 23, 47, 9, 974, DateTimeKind.Local).AddTicks(8583));
 
             migrationBuilder.UpdateData(
                 table: "Recipes",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 16, 13, 36, 16, 33, DateTimeKind.Local).AddTicks(2983));
+                value: new DateTime(2024, 12, 16, 23, 47, 9, 970, DateTimeKind.Local).AddTicks(4160));
 
             migrationBuilder.UpdateData(
                 table: "Recipes",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 16, 13, 36, 16, 33, DateTimeKind.Local).AddTicks(3167));
+                value: new DateTime(2024, 12, 16, 23, 47, 9, 972, DateTimeKind.Local).AddTicks(7891));
 
             migrationBuilder.UpdateData(
                 table: "Tips",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 16, 13, 36, 16, 33, DateTimeKind.Local).AddTicks(3627));
+                value: new DateTime(2024, 12, 16, 23, 47, 9, 973, DateTimeKind.Local).AddTicks(2011));
 
             migrationBuilder.UpdateData(
                 table: "Tips",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 16, 13, 36, 16, 33, DateTimeKind.Local).AddTicks(3637));
+                value: new DateTime(2024, 12, 16, 23, 47, 9, 973, DateTimeKind.Local).AddTicks(2274));
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Title",
-                table: "Comments",
-                type: "nvarchar(40)",
-                maxLength: 40,
-                nullable: false,
-                comment: "Title of comment",
+                name: "Status",
+                table: "AspNetUsers",
+                type: "nvarchar(100)",
+                maxLength: 100,
+                nullable: true,
+                comment: "The user's status for today",
                 oldClrType: typeof(string),
-                oldType: "nvarchar(100)",
-                oldMaxLength: 100,
-                oldComment: "Title of comment");
+                oldType: "nvarchar(120)",
+                oldMaxLength: 120,
+                oldNullable: true,
+                oldComment: "The user's status for today");
 
             migrationBuilder.AlterColumn<string>(
-                name: "Text",
-                table: "Comments",
-                type: "nvarchar(900)",
-                maxLength: 900,
-                nullable: false,
-                comment: "The comment content",
+                name: "AvatarImageUrl",
+                table: "AspNetUsers",
+                type: "nvarchar(200)",
+                maxLength: 200,
+                nullable: true,
+                comment: "The user avatar image",
                 oldClrType: typeof(string),
-                oldType: "nvarchar(1400)",
-                oldMaxLength: 1400,
-                oldComment: "The comment content");
+                oldType: "nvarchar(800)",
+                oldMaxLength: 800,
+                oldNullable: true,
+                oldComment: "The user avatar image");
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "0464d803-7820-4ec4-bb42-d75b5a1fcb7c",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "b39bcb4f-19c8-4177-a850-27946e4280e3", "AQAAAAIAAYagAAAAEM2tqVgmQs8Whd+/8xvdJMh+WHi9eVOqCLM/RmQz5EaRHFkgEWBN6KX3OO8iHukAQA==", "52fc2d35-93be-4187-916d-9962ff1f3fc5" });
+                values: new object[] { "7dfc2e14-723a-4de1-abe3-aacaafda3317", "AQAAAAIAAYagAAAAEG9m0Fju6GIQn2UEtlh8+x7jNvBfiLl/C5cbnedJE/HnItvs33ypk6cKiC9YqrwkQg==", "f415b9f9-7c2b-4b44-95ce-e5ecd7a70956" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "36998a40-6007-4cea-ac6e-c191880fa9e8",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "35fd017b-89a8-48a2-9357-f2978c5919b9", "AQAAAAIAAYagAAAAEFJZRZQncIRY9BqdwMI4x+MI3NFDOS2yhNWvERZbYnCQIUch1yo6HIjqPI2KYcBemA==", "6a5405b6-1ddd-4e91-af42-25c90e9d709c" });
+                values: new object[] { "081b01a8-310d-4c44-86fd-c10ce0173ee7", "AQAAAAIAAYagAAAAEJ1QDXueOpa8O9RV/fWEkvfH1JTXyXNPEKLARA8KV/MvKS/KW/tY4dHyRrc5ehlq2g==", "9c6b181d-b37e-4e95-b352-4e4bf1113407" });
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 13, 10, 42, 20, 160, DateTimeKind.Local).AddTicks(2969));
+                value: new DateTime(2024, 12, 16, 23, 41, 36, 235, DateTimeKind.Local).AddTicks(5273));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 13, 10, 42, 20, 160, DateTimeKind.Local).AddTicks(2975));
+                value: new DateTime(2024, 12, 16, 23, 41, 36, 235, DateTimeKind.Local).AddTicks(5514));
 
             migrationBuilder.UpdateData(
                 table: "Forums",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 13, 10, 42, 20, 160, DateTimeKind.Local).AddTicks(3108));
+                value: new DateTime(2024, 12, 16, 23, 41, 36, 235, DateTimeKind.Local).AddTicks(9803));
 
             migrationBuilder.UpdateData(
                 table: "Forums",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 13, 10, 42, 20, 160, DateTimeKind.Local).AddTicks(3113));
+                value: new DateTime(2024, 12, 16, 23, 41, 36, 236, DateTimeKind.Local).AddTicks(229));
 
             migrationBuilder.UpdateData(
                 table: "Recipes",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 13, 10, 42, 20, 160, DateTimeKind.Local).AddTicks(2329));
+                value: new DateTime(2024, 12, 16, 23, 41, 36, 231, DateTimeKind.Local).AddTicks(6478));
 
             migrationBuilder.UpdateData(
                 table: "Recipes",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 13, 10, 42, 20, 160, DateTimeKind.Local).AddTicks(2365));
+                value: new DateTime(2024, 12, 16, 23, 41, 36, 233, DateTimeKind.Local).AddTicks(9961));
 
             migrationBuilder.UpdateData(
                 table: "Tips",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 13, 10, 42, 20, 160, DateTimeKind.Local).AddTicks(2496));
+                value: new DateTime(2024, 12, 16, 23, 41, 36, 234, DateTimeKind.Local).AddTicks(3846));
 
             migrationBuilder.UpdateData(
                 table: "Tips",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DateAdded",
-                value: new DateTime(2024, 12, 13, 10, 42, 20, 160, DateTimeKind.Local).AddTicks(2504));
+                value: new DateTime(2024, 12, 16, 23, 41, 36, 234, DateTimeKind.Local).AddTicks(4090));
         }
     }
 }

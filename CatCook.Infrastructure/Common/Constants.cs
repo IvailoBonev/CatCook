@@ -10,12 +10,22 @@ namespace CatCook.Infrastructure.Common
     public static class Constants
     {
         //Cooker(ApplicationUser)
+        public const int UserFirstNameMinLength = 2;
         public const int UserFirstNameMaxLength = 35;
+        public const string UserFirstNameErrorMessage = "Първото име трябва да е между {2} и {1} символа!";
+        public const int UserLastNameMinLength = 3;
         public const int UserLastNameMaxLength = 40;
+        public const string UserLastNameErrorMessage = "Фамилното име трябва да е между {2} и {1} символа!";
+        public const int UserCityNameMinLength = 3;
         public const int UserCityNameMaxLength = 80;
-        public const int UserUrlImageMaxLength = 200;
-        public const int UserStatusMaxLength = 100;
+        public const string UserCityNameErrorMessage = "Името на града трябва да е между {2} и {1} символа!";
+        public const int UserStatusMinLength = 30;
+        public const int UserStatusMaxLength = 120;
+        public const string UserStatusErrorMessage = "Статуса трябва да е между {2} и {1} символа!";
+        public const int UserProfileNameMinLength = 2;
         public const int UserProfileNameMaxLength = 18;
+        public const string UserProfileNameЕrrorMessage = "Името на профила трябва да е между {2} и {1} символа!";
+        public const int UserUrlImageMaxLength = 800;
         //Category
         public const int CategoryNameMaxLength = 40;
         //Comment

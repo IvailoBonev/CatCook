@@ -53,6 +53,7 @@ namespace CatCook.Core.Services
                     ProfileName = t.User.ProfileName,
                     Id = t.Id
                 })
+                .OrderByDescending(t => t.DateAdded)
                 .ToListAsync();
 
             result.TotalTipsCount = await tips.CountAsync();

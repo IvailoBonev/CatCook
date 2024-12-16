@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CatCook.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241201202451_Test")]
-    partial class Test
+    [Migration("20241216214710_Initial2")]
+    partial class Initial2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.11")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -37,8 +37,8 @@ namespace CatCook.Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AvatarImageUrl")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(800)
+                        .HasColumnType("nvarchar(800)")
                         .HasComment("The user avatar image");
 
                     b.Property<string>("City")
@@ -106,8 +106,8 @@ namespace CatCook.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(120)
+                        .HasColumnType("nvarchar(120)")
                         .HasComment("The user's status for today");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -137,7 +137,7 @@ namespace CatCook.Infrastructure.Migrations
                             Id = "0464d803-7820-4ec4-bb42-d75b5a1fcb7c",
                             AccessFailedCount = 0,
                             City = "Sofia",
-                            ConcurrencyStamp = "dc2a512f-9a78-455b-b943-dcd1d2bb14c6",
+                            ConcurrencyStamp = "1f5bedbd-441a-4140-8053-fdec25b7e999",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Guest",
@@ -145,11 +145,11 @@ namespace CatCook.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIn7S4dWfcjbjXgmMZNXdcLdZ0XkqZrpTuTj9KUDfM31QuSzcPsg8jtvB5Uo+BVVMw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC/kWpLJT4wkFQEyO8ZchJ9F8Dv04R+zNOCtjS6SEyjdMqVnbg6af1Tp/UuNI71TmA==",
                             PhoneNumberConfirmed = false,
                             Points = 0,
                             ProfileName = "Guest",
-                            SecurityStamp = "10f0765f-68c2-4813-a5e8-3a0d13a1c042",
+                            SecurityStamp = "72bd6429-a50d-4a9f-b9a5-a5ad6482c613",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         },
@@ -158,7 +158,7 @@ namespace CatCook.Infrastructure.Migrations
                             Id = "36998a40-6007-4cea-ac6e-c191880fa9e8",
                             AccessFailedCount = 0,
                             City = "Burgas",
-                            ConcurrencyStamp = "b5124639-8f9a-4153-b2c9-2b013590d61e",
+                            ConcurrencyStamp = "448d3c49-a207-459b-9b33-0bd6bc77f35e",
                             Email = "ivan.georgiev@example.com",
                             EmailConfirmed = false,
                             FirstName = "Ivan",
@@ -166,11 +166,11 @@ namespace CatCook.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ivan.georgiev@example.com",
                             NormalizedUserName = "ivan.georgiev@example.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGxu7Hq6bv88kRLhMR2aMXU51fgew+iJ+66ZBcYI2q7tvBOpn/zOYpWH9r96VaLfdA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC77nnO7QLFJxdn+PHymFAVTtlIdqyCdjl+w6MhfZjTP4ayoyuGeO0X/ZPQiLEHIcA==",
                             PhoneNumberConfirmed = false,
                             Points = 0,
                             ProfileName = "Ivan_G",
-                            SecurityStamp = "2c55edf7-5b51-4dbb-803d-dec2da77f417",
+                            SecurityStamp = "649b89cf-27c4-4e8a-9e42-1306c513315f",
                             TwoFactorEnabled = false,
                             UserName = "ivan.georgiev@example.com"
                         });
@@ -232,19 +232,26 @@ namespace CatCook.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("ForumId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasComment("Is the comment deleted (soft delete)");
+
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasMaxLength(900)
-                        .HasColumnType("nvarchar(900)")
+                        .HasMaxLength(1400)
+                        .HasColumnType("nvarchar(1400)")
                         .HasComment("The comment content");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
                         .HasComment("Title of comment");
 
                     b.Property<string>("UserId")
@@ -263,7 +270,9 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
+                            DateAdded = new DateTime(2024, 12, 16, 23, 47, 9, 974, DateTimeKind.Local).AddTicks(3863),
                             ForumId = 1,
+                            IsDeleted = false,
                             Text = "You might want to add a dash of Worcestershire sauce—it enhances the umami without overpowering. For balance, try adjusting the lemon juice and Parmesan quantities. Also, emulsifying the dressing with a blender can help achieve a smooth, creamy texture. Let us know how it turns out!",
                             Title = "Try Adding Worcestershire Sauce",
                             UserId = "0464d803-7820-4ec4-bb42-d75b5a1fcb7c"
@@ -271,7 +280,9 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
+                            DateAdded = new DateTime(2024, 12, 16, 23, 47, 9, 974, DateTimeKind.Local).AddTicks(4118),
                             ForumId = 2,
+                            IsDeleted = false,
                             Text = "Using a water bath can really help with preventing cracks and keeping the texture smooth. Wrap your springform pan in foil to avoid leaks, and bake it in a roasting pan with hot water. Also, don’t overmix the batter, as that can introduce air bubbles. Good luck with your cheesecake!",
                             Title = "Might have a solution",
                             UserId = "0464d803-7820-4ec4-bb42-d75b5a1fcb7c"
@@ -329,16 +340,23 @@ namespace CatCook.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasComment("Is the forum deleted (soft delete)");
+
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasMaxLength(1200)
-                        .HasColumnType("nvarchar(1200)")
+                        .HasMaxLength(1500)
+                        .HasColumnType("nvarchar(1500)")
                         .HasComment("The content of the forum");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
                         .HasComment("The title of the forum");
 
                     b.Property<string>("UserId")
@@ -355,6 +373,8 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
+                            DateAdded = new DateTime(2024, 12, 16, 23, 47, 9, 974, DateTimeKind.Local).AddTicks(8120),
+                            IsDeleted = false,
                             Text = "Hi everyone! I'm trying to make a classic Caesar salad at home, but I’m struggling with the dressing. My main issue is getting the right balance of flavors—it’s either too tangy or too mild. I’m using anchovies, garlic, Dijon mustard, olive oil, lemon juice, and Parmesan, but something feels off. Should I adjust the ratios, or am I missing a key ingredient? Also, any tips for getting the texture just right? Thanks in advance!",
                             Title = "Need Help Perfecting My Caesar Salad Dressing!",
                             UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
@@ -362,55 +382,10 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
+                            DateAdded = new DateTime(2024, 12, 16, 23, 47, 9, 974, DateTimeKind.Local).AddTicks(8583),
+                            IsDeleted = false,
                             Text = "Hey yall! I’m trying to make a classic cheesecake, but I’m running into a few issues. My main problem is getting the texture right—it’s either too dense or ends up cracking on top. I’m using cream cheese, eggs, sugar, and a graham cracker crust. Should I adjust baking time or temperature? Also, do I need to use a water bath, or is there another trick to keep it smooth? Any advice would be greatly appreciated. Thanks!",
                             Title = "Help Needed with Cheesecake Recipe!",
-                            UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
-                        });
-                });
-
-            modelBuilder.Entity("CatCook.Infrastructure.Data.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasComment("Image identifier");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasComment("The url of the image");
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Images");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ImageUrl = "https://feelgoodfoodie.net/wp-content/uploads/2020/04/Caesar-Salad-TIMG.jpg",
-                            RecipeId = 1,
-                            UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ImageUrl = "https://cakesbymk.com/wp-content/uploads/2023/11/Template-Size-for-Blog-Photos-24.jpg",
-                            RecipeId = 2,
                             UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
                         });
                 });
@@ -432,12 +407,20 @@ namespace CatCook.Infrastructure.Migrations
 
                     b.Property<string>("Descipriton")
                         .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("nvarchar(2000)")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("A description of the recipe");
 
                     b.Property<int>("DifficultyId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Images used for the recipe");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasComment("Is the recipe deleted (soft delete)");
 
                     b.Property<bool>("IsPrivate")
                         .HasColumnType("bit")
@@ -453,12 +436,7 @@ namespace CatCook.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasComment("How many portions the recipe provides");
 
-                    b.Property<string>("Products")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasComment("Products used for the recipe");
-
-                    b.Property<string>("Rating")
+                    b.PrimitiveCollection<string>("Rating")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasComment("The ratings of the recipe by users");
@@ -490,13 +468,14 @@ namespace CatCook.Infrastructure.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
-                            DateAdded = new DateTime(2024, 12, 1, 22, 24, 50, 650, DateTimeKind.Local).AddTicks(1818),
+                            DateAdded = new DateTime(2024, 12, 16, 23, 47, 9, 970, DateTimeKind.Local).AddTicks(4160),
                             Descipriton = "A Caesar salad is a timeless dish known for its crisp romaine, creamy dressing, and bold flavors. Here’s how to make it step-by-step:\r\n\r\n    Prepare the Croutons: Preheat your oven to 375°F. Cut a baguette or bread into small cubes, toss with olive oil, garlic powder, and a pinch of salt, then bake for 10-15 minutes until golden and crispy.\r\n\r\n    Make the Dressing: In a bowl, whisk together 1 minced garlic clove, 2 anchovy fillets (mashed), 1 teaspoon Dijon mustard, 1 tablespoon fresh lemon juice, and 1 teaspoon Worcestershire sauce. Slowly whisk in ½ cup olive oil until emulsified. Stir in ½ cup grated Parmesan cheese for a creamy texture. Adjust seasoning with salt and pepper to taste.\r\n\r\n    Assemble the Salad: Wash and dry fresh romaine lettuce, then tear it into bite-sized pieces. Toss the lettuce with the dressing until evenly coated.\r\n\r\n    Add Toppings: Top with the homemade croutons and more grated Parmesan cheese for a finishing touch.\r\n\r\nServe immediately for the best texture and flavor. This classic Caesar salad pairs wonderfully with grilled chicken, shrimp, or as a standalone starter. Enjoy your fresh and flavorful creation!",
                             DifficultyId = 2,
+                            ImageUrl = "https://natashaskitchen.com/wp-content/uploads/2019/01/Caesar-Salad-Recipe-3.jpg",
+                            IsDeleted = false,
                             IsPrivate = false,
                             Name = "Classic Caesar Salad",
                             PortionsCount = 2,
-                            Products = "[\"1 minced garlic clove\",\"2 anchovy fillets (mashed)\",\"1 teaspoon Dijon mustard\",\"1 tablespoon fresh lemon juice\",\"1 teaspoon Worcestershire sauce\",\"\\u00BD cup olive oil\",\"\\u00BD cup grated Parmesan cheese\"]",
                             Rating = "[4.9,4,4.5]",
                             TimeForCooking = 15,
                             TimeForPreparation = 10,
@@ -506,13 +485,14 @@ namespace CatCook.Infrastructure.Migrations
                         {
                             Id = 2,
                             CategoryId = 3,
-                            DateAdded = new DateTime(2024, 12, 1, 22, 24, 50, 650, DateTimeKind.Local).AddTicks(1900),
+                            DateAdded = new DateTime(2024, 12, 16, 23, 47, 9, 972, DateTimeKind.Local).AddTicks(7891),
                             Descipriton = "Making a creamy, decadent cheesecake at home is easier than you think. Here’s a step-by-step guide to create the perfect cheesecake:\r\n\r\n    Prepare the Crust: Preheat your oven to 325°F. In a food processor, pulse 1 ½ cups of graham crackers with ¼ cup of sugar and ½ teaspoon of cinnamon. Add 6 tablespoons of melted butter and mix until combined. Press the mixture into the bottom of a greased 9-inch springform pan. Bake for 10 minutes, then set aside to cool.\r\n\r\n    Make the Filling: In a large mixing bowl, beat 4 packages (32 ounces) of cream cheese at room temperature until smooth. Add 1 cup of granulated sugar and beat until combined. Add 1 teaspoon of vanilla extract and 4 large eggs, one at a time, mixing well after each addition. Finally, blend in 1 cup of sour cream for richness.\r\n\r\n    Bake the Cheesecake: Pour the cream cheese mixture onto the cooled crust. Bake at 325°F for 55-60 minutes, or until the center is just set. Let it cool in the oven with the door slightly ajar for 1 hour, then refrigerate for at least 4 hours.\r\n\r\n    Serve: Top with fresh fruit, fruit compote, or a drizzle of caramel for extra flavor. Enjoy your homemade cheesecake!",
                             DifficultyId = 1,
+                            ImageUrl = "https://natashaskitchen.com/wp-content/uploads/2019/01/Caesar-Salad-Recipe-3.jpg",
+                            IsDeleted = false,
                             IsPrivate = false,
                             Name = "Classic Cheesecake",
                             PortionsCount = 0,
-                            Products = "[\"1 \\u00BD cups of graham crackers\",\"\\u00BC cup of sugar\",\"\\u00BD teaspoon of cinnamon\",\"6 tablespoons of melted butter\",\"4 packages of cream cheese\",\"1 cup of granulated sugar\",\"1 teaspoon of vanilla extract\",\"4 large eggs\",\"1 cup of sour cream\"]",
                             Rating = "[4.8,4.2,4.3]",
                             TimeForCooking = 60,
                             TimeForPreparation = 20,
@@ -528,19 +508,21 @@ namespace CatCook.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(1200)
-                        .HasColumnType("nvarchar(1200)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasComment("Is the tip deleted (soft delete)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -556,16 +538,18 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
+                            DateAdded = new DateTime(2024, 12, 16, 23, 47, 9, 973, DateTimeKind.Local).AddTicks(2011),
                             Description = "When cooking fish, lemons can be a game-changer for flavor! A great tip is to use lemon in layers throughout your cooking process. Start by marinating your fish with a mixture of lemon juice, olive oil, and your favorite herbs—this not only enhances the flavor but also tenderizes the fish.\r\n\r\nDuring cooking, add thin slices of lemon directly on top of the fish. This allows the zest and oils to seep in as it cooks, giving it a bright, citrusy aroma. Finally, finish with a squeeze of fresh lemon juice just before serving to add a vibrant, tangy kick.",
-                            ImageUrl = "https://cdn.ruled.me/wp-content/uploads/2017/11/zingy-lemon-fish-featured.jpg",
+                            IsDeleted = false,
                             Title = "Elevate Your Fish Dishes with Lemon: A Simple Tip",
                             UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
                         },
                         new
                         {
                             Id = 2,
+                            DateAdded = new DateTime(2024, 12, 16, 23, 47, 9, 973, DateTimeKind.Local).AddTicks(2274),
                             Description = "Want to bake cupcakes that are fluffy, moist, and perfectly domed? Here's a simple tip: start with room-temperature ingredients. Let your eggs, butter, and milk sit out for about 30 minutes before mixing. This ensures the batter blends smoothly, creating a light and even texture.\r\n\r\nAnother key is not to overmix your batter—stop as soon as the ingredients are combined. Overmixing can make your cupcakes dense and tough. For beautifully domed tops, fill your liners about two-thirds full and bake at a slightly higher temperature (around 375°F) for the first 5 minutes, then reduce to 350°F to finish baking.",
-                            ImageUrl = "https://eggs.ca/wp-content/uploads/2024/06/cupcake-with-sprinkles-1664x832-1.jpg",
+                            IsDeleted = false,
                             Title = "The Secret to Perfect Cupcakes Every Time",
                             UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8"
                         });
@@ -718,7 +702,7 @@ namespace CatCook.Infrastructure.Migrations
             modelBuilder.Entity("CatCook.Infrastructure.Data.Comment", b =>
                 {
                     b.HasOne("CatCook.Infrastructure.Data.Forum", "Forum")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("ForumId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -741,25 +725,6 @@ namespace CatCook.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("CatCook.Infrastructure.Data.Image", b =>
-                {
-                    b.HasOne("CatCook.Infrastructure.Data.Recipe", "Recipe")
-                        .WithMany("Images")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CatCook.Infrastructure.Data.ApplicationUser", "User")
-                        .WithMany("Images")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Recipe");
 
                     b.Navigation("User");
                 });
@@ -861,8 +826,6 @@ namespace CatCook.Infrastructure.Migrations
 
                     b.Navigation("Friends");
 
-                    b.Navigation("Images");
-
                     b.Navigation("Tips");
 
                     b.Navigation("UserRecipes");
@@ -878,9 +841,9 @@ namespace CatCook.Infrastructure.Migrations
                     b.Navigation("Recipes");
                 });
 
-            modelBuilder.Entity("CatCook.Infrastructure.Data.Recipe", b =>
+            modelBuilder.Entity("CatCook.Infrastructure.Data.Forum", b =>
                 {
-                    b.Navigation("Images");
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

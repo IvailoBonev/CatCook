@@ -52,6 +52,7 @@ namespace CatCook.Core.Services
                     CommentsCount = f.Comments.Where(c => c.IsDeleted == false).Count(),
                     UserId = f.UserId
                 })
+                .OrderByDescending(f => f.DateAdded)
                 .ToListAsync();
 
             result.TotalForumsCount = await forums.CountAsync();
