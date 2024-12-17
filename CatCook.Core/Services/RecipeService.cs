@@ -209,7 +209,7 @@ namespace CatCook.Core.Services
                 .AnyAsync(r => r.Id == id && (r.UserId == userId || isAdmin));
         }
 
-        public async Task Edit(int recipeId, RecipeModel model, bool isAdmin)
+        public async Task Edit(int recipeId, RecipeModel model)
         {
             var recipe = await repo.GetByIdAsync<Recipe>(recipeId);
 

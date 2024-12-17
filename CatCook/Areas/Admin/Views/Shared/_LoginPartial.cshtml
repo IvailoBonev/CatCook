@@ -2,6 +2,10 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+@if (User.IsInRole("Administrator"))
+{
+    <a class="nav-link" style="font-size=14px; font-weight: bold" asp-area="" asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-primary">Върни се</button></a>
+}
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {

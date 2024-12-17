@@ -136,10 +136,10 @@ namespace CatCook.Core.Services
                 }).FirstAsync();
         }
 
-        public async Task<bool> ForumWithUserId(int id, string userId)
+        public async Task<bool> ForumWithUserId(int id, string userId, bool isAdmin)
         {
             return await repo.AllReadonly<Forum>()
-                .AnyAsync(f => f.Id == id && f.UserId == userId && f.IsDeleted == false);
+                .AnyAsync(f => f.Id == id && (f.UserId == userId || isAdmin));
         }
 
         public async Task<ICollection<ForumHomeModel>> LastFourForums()

@@ -172,7 +172,7 @@ namespace CatCook.Controllers
                 return View(model);
             }
 
-            await recipeService.Edit(model.Id, model, User.IsInRole("Administrator"));
+            await recipeService.Edit(model.Id, model);
 
             return RedirectToAction(nameof(Details), new { id = model.Id });
         }

@@ -70,7 +70,6 @@ namespace CatCook.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
-
             if ((await forumService.Exists(id)) == false)
             {
                 return RedirectToAction(nameof(All));
@@ -97,7 +96,7 @@ namespace CatCook.Controllers
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await forumService.ForumWithUserId(id, User.Id())) == false)
+            if ((await forumService.ForumWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
@@ -128,7 +127,7 @@ namespace CatCook.Controllers
                 return View(model);
             }
 
-            if ((await forumService.ForumWithUserId(model.Id, User.Id())) == false)
+            if ((await forumService.ForumWithUserId(model.Id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
@@ -140,7 +139,7 @@ namespace CatCook.Controllers
 
             await forumService.Edit(model.Id, model);
 
-            return RedirectToAction(nameof(All));
+            return RedirectToAction(nameof(Details), new { id = model.Id });
         }
 
         [HttpGet]
@@ -151,7 +150,7 @@ namespace CatCook.Controllers
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await forumService.ForumWithUserId(id, User.Id())) == false)
+            if ((await forumService.ForumWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
@@ -175,7 +174,7 @@ namespace CatCook.Controllers
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await forumService.ForumWithUserId(id, User.Id())) == false)
+            if ((await forumService.ForumWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }

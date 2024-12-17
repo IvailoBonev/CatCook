@@ -140,10 +140,10 @@ namespace CatCook.Core.Services
                 }).FirstAsync();
         }
 
-        public async Task<bool> TipWithUserId(int id, string userId)
+        public async Task<bool> TipWithUserId(int id, string userId, bool isAdmin)
         {
             return await repo.AllReadonly<Tip>()
-                .AnyAsync(t => t.Id == id && t.UserId == userId);
+                .AnyAsync(t => t.Id == id && (t.UserId == userId || isAdmin));
         }
     }
 }

@@ -57,7 +57,7 @@ namespace CatCook.Controllers
                 return RedirectToAction("All", "Forum");
             }
 
-            if ((await commentService.CommentWithUserId(id, User.Id())) == false)
+            if ((await commentService.CommentWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction("All", "Forum");
             }
@@ -89,7 +89,7 @@ namespace CatCook.Controllers
                 return RedirectToAction("All", "Forum");
             }
 
-            if ((await commentService.CommentWithUserId(model.Id, User.Id())) == false)
+            if ((await commentService.CommentWithUserId(model.Id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction("All", "Forum");
             }
@@ -112,7 +112,7 @@ namespace CatCook.Controllers
                 return RedirectToAction("All", "Forum");
             }
 
-            if ((await commentService.CommentWithUserId(id, User.Id())) == false)
+            if ((await commentService.CommentWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction("All", "Forum");
             }
@@ -137,7 +137,7 @@ namespace CatCook.Controllers
                 return RedirectToAction("All", "Forum");
             }
 
-            if ((await commentService.CommentWithUserId(id, User.Id())) == false)
+            if ((await commentService.CommentWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction("All", "Forum");
             }

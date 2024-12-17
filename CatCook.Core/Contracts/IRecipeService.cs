@@ -39,7 +39,7 @@ namespace CatCook.Core.Contracts
 
         Task<RecipeDetailsModel> RecipeDetailsById(int id, string userId, bool isAdmin);
 
-        Task Edit(int recipeId, RecipeModel model, bool isAdmin);
+        Task Edit(int recipeId, RecipeModel model);
 
         Task<bool> Exists(int id, string userId, bool isAdmin);
 

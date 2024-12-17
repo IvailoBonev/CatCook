@@ -19,7 +19,7 @@ namespace CatCook.Core.Contracts
 
         Task Edit(int commentId, CommentModel model);
 
-        Task<bool> CommentWithUserId(int id, string userId);
+        Task<bool> CommentWithUserId(int id, string userId, bool isAdmin);
 
         Task Delete(int id);
     }

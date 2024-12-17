@@ -57,10 +57,10 @@ namespace CatCook.Core.Services
                  }).FirstAsync();
         }
 
-        public async Task<bool> CommentWithUserId(int id, string userId)
+        public async Task<bool> CommentWithUserId(int id, string userId, bool isAdmin)
         {
             return await repo.AllReadonly<Comment>()
-                .AnyAsync(c => c.Id == id && c.UserId == userId);
+                .AnyAsync(c => c.Id == id && (c.UserId == userId || isAdmin));
         }
 
         public async Task<int> Create(CommentModel model)

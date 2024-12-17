@@ -19,9 +19,9 @@
             @if (Model.Item1.UserId == ViewBag.UserId || User.IsInRole("Administrator"))
             {
                 <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 10px;">
-                    <a asp-area="" asp-controller="Tip" asp-action="Edit" asp-route-id="@Model.Item1.Id" class="btn btn-warning w-75" style="margin: 0 auto;">Редактирай</a>
+                    <a asp-area="" asp-controller="Forum" asp-action="Edit" asp-route-id="@Model.Item1.Id" class="btn btn-warning w-75" style="margin: 0 auto;">Редактирай</a>
                     <br />
-                    <a asp-area="" asp-controller="Tip" asp-action="Delete" asp-route-id="@Model.Item1.Id" class="btn btn-danger w-75" style="margin: 0 auto;">Изтрий</a>
+                    <a asp-area="" asp-controller="Forum" asp-action="Delete" asp-route-id="@Model.Item1.Id" class="btn btn-danger w-75" style="margin: 0 auto;">Изтрий</a>
                 </div>
             }
         </div>

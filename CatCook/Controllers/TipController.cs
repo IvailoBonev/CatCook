@@ -87,7 +87,7 @@ namespace CatCook.Controllers
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await tipService.TipWithUserId(id, User.Id())) == false)
+            if ((await tipService.TipWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
@@ -118,7 +118,7 @@ namespace CatCook.Controllers
                 return View(model);
             }
 
-            if ((await tipService.TipWithUserId(model.Id, User.Id())) == false)
+            if ((await tipService.TipWithUserId(model.Id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
@@ -141,7 +141,7 @@ namespace CatCook.Controllers
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await tipService.TipWithUserId(id, User.Id())) == false)
+            if ((await tipService.TipWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
@@ -165,7 +165,7 @@ namespace CatCook.Controllers
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await tipService.TipWithUserId(id, User.Id())) == false)
+            if ((await tipService.TipWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }

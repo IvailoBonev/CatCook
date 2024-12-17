@@ -23,7 +23,7 @@ namespace CatCook.Core.Contracts
 
         Task Edit(int tipId, TipModel model);
 
-        Task<bool> TipWithUserId(int id, string userId);
+        Task<bool> TipWithUserId(int id, string userId, bool isAdmin);
 
         Task Delete(int id);
     }

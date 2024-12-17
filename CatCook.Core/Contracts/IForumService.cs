@@ -23,7 +23,7 @@ namespace CatCook.Core.Contracts
 
         Task Edit(int forumId, ForumModel model);
 
-        Task<bool> ForumWithUserId(int id, string userId);
+        Task<bool> ForumWithUserId(int id, string userId, bool isAdmin);
 
         Task Delete(int id);
     }
