@@ -45,7 +45,7 @@ namespace CatCook.Infrastructure.Data
         public List<Recipe> UserRecipes { get; set; }
             = new List<Recipe>();
 
-        [Comment("All images posted from this user")]
+        [Comment("All forums posted from this user")]
         public ICollection<Forum> Forums { get; set; } =
             new List<Forum>();
 
@@ -56,9 +56,5 @@ namespace CatCook.Infrastructure.Data
         [Comment("All comments posted from this user")]
         public ICollection<Comment> Comments { get; set; }
             = new List<Comment>();
-
-        [Comment("The user's friends")]
-        public ICollection<ApplicationUser> Friends { get; set; }
-            = new List<ApplicationUser>();
     }
 }

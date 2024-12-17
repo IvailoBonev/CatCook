@@ -80,6 +80,10 @@ namespace CatCook.Areas.Identity.Pages.Account.Manage
                MinimumLength = UserCityNameMinLength, ErrorMessage = UserCityNameErrorMessage)]
             public string? City { get; set; }
 
+            [StringLength(UserStatusMaxLength,
+               MinimumLength = UserStatusMinLength, ErrorMessage = UserStatusErrorMessage)]
+            public string? Status { get; set; }
+
             [MaxLength(UserUrlImageMaxLength)]
             public string? AvatarImageUrl { get; set; }
         }
@@ -93,6 +97,7 @@ namespace CatCook.Areas.Identity.Pages.Account.Manage
             var city = user.City;
             var avatarImgUrl = user.AvatarImageUrl;
             var email = user.Email;
+            var status = user.Status;
 
             Username = userName;
 
@@ -103,7 +108,8 @@ namespace CatCook.Areas.Identity.Pages.Account.Manage
                 ProfileName = profileName,
                 AvatarImageUrl = avatarImgUrl,
                 City = city,
-                Email = email
+                Email = email,
+                Status = status
             };
         }
 
@@ -138,6 +144,7 @@ namespace CatCook.Areas.Identity.Pages.Account.Manage
             user.City = Input.City;
             user.AvatarImageUrl = Input.AvatarImageUrl;
             user.ProfileName = Input.ProfileName;
+            user.Status = Input.Status;
 
             await _signInManager.RefreshSignInAsync(user);
             await repo.SaveChangesAsync();

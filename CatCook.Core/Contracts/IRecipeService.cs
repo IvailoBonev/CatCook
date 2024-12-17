@@ -19,6 +19,8 @@ namespace CatCook.Core.Contracts
             RecipeSorting sorting = RecipeSorting.Newest, 
             int currentPage = 1, int recipesPerPage = 1);
 
+        Task<ICollection<RecipeHomeModel>> AllRecipesUnordered(string userId);
+
         Task<ICollection<RecipeCategoryModel>> AllCategories();
 
         Task<ICollection<string>> AllCategoriesNames();

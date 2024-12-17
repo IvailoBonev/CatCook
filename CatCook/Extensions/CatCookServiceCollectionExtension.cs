@@ -13,7 +13,7 @@ namespace CatCook.Extensions
             services.AddScoped<ITipService, TipService>();
             services.AddScoped<IForumService, ForumService>();
             services.AddScoped<ICommentService, CommentService>();
-
+            services.AddScoped<IAccountService, AccountService>();
 
             return services;
         }

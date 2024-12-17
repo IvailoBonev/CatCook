@@ -10,7 +10,7 @@ namespace CatCook.Models
 
         public string? Difficulty { get; set; }
 
-        public string? SearchTerm { get; set; }
+        public string? SearchTerm { get; set; } 
 
         public RecipeSorting Sorting { get; set; }
 

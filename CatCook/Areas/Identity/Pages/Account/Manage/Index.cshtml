@@ -36,6 +36,11 @@
                 <span asp-validation-for="Input.City" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
+                <input asp-for="Input.Status" class="form-control" autocomplete="username" aria-required="true" placeholder="статус" />
+                <label asp-for="Input.Status">Статус /незадължително/</label>
+                <span asp-validation-for="Input.Status" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
                 <input asp-for="Input.AvatarImageUrl" class="form-control" autocomplete="username" aria-required="true" placeholder="линк на снимката" />
                 <label asp-for="Input.AvatarImageUrl">Линк към снимка на аватар /незадължително/</label>
                 <span asp-validation-for="Input.AvatarImageUrl" class="text-danger"></span>
