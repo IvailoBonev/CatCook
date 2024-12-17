@@ -56,9 +56,5 @@ namespace CatCook.Infrastructure.Data
         [Comment("All comments posted from this user")]
         public ICollection<Comment> Comments { get; set; }
             = new List<Comment>();
-
-        [Required]
-        [Comment("Is the account deleted (soft delete)")]
-        public bool IsDeleted { get; set; }
     }
 }

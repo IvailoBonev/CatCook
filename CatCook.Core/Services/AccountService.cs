@@ -99,8 +99,7 @@ namespace CatCook.Core.Services
             int currentPage = 1, int accountsPerPage = 1)
         {
             var result = new AccountQueryModel();
-            var accounts = repo.AllReadonly<ApplicationUser>()
-                .Where(t => t.IsDeleted == false);
+            var accounts = repo.AllReadonly<ApplicationUser>();
 
             if (string.IsNullOrEmpty(searchTerm) == false)
             {
@@ -129,6 +128,14 @@ namespace CatCook.Core.Services
             result.TotalAccountsCount = await accounts.CountAsync();
 
             return result;
+        }
+
+        public async Task Delete(string id)
+        {
+            ApplicationUser account = await repo.GetByIdAsync<ApplicationUser>(id);
+
+            await repo.DeleteAsync<ApplicationUser>(account.Id);
+            await repo.SaveChangesAsync();
         }
 
         public async Task<bool> Exists(string userId)

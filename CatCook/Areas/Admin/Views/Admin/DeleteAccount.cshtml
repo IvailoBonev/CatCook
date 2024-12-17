@@ -1,0 +1,21 @@
+﻿@model AccountDetailsModel
+@{
+    ViewBag.Title = "Изтрий Акаунт";
+}
+<div class="row align-content-center">
+    <h2 class="text-center" style="margin-top: 10rem;  margin-bottom: 2rem;">@ViewBag.Title</h2>
+    <hr />
+
+    <form asp-action="DeleteAccount">
+        <div class="card" style="width: 18rem; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">Сигурни ли сте, че искате да изтриете акаунта <b>@@@Model.ProfileName</b> с имейл <b>@Model.Email</b>?</p>
+                <div class="form-group">
+                    <input type="submit" value="Изтрий" class="btn btn-danger" />
+                    <a class="btn btn-secondary" asp-area="Admin" asp-controller="Admin" asp-action="AllAccounts" asp-route-id="@Model.Id">Отказ</a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
