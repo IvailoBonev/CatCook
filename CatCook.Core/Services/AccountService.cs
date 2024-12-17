@@ -94,6 +94,43 @@ namespace CatCook.Core.Services
                 }).FirstAsync();
         }
 
+        public async Task<AccountQueryModel> AllAccounts(
+            string? searchTerm = null,
+            int currentPage = 1, int accountsPerPage = 1)
+        {
+            var result = new AccountQueryModel();
+            var accounts = repo.AllReadonly<ApplicationUser>()
+                .Where(t => t.IsDeleted == false);
+
+            if (string.IsNullOrEmpty(searchTerm) == false)
+            {
+                searchTerm = $"%{searchTerm.ToLower()}%";
+
+                accounts = accounts
+                    .Where(a => EF.Functions.Like(a.ProfileName.ToLower(), searchTerm));
+            }
+
+            result.Accounts = await accounts
+                .Skip((currentPage - 1) * accountsPerPage)
+                .Take(accountsPerPage)
+                .Select(a => new AccountDetailsModel
+                {
+                    Id = a.Id,
+                    Email = a.Email,
+                    FirstName = a.FirstName,
+                    LastName = a.LastName,
+                    AvatarImgUrl = a.AvatarImageUrl,
+                    ProfileName = a.ProfileName,
+                    Status = a.Status,
+                    City = a.City,
+                    UserPoints = a.Points
+                }).ToListAsync();
+
+            result.TotalAccountsCount = await accounts.CountAsync();
+
+            return result;
+        }
+
         public async Task<bool> Exists(string userId)
         {
             return await repo.AllReadonly<ApplicationUser>()

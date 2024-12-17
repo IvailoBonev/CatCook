@@ -39,8 +39,4 @@
     <ProjectReference Include="..\CatCook.Core\CatCook.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-  </ItemGroup>
-
 </Project>

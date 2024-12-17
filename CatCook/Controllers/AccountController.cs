@@ -13,17 +13,14 @@ namespace CatCook.Controllers
     public class AccountController : Controller
     {
         private readonly ILogger<AccountController> _logger;
-        private readonly IRecipeService recipeService;
         private readonly IAccountService accountService;
 
         public AccountController(
             ILogger<AccountController> logger,
-            IRecipeService _recipeService,
             IAccountService _accountService)
         {
             _logger = logger;
             accountService = _accountService;
-            recipeService = _recipeService;
         }
 
         [HttpGet]
