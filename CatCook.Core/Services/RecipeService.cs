@@ -147,7 +147,8 @@ namespace CatCook.Core.Services
                 TimeForCooking = model.TimeForCooking,
                 TimeForPreparation = model.TimeForPreparation,
                 UserId = model.UserId,
-                PortionsCount = model.PortionsCount
+                PortionsCount = model.PortionsCount,
+                ImageUrl = model.ImageUrl ?? string.Empty
             };
 
             await repo.AddAsync(recipe);

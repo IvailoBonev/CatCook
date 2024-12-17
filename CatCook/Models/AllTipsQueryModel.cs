@@ -5,7 +5,7 @@ namespace CatCook.Models
 {
     public class AllTipsQueryModel
     {
-        public const int TipsPerPage = 6;
+        public const int TipsPerPage = 5;
 
         public string? SearchTerm { get; set; }
 

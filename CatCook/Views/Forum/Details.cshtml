@@ -3,7 +3,7 @@
 <div class="row">
     <div class="row col-12" style="margin-top: 10rem; gap: 12px;">
         <div class="col-lg-2 col-md-4 text-center" style="border: #DE4D01 1px solid; min-height: 45vh;">
-            @if (Model.Item1.AvatarImageUrl != null)
+            @if (Model.Item1.AvatarImageUrl != null && Model.Item1.AvatarImageUrl != string.Empty)
             {
                 <img class="w-50 p-2 mt-5" style="object-fit: cover" src="@Model.Item1.AvatarImageUrl" alt="Profile Photo" />
             }

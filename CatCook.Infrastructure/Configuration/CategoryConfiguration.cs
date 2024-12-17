@@ -45,6 +45,11 @@ namespace CatCook.Infrastructure.Configuration
                     Id = 5,
                     Name = "Сладкиши"
                 },
+                new Category()
+                {
+                    Id = 6,
+                    Name = "Основно"
+                },
             };
 
             return categories;

@@ -2,7 +2,7 @@
 
 @foreach (var recipe in Model.Recipes)
 {
-    <div class="card col-3 recipe" style="max-width: 285px;">
+    <div class="card col-3" style="max-width: 285px;">
         <div class="position-relative">
             <p class="rounded p-2 m-2 fs-6 position-absolute" style="background-color: darkorange; text-align: center; color: white; font-weight: bold; max-width: 140px">@recipe.CategoryName</p>
             @if (!(recipe.ImageUrl == string.Empty))
