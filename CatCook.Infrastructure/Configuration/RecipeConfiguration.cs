@@ -30,12 +30,7 @@ namespace CatCook.Infrastructure.Configuration
                     TimeForPreparation = 10,
                     TimeForCooking = 15,
                     PortionsCount = 2,
-                    Rating = new List<double>()
-                    {
-                        4.9,
-                        4.0,
-                        4.5
-                    },
+                    Rating = 4.5,
                     IsPrivate = false,
                     UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8",
                     DateAdded = DateTime.Now,
@@ -50,16 +45,12 @@ namespace CatCook.Infrastructure.Configuration
                     CategoryId = 3,
                     TimeForPreparation = 20,
                     TimeForCooking = 60,
-                    Rating = new List<double>()
-                    {
-                        4.8,
-                        4.2,
-                        4.3
-                    },
+                    PortionsCount = 3,
+                    Rating = 4.7,
                     IsPrivate = false,
                     UserId = "36998a40-6007-4cea-ac6e-c191880fa9e8",
                     DateAdded = DateTime.Now,
-                    ImageUrl = "https://natashaskitchen.com/wp-content/uploads/2019/01/Caesar-Salad-Recipe-3.jpg"
+                    ImageUrl = "https://cakesbymk.com/wp-content/uploads/2023/11/Template-Size-for-Blog-Photos-24.jpg"
                 }
             };
 

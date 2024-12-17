@@ -48,7 +48,7 @@ namespace CatCook.Core.Services
                             Name = r.Name,
                             ImageUrl = r.ImageUrl,
                             DifficultyName = r.Difficulty.Name,
-                            Rating = r.Rating.Any() ? r.Rating.Average() : 0.0,
+                            Rating = r.Rating,
                             DateAdded = r.DateAdded.ToString("dd.MM.yyyy"),
                             UserName = r.User.ProfileName,
                             IsPrivate = r.IsPrivate,

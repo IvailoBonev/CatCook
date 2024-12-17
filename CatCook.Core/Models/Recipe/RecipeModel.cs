@@ -53,6 +53,11 @@ namespace CatCook.Core.Models.Recipe
         [Required]
         public DateTime DateAdded { get; set; }
 
+        [Required]
+        [Range(1, 5,
+            ErrorMessage = RecipeRatingErrorMessage)]
+        public double Rating { get; set; }
+
         public string? ImageUrl { get; set; }
 
         public ICollection<RecipeCategoryModel> RecipeCategories { get; set; }

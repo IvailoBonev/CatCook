@@ -125,7 +125,8 @@ namespace CatCook.Controllers
                 TimeForCooking = recipe.TimeForCooking,
                 TimeForPreparation = recipe.TimeForPreparation,
                 Description = recipe.Description,
-                PortionsCount = recipe.PortionsCount
+                PortionsCount = recipe.PortionsCount,
+                Rating = double.Parse(recipe.Rating)
             };
 
             model.RecipeCategories = await recipeService.AllCategories();

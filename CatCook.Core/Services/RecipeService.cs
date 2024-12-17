@@ -61,7 +61,7 @@ namespace CatCook.Core.Services
                     CategoryName = r.Category.Name,
                     ImageUrl = r.ImageUrl,
                     IsPrivate = r.IsPrivate,
-                    Rating = r.Rating.Any() ? r.Rating.Average() : 0,
+                    Rating = r.Rating,
                     DateAdded = r.DateAdded.ToString("dd/MM"),
                     UserName = r.User.ProfileName
                 })
@@ -106,8 +106,8 @@ namespace CatCook.Core.Services
                 RecipeSorting.Newest => recipes
                     .OrderByDescending(r => r.DateAdded),
                 RecipeSorting.Rating => recipes
-                    .OrderByDescending(r => r.Rating.Average()),
-                _ => recipes.OrderByDescending(r => r.Rating.Average())
+                    .OrderByDescending(r => r.Rating),
+                _ => recipes.OrderByDescending(r => r.Rating)
                         .ThenByDescending(r => r.DateAdded)
             };
 
@@ -122,7 +122,7 @@ namespace CatCook.Core.Services
                     DifficultyName = r.Difficulty.Name,
                     DateAdded = r.DateAdded.ToString("dd/MM"),
                     ImageUrl = r.ImageUrl,
-                    Rating = r.Rating.Any() ? r.Rating.Average() : 0.0,
+                    Rating = r.Rating,
                     UserName = r.User.ProfileName,
                     UserId = r.User.Id,
                     Id = r.Id
@@ -148,7 +148,8 @@ namespace CatCook.Core.Services
                 TimeForPreparation = model.TimeForPreparation,
                 UserId = model.UserId,
                 PortionsCount = model.PortionsCount,
-                ImageUrl = model.ImageUrl ?? string.Empty
+                ImageUrl = model.ImageUrl ?? string.Empty,
+                Rating = model.Rating
             };
 
             await repo.AddAsync(recipe);
@@ -193,7 +194,8 @@ namespace CatCook.Core.Services
                     CategoryId = r.CategoryId,
                     DifficultyId = r.DifficultyId,
                     UserId = r.UserId,
-                    UserPoints = r.User.Points
+                    UserPoints = r.User.Points,
+                    Rating = r.Rating.ToString("f2")
                 })
                 .FirstAsync();
         }
@@ -217,12 +219,13 @@ namespace CatCook.Core.Services
             recipe.Name = model.Name;
             recipe.IsPrivate = model.IsPrivate;
             recipe.Descipriton = model.Description;
-            recipe.ImageUrl = model.ImageUrl;
+            recipe.ImageUrl = model.ImageUrl ?? string.Empty;
             recipe.PortionsCount = model.PortionsCount;
             recipe.TimeForCooking = model.TimeForCooking;
             recipe.TimeForPreparation = model.TimeForPreparation;
             recipe.DifficultyId = model.DifficultyId;
             recipe.CategoryId = model.CategoryId;
+            recipe.Rating = model.Rating;
 
             await repo.SaveChangesAsync();
         }

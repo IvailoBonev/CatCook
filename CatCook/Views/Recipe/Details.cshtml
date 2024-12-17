@@ -6,11 +6,11 @@
         <div class="col-lg-2 col-md-4 text-center" style="border: #DE4D01 1px solid; min-height: 75vh;">
             @if (Model.AvatarImgUrl != null && Model.AvatarImgUrl != string.Empty)
             {
-                <img class="w-50 p-2 mt-5" style="object-fit: cover"  src="@Model.AvatarImgUrl" alt="Profile Photo" />
+                <img class="w-50 p-2 mt-5" style="object-fit: cover" src="@Model.AvatarImgUrl" alt="Profile Photo" />
             }
             else
             {
-                <img class="w-50 p-2 mt-5" style="object-fit: cover"  src="~/img/no-profile-picture-icon.png" alt="Profile Photo" />
+                <img class="w-50 p-2 mt-5" style="object-fit: cover" src="~/img/no-profile-picture-icon.png" alt="Profile Photo" />
             }
             <a asp-controller="Account" asp-action="AllRecipes" asp-route-id="@Model.UserId" class="text-primary"><h4 style="color: #DE4D01"><b>@@@Model.ProfileName</b></h4></a>
 
@@ -27,15 +27,15 @@
             }
 
         </div>
-        <div class="col-lg-9 col-md-8 row" style="border: #DE4D01 1px solid; padding: 16px;">
+        <div class="col-lg-9 col-md-8 row" style="padding: 16px;">
             @if (Model.ImageUrl == string.Empty)
             {
-                <img class="col-4" src="~/img/No_Image_Available.jpg" alt="" style="width: 30%; height: 30%; object-fit: cover; border: #DE4D01 1px solid;" />
+                <img class="col-4" src="~/img/No_Image_Available.jpg" alt="" style="width: 30%; height: 250px; object-fit: cover; border: #DE4D01 1px solid;" />
             }
             else{
-                <img class="col-4" src="@Model.ImageUrl" alt="" style="width: 30%; height: 30%; object-fit: cover; border: #DE4D01 1px solid;" />
+                <img class="col-4" src="@Model.ImageUrl" alt="" style="width: 30%; height: 250px; object-fit: cover; border: #DE4D01 1px solid;" />
             }
-            <div class="container col-8 " style="border: #161616 1px solid; height: 30%; text-align: center; ">
+            <div class="container col-8 " style="border: #161616 1px solid; height: 250px; text-align: center; margin-bottom: 1rem;">
                 <h2 style="margin-top: 30px;"><b>@Model.Name</b></h2>
                 <div class="row w-75" style="margin: 0 auto; margin-top: 24px;">
                     <p class="col-4"><i class="fa-solid fa-bowl-rice" style="font-size: 28px;"></i><br />Порции: <br /><b>@Model.PortionsCount</b></p>
@@ -43,7 +43,7 @@
                     <p class="col-4"><i class="fa-regular fa-clock" style="font-size: 28px;" ></i><br />Приготвяне: <br /><b>@Model.TimeForPreparation мин.</b></p>
                 </div>
             </div>
-            <textarea  style="width:100%" id="editor" disabled="disabled">@Html.Raw(Model.Description)</textarea>
+            <textarea style="width:100%;" id="editor" disabled="disabled">@Html.Raw(Model.Description)</textarea>
         </div>
     </div>
 </div>

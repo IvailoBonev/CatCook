@@ -22,6 +22,7 @@ namespace CatCook.Core.Models.Recipe
         public string DateAdded { get; set; } = string.Empty;
         public int DifficultyId { get; set; }
         public int CategoryId { get; set; }
+        public string Rating { get; set; }
         public bool IsPrivate { get; set; }
     }
 }

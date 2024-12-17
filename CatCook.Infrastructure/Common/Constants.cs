@@ -57,6 +57,7 @@ namespace CatCook.Infrastructure.Common
         public const int RecipePreparationTimeMin = 2;
         public const int RecipePreparationTimeMax = 60;
         public const string RecipePreparationErrorMessage = "Recipe preparation time must be between {1} and {2} minutes!";
+        public const string RecipeRatingErrorMessage = "Recipe rating must be between {1} and {2}!";
         //Difficulty
         public const int DifficultyNameMaxLength = 30;
         //Tip
