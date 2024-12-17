@@ -26,7 +26,7 @@ namespace CatCook.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var item1 = await recipeService.LastFourRecipes(User.Id());
+            var item1 = await recipeService.LastFourRecipes(User.Id(), User.IsInRole("Administrator"));
             var item2 = await tipService.LastFourTips();
             var model = new Tuple<ICollection<RecipeHomeModel>, ICollection<TipHomeModel>>(item1, item2);
 

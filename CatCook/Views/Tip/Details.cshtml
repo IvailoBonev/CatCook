@@ -16,7 +16,7 @@
             <p><i class="fa-solid fa-clock"></i> @Model.DateAdded</p>
             <p><i class="fa-solid fa-bolt text-warning"></i> Точки: @Model.UserPoints</p>
 
-            @if (Model.UserId == ViewBag.UserId)
+            @if (Model.UserId == ViewBag.UserId || User.IsInRole("Administrator"))
             {
                 <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 10px;">
                     <a asp-area="" asp-controller="Tip" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning w-75" style="margin: 0 auto;">Редактирай</a>

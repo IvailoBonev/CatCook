@@ -16,7 +16,7 @@
             <p><i class="fa-solid fa-clock"></i> @Model.Item1.DateAdded</p>
             <p><i class="fa-solid fa-bolt text-warning"></i> Точки: @Model.Item1.UserPoints</p>
 
-            @if (Model.Item1.UserId == ViewBag.UserId)
+            @if (Model.Item1.UserId == ViewBag.UserId || User.IsInRole("Administrator"))
             {
                 <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 10px;">
                     <a asp-area="" asp-controller="Tip" asp-action="Edit" asp-route-id="@Model.Item1.Id" class="btn btn-warning w-75" style="margin: 0 auto;">Редактирай</a>
@@ -48,7 +48,7 @@
                     </h3>
                     <p class="card-text">Публикувано на: @comment.DateAdded<br />От <a asp-controller="Account" asp-action="AllRecipes" asp-route-id="@comment.UserId" class="text-primary"><b>@@@comment.ProfileName</b></a></p>
                     <p>@comment.Text</p>
-                    @if (comment.UserId == ViewBag.UserId)
+                    @if (comment.UserId == ViewBag.UserId || User.IsInRole("Administrator"))
                     {
                         <p class="card-text row" style="text-align: right; width: 10%; margin-left: auto; margin-right: 0; flex-direction: row">
                             <a class="col-6" asp-area="" asp-controller="Comment" asp-action="Edit" asp-route-id="@comment.Id" style="margin: 0 auto;"><i class="fa-solid fa-pencil text-warning" style="font-size: 22px;"></i></a>

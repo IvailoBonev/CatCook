@@ -12,7 +12,6 @@ namespace CatCook.Infrastructure.Configuration
 {
     public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
-
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
             builder.HasData(CreateUsers());

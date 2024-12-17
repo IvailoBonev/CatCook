@@ -1,0 +1,23 @@
+﻿﻿@{
+    ViewData["Title"] = "Начална Страница";
+}
+
+<div class="mt-4 p-5 text-center">
+    <h2 style="margin-top:10rem;" class="display-4">Здравейте, Админ!</h2>
+    <p class="lead mb-1 mt-3">
+        Това е административната ви зона - можете да <b>редактирате</b>, <b>четете</b> и
+        <b>изтривате </b> рецепти, съвети, форуми, коментари.
+    </p>
+    <p class="lead mt-1">
+        Можете също и <b>всички потребители</b> да бъдат <b>преглеждани и изтрити</b> в системата.
+    </p>
+    <hr class="my-4">
+    <a asp-area="" asp-controller="Recipe" asp-action="All"
+       class="btn btn-primary btn-lg">Всички рецепти</a>
+    <span>  |   </span>
+    <a asp-area="" asp-controller="Tip" asp-action="All"
+       class="btn btn-primary btn-lg">Всички съвети</a>
+    <span>  |   </span>
+    <a asp-area="" asp-controller="Forum" asp-action="All"
+       class="btn btn-primary btn-lg">Всички форуми</a>
+</div>

@@ -10,9 +10,9 @@ namespace CatCook.Core.Contracts
 {
     public interface IRecipeService
     {
-        Task<ICollection<RecipeHomeModel>> LastFourRecipes(string userId);
+        Task<ICollection<RecipeHomeModel>> LastFourRecipes(string userId, bool isAdmin);
 
-        Task<RecipeQueryModel> AllRecipes(string userId,
+        Task<RecipeQueryModel> AllRecipes(string userId, bool isAdmin,
             string? category = null,
             string? difficulty = null,
             string? searchTerm = null, 
@@ -37,13 +37,13 @@ namespace CatCook.Core.Contracts
 
         Task<int> Create(RecipeModel model);
 
-        Task<RecipeDetailsModel> RecipeDetailsById(int id, string userId);
+        Task<RecipeDetailsModel> RecipeDetailsById(int id, string userId, bool isAdmin);
 
-        Task Edit(int recipeId, RecipeModel model);
+        Task Edit(int recipeId, RecipeModel model, bool isAdmin);
 
-        Task<bool> Exists(int id, string userId);
+        Task<bool> Exists(int id, string userId, bool isAdmin);
 
-        Task<bool> RecipeWithUserId(int id, string userId);
+        Task<bool> RecipeWithUserId(int id, string userId, bool isAdmin);
 
         Task Delete(int id);
     }

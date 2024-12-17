@@ -27,6 +27,11 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdministratorRole",
+         policy => policy.RequireRole("Administrator"));
+});
 
 builder.Services.AddControllersWithViews()
     .AddMvcOptions(options =>
@@ -75,6 +80,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapAreaControllerRoute("admin_route", "Admin",
+        "{controller}/{action}/{id?}");
 app.MapRazorPages();
 
 app.Run();

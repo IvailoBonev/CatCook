@@ -15,6 +15,8 @@ namespace CatCook.Infrastructure.Common
 
         Task<T> GetByIdAsync<T>(object id) where T : class;
 
+        T GetById<T>(object id) where T : class;
+
         Task<T> GetByIdsAsync<T>(object[] id) where T : class;
 
         Task AddAsync<T>(T entity) where T : class;

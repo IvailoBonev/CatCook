@@ -99,5 +99,10 @@ namespace CatCook.Infrastructure.Common
         {
             this.Context.Dispose();
         }
+
+        public T GetById<T>(object id) where T : class
+        {
+            return DbSet<T>().Find(id);
+        }
     }
 }
