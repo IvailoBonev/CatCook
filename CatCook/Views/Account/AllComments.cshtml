@@ -1,0 +1,36 @@
+﻿@model AccountDetailsModel
+
+@{
+    ViewBag.Title = "Всички Коментари";
+}
+
+<div class="row" style="gap: 1rem;">
+    <partial name="_AccountPartial" model="@Model" />
+    <div class="card-deck row col-10" style="gap:32px;">
+        <h1 class="text-center" style="margin-top: 10rem ;">@ViewBag.Title</h1>
+
+        @if (!Model.Comments.Any())
+        {
+            <h3 style="margin: 0 auto;">Този потребител няма коментари!</h3>
+        }
+        @foreach (var comment in Model.Comments)
+        {
+            <div class="card col-12">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <b>@comment.Title</b>
+                    </h3>
+                    <p class="card-text">Публикувано на: @comment.DateAdded<br />От @@<b>@comment.ProfileName</b></p>
+                    <p>@comment.Text</p>
+                    @if (comment.UserId == ViewBag.UserId)
+                    {
+                        <p class="card-text row" style="text-align: right; width: 10%; margin-left: auto; margin-right: 0; flex-direction: row">
+                            <a class="col-6" asp-area="" asp-controller="Comment" asp-action="Edit" asp-route-id="@comment.Id" style="margin: 0 auto;"><i class="fa-solid fa-pencil text-warning" style="font-size: 22px;"></i></a>
+                            <a class="col-6" asp-area="" asp-controller="Comment" asp-action="Delete" asp-route-id="@comment.Id" style="margin: 0 auto;"><i class="fa-solid fa-trash text-danger col-6" style="font-size: 22px;"></i></a>
+                        </p>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

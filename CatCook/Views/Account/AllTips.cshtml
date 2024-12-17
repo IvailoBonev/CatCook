@@ -1,0 +1,29 @@
+﻿@model AccountDetailsModel
+
+@{
+    ViewBag.Title = "Всички Съвети";
+}
+
+<div class="row" style="gap: 1rem;">
+    <partial name="_AccountPartial" model="@Model" />
+    <div class="card-deck row col-10" style="gap:32px;">
+        <h1 class="text-center" style="margin-top: 10rem ;">@ViewBag.Title</h1>
+
+        @if (!Model.Tips.Any())
+        {
+            <h3 style="margin: 0 auto;">Този потребител няма съвети!</h3>
+        }
+        @foreach (var tip in Model.Tips)
+        {
+            <div class="card col-10" style="width: 100%; margin-bottom: 3rem; border: #DE4D01 1px solid">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <b>@tip.Title</b>
+                    </h3>
+                    <p class="card-text">Публикувано на: @tip.DateAdded<br />От <b>@@@tip.ProfileName</b></p>
+                    <a asp-area="" asp-controller="Tip" asp-action="Details" asp-route-id="@tip.Id" class="btn btn-primary">Научи Повече</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

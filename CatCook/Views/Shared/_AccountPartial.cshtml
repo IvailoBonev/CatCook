@@ -14,9 +14,9 @@
     <p><i class="fa-solid fa-bolt text-warning"></i> Точки: @Model.UserPoints</p>
     <p>Статус: @Model.Status</p>
     <div class="row" style="gap: 20px;">
-        <a asp-area="" asp-controller="Account" asp-action="AllRecipes" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Рецепти</a>
-        <a asp-area="" asp-controller="Account" asp-action="AllTips" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Съвети</a>
-        <a asp-area="" asp-controller="Account" asp-action="AllForums" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Форуми</a>
-        <a asp-area="" asp-controller="Account" asp-action="AllComments" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Коментари</a>
+        <a asp-area="" asp-controller="Account" asp-action="AllRecipes" asp-route-id="@Model.Id" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Рецепти</a>
+        <a asp-area="" asp-controller="Account" asp-action="AllTips" asp-route-id="@Model.Id" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Съвети</a>
+        <a asp-area="" asp-controller="Account" asp-action="AllForums" asp-route-id="@Model.Id" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Форуми</a>
+        <a asp-area="" asp-controller="Account" asp-action="AllComments" asp-route-id="@Model.Id" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Коментари</a>
     </div>
 </div>

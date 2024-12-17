@@ -38,5 +38,44 @@ namespace CatCook.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> AllTips(string id)
+        {
+            if ((await accountService.Exists(id)) == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var model = await accountService.AccountDetailsById(id);
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllForums(string id)
+        {
+            if ((await accountService.Exists(id)) == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var model = await accountService.AccountDetailsById(id);
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllComments(string id)
+        {
+            if ((await accountService.Exists(id)) == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var model = await accountService.AccountDetailsById(id);
+
+            return View(model);
+        }
     }
 }

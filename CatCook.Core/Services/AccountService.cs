@@ -31,6 +31,7 @@ namespace CatCook.Core.Services
                 .Where(a => a.Id == userId)
                 .Select(a => new AccountDetailsModel
                 {
+                    Id = a.Id,
                     Email = a.Email,
                     FirstName = a.FirstName,
                     LastName = a.LastName,

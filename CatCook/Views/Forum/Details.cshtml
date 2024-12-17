@@ -11,7 +11,7 @@
             {
                 <img class="w-50 p-2 mt-5" style="object-fit: cover" src="~/img/no-profile-picture-icon.png" alt="Profile Photo" />
             }
-            <h4><b>@@@Model.Item1.ProfileName</b></h4>
+            <a asp-controller="Account" asp-action="AllRecipes" asp-route-id="@Model.Item1.UserId" class="text-primary" style="margin: 0 auto;"><h4><b>@@@Model.Item1.ProfileName</b></h4></a>
 
             <p><i class="fa-solid fa-clock"></i> @Model.Item1.DateAdded</p>
             <p><i class="fa-solid fa-bolt text-warning"></i> Точки: @Model.Item1.UserPoints</p>
@@ -46,7 +46,7 @@
                     <h3 class="card-title">
                         <b>@comment.Title</b>
                     </h3>
-                    <p class="card-text">Публикувано на: @comment.DateAdded<br />От @@<b>@comment.ProfileName</b></p>
+                    <p class="card-text">Публикувано на: @comment.DateAdded<br />От <a asp-controller="Account" asp-action="AllRecipes" asp-route-id="@comment.UserId" class="text-primary"><b>@@@comment.ProfileName</b></a></p>
                     <p>@comment.Text</p>
                     @if (comment.UserId == ViewBag.UserId)
                     {

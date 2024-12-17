@@ -5,7 +5,7 @@ namespace CatCook.Models
 {
     public class AllForumsQueryModel
     {
-        public const int ForumsPerPage = 5;
+        public const int ForumsPerPage = 4;
 
         public string? SearchTerm { get; set; }
 
