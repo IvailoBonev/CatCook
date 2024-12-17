@@ -45,6 +45,7 @@ namespace CatCook.Core.Services
             result.Tips = await tips
                 .Skip((currentPage - 1) * tipsPerPage)
                 .Take(tipsPerPage)
+                .OrderByDescending(t => t.DateAdded)
                 .Select(t => new TipHomeModel()
                 {
                     Title = t.Title,
@@ -53,7 +54,6 @@ namespace CatCook.Core.Services
                     ProfileName = t.User.ProfileName,
                     Id = t.Id
                 })
-                .OrderByDescending(t => t.DateAdded)
                 .ToListAsync();
 
             result.TotalTipsCount = await tips.CountAsync();

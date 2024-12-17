@@ -1,0 +1,22 @@
+﻿@model AccountDetailsModel
+<div class="col-2 text-center" style="max-height: 110vh;">
+    <h1 class="text-center" style="margin-top: 10rem ; margin-bottom: 2rem;">&nbsp;</h1>
+    @if (Model.AvatarImgUrl != null)
+    {
+        <img class="w-50 p-2 mt-5" style="object-fit: cover" src="@Model.AvatarImgUrl" alt="Profile Photo" />
+    }
+    else
+    {
+        <img class="w-50 p-2 mt-5" style="object-fit: cover" src="~/img/no-profile-picture-icon.png" alt="Profile Photo" />
+    }
+    <h4><b class="text-primary">@@@Model.ProfileName</b><br />@Model.FirstName @Model.LastName<br />@Model.City</h4>
+
+    <p><i class="fa-solid fa-bolt text-warning"></i> Точки: @Model.UserPoints</p>
+    <p>Статус: @Model.Status</p>
+    <div class="row" style="gap: 20px;">
+        <a asp-area="" asp-controller="Account" asp-action="AllRecipes" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Рецепти</a>
+        <a asp-area="" asp-controller="Account" asp-action="AllTips" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Съвети</a>
+        <a asp-area="" asp-controller="Account" asp-action="AllForums" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Форуми</a>
+        <a asp-area="" asp-controller="Account" asp-action="AllComments" class="btn btn-primary w-75 col-12" style="margin: 0 auto;">Коментари</a>
+    </div>
+</div>

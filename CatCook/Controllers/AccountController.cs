@@ -27,18 +27,14 @@ namespace CatCook.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AllRecipes([FromQuery]AllRecipesQueryModel query)
+        public async Task<IActionResult> AllRecipes(string id)
         {
-            if ((await accountService.Exists(User.Id())) == false)
+            if ((await accountService.Exists(id)) == false)
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            var accountDetails = await accountService.AccountDetailsById(User.Id());
-
-            var result = await recipeService.AllRecipesUnordered(User.Id());
-
-            var model = new Tuple<ICollection<RecipeHomeModel>, AccountDetailsModel>(result, accountDetails);
+            var model = await accountService.AccountDetailsById(id);
 
             return View(model);
         }

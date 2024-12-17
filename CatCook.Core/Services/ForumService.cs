@@ -41,6 +41,7 @@ namespace CatCook.Core.Services
             result.Forums = await forums
                 .Skip((currentPage - 1) * forumsPerPage)
                 .Take(forumsPerPage)
+                .OrderByDescending(f => f.DateAdded)
                 .Select(f => new ForumHomeModel()
                 {
                     Title = f.Title,
@@ -52,7 +53,6 @@ namespace CatCook.Core.Services
                     CommentsCount = f.Comments.Where(c => c.IsDeleted == false).Count(),
                     UserId = f.UserId
                 })
-                .OrderByDescending(f => f.DateAdded)
                 .ToListAsync();
 
             result.TotalForumsCount = await forums.CountAsync();

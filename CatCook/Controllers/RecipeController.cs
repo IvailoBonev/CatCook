@@ -174,7 +174,7 @@ namespace CatCook.Controllers
 
             await recipeService.Edit(model.Id, model);
 
-            return RedirectToAction(nameof(All));
+            return RedirectToAction(nameof(Details), new { id = model.Id });
         }
 
         [HttpGet]

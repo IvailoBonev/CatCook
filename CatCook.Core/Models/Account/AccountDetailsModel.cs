@@ -1,4 +1,8 @@
-﻿using System;
+﻿using CatCook.Core.Models.Comment;
+using CatCook.Core.Models.Forum;
+using CatCook.Core.Models.Recipe;
+using CatCook.Core.Models.Tip;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +21,17 @@ namespace CatCook.Core.Models.Account
         public string AvatarImgUrl { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
         public int UserPoints { get; set; }
+
+        public ICollection<RecipeHomeModel> Recipes { get; set; }
+            = new List<RecipeHomeModel>();
+
+        public ICollection<ForumHomeModel> Forums { get; set; }
+            = new List<ForumHomeModel>();
+
+        public ICollection<TipHomeModel> Tips { get; set; }
+            = new List<TipHomeModel>();
+
+        public ICollection<CommentViewModel> Comments { get; set; }
+            = new List<CommentViewModel>();
     }
 }

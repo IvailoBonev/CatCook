@@ -122,9 +122,10 @@ namespace CatCook.Core.Services
                     DifficultyName = r.Difficulty.Name,
                     DateAdded = r.DateAdded.ToString("dd/MM"),
                     ImageUrl = r.ImageUrl,
-                    Rating = r.Rating.Average(),
+                    Rating = r.Rating.Any() ? r.Rating.Average() : 0.0,
                     UserName = r.User.ProfileName,
-                    UserId = r.User.Id
+                    UserId = r.User.Id,
+                    Id = r.Id
                 })
                 .ToListAsync();
 
@@ -256,27 +257,6 @@ namespace CatCook.Core.Services
             return await repo.AllReadonly<Difficulty>()
                 .OrderBy(d=> d.Name)
                 .Select(d => d.Name)
-                .ToListAsync();
-        }
-
-        public async Task<ICollection<RecipeHomeModel>> AllRecipesUnordered(string userId)
-        {
-            return await repo.AllReadonly<Recipe>()
-                .Where(r => (r.IsPrivate == false || r.UserId == userId) && r.IsDeleted == false)
-                .Where(r => r.UserId == userId)
-                .OrderByDescending(r => r.DateAdded)
-                .Select(r => new RecipeHomeModel()
-                {
-                    Id = r.Id,
-                    Name = r.Name,
-                    DifficultyName = r.Difficulty.Name,
-                    CategoryName = r.Category.Name,
-                    ImageUrl = r.ImageUrl,
-                    IsPrivate = r.IsPrivate,
-                    Rating = r.Rating.Any() ? r.Rating.Average() : 0,
-                    DateAdded = r.DateAdded.ToString("dd/MM"),
-                    UserName = r.User.ProfileName
-                })
                 .ToListAsync();
         }
     }

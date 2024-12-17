@@ -1,35 +1,21 @@
-﻿@model Tuple<ICollection<RecipeHomeModel>, AccountDetailsModel>
+﻿@model AccountDetailsModel
 
 @{
     ViewBag.Title = "Всички Рецепти";
 }
 
 <div class="row" style="gap: 1rem;">
-    <div class="col-2 text-center" style="max-height: 110vh;">
-        <h1 class="text-center" style="margin-top: 10rem ; margin-bottom: 3rem;">&nbsp;</h1>
-        @if (Model.Item2.AvatarImgUrl != null)
-        {
-            <img class="w-50 p-2 mt-5" style="object-fit: cover" src="@Model.Item2.AvatarImgUrl" alt="Profile Photo" />
-        }
-        else
-        {
-            <img class="w-50 p-2 mt-5" style="object-fit: cover" src="~/img/no-profile-picture-icon.png" alt="Profile Photo" />
-        }
-        <h4><b>@@@Model.Item2.ProfileName</b><br />@Model.Item2.FirstName @Model.Item2.LastName<br />@Model.Item2.City</h4>
+    <partial name="_AccountPartial" model="@Model" />
+    <div class="card-deck row col-10" style="gap:32px;">
+        <h1 class="text-center" style="margin-top: 10rem ; margin-bottom: 2rem;">@ViewBag.Title</h1>
 
-        <p><i class="fa-solid fa-bolt text-warning"></i> Точки: @Model.Item2.UserPoints</p>
-        <p>Статус: @Model.Item2.Status</p>
-    </div>
-    <div class="card-deck row col-10">
-        <h1 class="text-center" style="margin-top: 10rem ; margin-bottom: 3rem;">@ViewBag.Title</h1>
-
-        @if (!Model.Item1.Any())
+        @if (!Model.Recipes.Any())
         {
             <h3 style="margin: 0 auto;">Този потребител няма рецепти!</h3>
         }
-        @foreach (var recipe in Model.Item1)
+        @foreach (var recipe in Model.Recipes)
         {
-            <div class="card col-3 recipe" style="max-width: 285px;">
+            <div class="card col-4" style="max-width: 285px;">
                 <div class="position-relative">
                     <p class="rounded p-2 m-2 fs-6 position-absolute" style="background-color: darkorange; text-align: center; color: white; font-weight: bold; max-width: 140px">@recipe.CategoryName</p>
                     @if (!(recipe.ImageUrl == string.Empty))
