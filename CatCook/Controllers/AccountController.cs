@@ -36,12 +36,6 @@ namespace CatCook.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Test()
-        {
-
-            return View();
-        }
-
         [HttpGet]
         public async Task<IActionResult> AllTips(string id)
         {
