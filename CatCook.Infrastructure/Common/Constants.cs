@@ -19,8 +19,8 @@ namespace CatCook.Infrastructure.Common
         public const int UserCityNameMinLength = 3;
         public const int UserCityNameMaxLength = 80;
         public const string UserCityNameErrorMessage = "Името на града трябва да е между {2} и {1} символа!";
-        public const int UserStatusMinLength = 30;
-        public const int UserStatusMaxLength = 120;
+        public const int UserStatusMinLength = 20;
+        public const int UserStatusMaxLength = 48;
         public const string UserStatusErrorMessage = "Статуса трябва да е между {2} и {1} символа!";
         public const int UserProfileNameMinLength = 2;
         public const int UserProfileNameMaxLength = 18;

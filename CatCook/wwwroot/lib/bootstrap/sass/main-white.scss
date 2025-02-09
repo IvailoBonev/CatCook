@@ -1,9 +1,9 @@
 ﻿
 $primary: #C65102;
-$body-bg: #292929 !global;
-$body-color: white;
+$body-bg: #FFFFFF;
+$body-color: black;
 $box-shadow: 0 .5rem 1rem rgba(white, .15);
-$card-bg: #212121;
+$card-bg: #FFFFFF;
 
 .image_resized {
     height: 100% !important
@@ -31,23 +31,36 @@ figure img {
     border: none;
 }
 
+.user-form {
+    background-color: white;
+}
+
+.main-image {
+    opacity: 0.32;
+}
+
+.navbar {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+    background-color: #FFFFFF !important;
+}
+
+.navbar a {
+    color: black !important;
+}
+
+.area-text {
+    color: black;
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 .overlay-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.user-form {
-    background-color: #1F1C1F !important;
-}
-
-.main-image {
-    filter: brightness(30%);
-}
-
-.area-text {
-    color: white;
 }
 
 ul {

@@ -105,6 +105,11 @@
         <h2 class="text-center">Няма рецепти по тази критерия!</h2>
     }
     <div class="row" style="gap: 24px;">
-        <partial name="_RecipeCardPartial" model="@Model" />
+        @foreach (var recipe in Model.Recipes)
+        {
+            <div class="card col-3" style="max-width: 285px;">
+                <partial name="_RecipeCardPartial" model="recipe" />
+            </div>
+        }
     </div>
 </div>

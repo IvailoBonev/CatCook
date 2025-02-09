@@ -11,12 +11,13 @@
       "destination": "wwwroot/lib/bootstrap/"
     },
     {
-      "library": "ckeditor5@43.3.1",
-      "destination": "wwwroot/ckeditor5/"
-    },
-    {
-      "library": "rateYo@2.3.4",
-      "destination": "wwwroot/rateYo/"
+      "provider": "unpkg",
+      "library": "@microsoft/signalr@latest",
+      "destination": "wwwroot/js/signalr",
+      "files": [
+        "dist/browser/signalr.js",
+        "dist/browser/signalr.min.js"
+      ]
     }
   ]
 }

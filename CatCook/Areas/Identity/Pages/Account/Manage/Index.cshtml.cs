@@ -86,11 +86,14 @@ namespace CatCook.Areas.Identity.Pages.Account.Manage
 
             [MaxLength(UserUrlImageMaxLength)]
             public string? AvatarImageUrl { get; set; }
+
+            public bool IsWhiteMode { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
+
             var firstName = user.FirstName;
             var lastName = user.LastName;
             var profileName = user.ProfileName;
@@ -98,6 +101,7 @@ namespace CatCook.Areas.Identity.Pages.Account.Manage
             var avatarImgUrl = user.AvatarImageUrl;
             var email = user.Email;
             var status = user.Status;
+            var whiteMode = user.IsWhiteMode;
 
             Username = userName;
 
@@ -109,7 +113,8 @@ namespace CatCook.Areas.Identity.Pages.Account.Manage
                 AvatarImageUrl = avatarImgUrl,
                 City = city,
                 Email = email,
-                Status = status
+                Status = status,
+                IsWhiteMode = whiteMode
             };
         }
 
@@ -145,9 +150,11 @@ namespace CatCook.Areas.Identity.Pages.Account.Manage
             user.AvatarImageUrl = Input.AvatarImageUrl;
             user.ProfileName = Input.ProfileName;
             user.Status = Input.Status;
+            user.IsWhiteMode = Input.IsWhiteMode;
 
             await _signInManager.RefreshSignInAsync(user);
             await repo.SaveChangesAsync();
+
             StatusMessage = "Профила ви беше обновен.";
             return RedirectToPage();
         }

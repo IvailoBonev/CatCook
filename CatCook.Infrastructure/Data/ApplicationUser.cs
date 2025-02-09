@@ -41,6 +41,9 @@ namespace CatCook.Infrastructure.Data
         [Comment("The user's status for today")]
         public string? Status { get; set; }
 
+        [Comment("Does the user prefer white mode?")]
+        public bool IsWhiteMode { get; set; }
+
         [Comment("All recipes from this user")]
         public List<Recipe> UserRecipes { get; set; }
             = new List<Recipe>();

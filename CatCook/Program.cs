@@ -39,7 +39,7 @@ builder.Services.AddControllersWithViews()
         options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
     });
 builder.Services.AddApplicationServices();
-
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 

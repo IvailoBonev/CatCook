@@ -1,16 +1,28 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> userManager;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CatCook</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CatCook.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/font-awesome/css/all.css" />
-    <link rel="stylesheet" href="~/css/site.scss" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <link rel="stylesheet" href="~/css/site.css" />
+    }
+    else if(userManager.Users.FirstOrDefault(u => u.Id == User.Id()).IsWhiteMode)
+    {
+        <link rel="stylesheet" href="~/css/site-white.css" />
+    }
+    else {
+        <link rel="stylesheet" href="~/css/site.css" />
+    }
 </head>
 <body>
     <header>
@@ -45,7 +57,6 @@
                             <li><a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="AllRecipes" asp-route-id="@User.Id()" style="font-size: 20px;">МОЯТ АКАУНТ</a></li>
                         }
                     </ul>
-                    </div>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
@@ -54,14 +65,16 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; 2024 - CatCook</p>
-            </footer>
         </main>
+        <hr />
+        <footer>
+            <p>&copy; 2025 - CatCook</p>
+        </footer>
     </div>
 
     <script src="~/js/site.js" asp-append-version="true"></script> 
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

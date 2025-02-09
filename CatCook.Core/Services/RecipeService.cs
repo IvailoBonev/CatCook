@@ -57,8 +57,8 @@ namespace CatCook.Core.Services
                 {
                     Id = r.Id,
                     Name = r.Name,
-                    DifficultyName = r.Difficulty.Name,
-                    CategoryName = r.Category.Name,
+                    DifficultyName = r.Difficulty.Name ?? "",
+                    CategoryName = r.Category.Name ?? "",
                     ImageUrl = r.ImageUrl,
                     IsPrivate = r.IsPrivate,
                     Rating = r.Rating,
@@ -98,7 +98,9 @@ namespace CatCook.Core.Services
 
                 recipes = recipes
                     .Where(r => EF.Functions.Like(r.Name.ToLower(), searchTerm) ||
-                        EF.Functions.Like(r.Descipriton.ToLower(), searchTerm));
+                        EF.Functions.Like(r.Descipriton.ToLower(), searchTerm) ||
+                        EF.Functions.Like(r.User.ProfileName.ToLower(), searchTerm));
+                        
             }
 
             recipes = sorting switch
