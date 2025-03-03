@@ -47,12 +47,12 @@ namespace CatCook.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
-            if ((await recipeService.Exists(id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await recipeService.Exists(id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
 
-            var model = await recipeService.RecipeDetailsById(id, User.Id(), User.IsInRole("Administrator"));
+            var model = await recipeService.RecipeDetailsById(id, User.Id(), User.IsInRole("Admin"));
             ViewBag.UserId = User.Id();
 
             return View(model);
@@ -101,17 +101,17 @@ namespace CatCook.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            if ((await recipeService.Exists(id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await recipeService.Exists(id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await recipeService.RecipeWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await recipeService.RecipeWithUserId(id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
 
-            var recipe = await recipeService.RecipeDetailsById(id, User.Id(), User.IsInRole("Administrator"));
+            var recipe = await recipeService.RecipeDetailsById(id, User.Id(), User.IsInRole("Admin"));
 
             var model = new RecipeModel()
             {
@@ -143,7 +143,7 @@ namespace CatCook.Controllers
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await recipeService.Exists(model.Id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await recipeService.Exists(model.Id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 model.RecipeCategories = await recipeService.AllCategories();
                 model.RecipeDifficulties = await recipeService.AllDifficulties();
@@ -151,7 +151,7 @@ namespace CatCook.Controllers
                 return View(model);
             }
 
-            if ((await recipeService.RecipeWithUserId(model.Id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await recipeService.RecipeWithUserId(model.Id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
@@ -181,17 +181,17 @@ namespace CatCook.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            if ((await recipeService.Exists(id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await recipeService.Exists(id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await recipeService.RecipeWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await recipeService.RecipeWithUserId(id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
 
-            var recipe = await recipeService.RecipeDetailsById(id, User.Id(), User.IsInRole("Administrator"));
+            var recipe = await recipeService.RecipeDetailsById(id, User.Id(), User.IsInRole("Admin"));
             var model = new RecipeDetailsModel
             {
                 Id = recipe.Id,
@@ -205,12 +205,12 @@ namespace CatCook.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id, RecipeDetailsModel model)
         {
-            if ((await recipeService.Exists(id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await recipeService.Exists(id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await recipeService.RecipeWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await recipeService.RecipeWithUserId(id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }

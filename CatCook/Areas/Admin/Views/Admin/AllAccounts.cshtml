@@ -63,23 +63,26 @@
     }
     @foreach (var account in Model.Accounts)
     {
-        <div class="card col-12" style="width: 100%; margin-bottom: 3rem; border: #DE4D01 1px solid">
-            <div class="card-body">
-                @if (account.AvatarImgUrl != null)
-                {
-                    <img class="p-2 mt-5" style="object-fit: cover; width: 150px; height: 150px;" src="@account.AvatarImgUrl" alt="Profile Photo" />
-                }
-                else
-                {
-                    <img class="p-2 mt-5" style="object-fit: cover; width: 150px; height: 150px;" src="~/img/no-profile-picture-icon.png" alt="Profile Photo" />
-                }
-                <h3 class="card-title">
-                    <b>@@@account.ProfileName</b>
-                </h3>
-                <p class="card-text">Име: @account.FirstName @account.LastName<br />Имейл: <b>@@@account.Email</b><br />Град: <b>@account.City</b></p>
-                <p class="card-text">Статус: @account.Status</p>
-                <a class="nav-link" style="font-size=14px; font-weight: bold;" asp-area="Admin" asp-controller="Admin" asp-action="DeleteAccount" asp-route-id="@account.Id"><button type="button" class="btn btn-primary">Изтрий</button></a>
+        @if(!(User.Id() == account.Id))
+        {
+            <div class="card col-12" style="width: 100%; margin-bottom: 3rem; border: #DE4D01 1px solid">
+                <div class="card-body">
+                    @if (account.AvatarImgUrl != null)
+                    {
+                        <img class="p-2 mt-5" style="object-fit: cover; width: 150px; height: 150px;" src="@account.AvatarImgUrl" alt="Profile Photo" />
+                    }
+                    else
+                    {
+                        <img class="p-2 mt-5" style="object-fit: cover; width: 150px; height: 150px;" src="~/img/no-profile-picture-icon.png" alt="Profile Photo" />
+                    }
+                    <h3 class="card-title">
+                        <b>@@@account.ProfileName</b>
+                    </h3>
+                    <p class="card-text">Име: @account.FirstName @account.LastName<br />Имейл: <b>@@@account.Email</b><br />Град: <b>@account.City</b></p>
+                    <p class="card-text">Статус: @account.Status</p>
+                    <a class="nav-link" style="font-size=14px; font-weight: bold;" asp-area="Admin" asp-controller="Admin" asp-action="DeleteAccount" asp-route-id="@account.Id"><button type="button" class="btn btn-primary">Изтрий</button></a>
+                </div>
             </div>
-        </div>
+        }
     }
 </div>

@@ -28,7 +28,7 @@
     <header>
         <nav class="navbar w-75 navbar-expand-sm navbar-toggleable-sm navbar-light rounded-7 box-shadow mb-3 position-absolute" style="left: 12.5%; background-color: #212121; border-radius: 10px; margin-top: 2rem; z-index:1000;">
             <div class="container-fluid">
-                @if (User.IsInRole("Administrator"))
+                @if (User.IsInRole("Admin"))
                 {
                     <a class="navbar-brand" asp-area="Admin" asp-controller="Admin" asp-action="Index">
                         <img src="~/img/logo.png" alt="logo" style="width: 65px; height: 65px;" />
@@ -48,7 +48,7 @@
                         <li><a class="nav-link text-white" asp-area="" asp-controller="Recipe" asp-action="All" style="font-size: 20px;">РЕЦЕПТИ</a></li>
                         <li><a class="nav-link text-white" asp-area="" asp-controller="Tip" asp-action="All" style="font-size: 20px;">СЪВЕТИ</a></li>
                         <li><a class="nav-link text-white" asp-area="" asp-controller="Forum" asp-action="All" style="font-size: 20px;">ФОРУМИ</a></li>
-                        @if (User.IsInRole("Administrator"))
+                        @if (User.IsInRole("Admin"))
                         {
                             <li><a class="nav-link text-white" asp-area="Admin" asp-controller="Admin" asp-action="AllAccounts" asp-route-id="" style="font-size: 20px;">АКАУНТИ</a></li>
                         }

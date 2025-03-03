@@ -96,7 +96,7 @@ namespace CatCook.Controllers
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await forumService.ForumWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await forumService.ForumWithUserId(id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
@@ -127,7 +127,7 @@ namespace CatCook.Controllers
                 return View(model);
             }
 
-            if ((await forumService.ForumWithUserId(model.Id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await forumService.ForumWithUserId(model.Id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
@@ -150,7 +150,7 @@ namespace CatCook.Controllers
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await forumService.ForumWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await forumService.ForumWithUserId(id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }
@@ -174,7 +174,7 @@ namespace CatCook.Controllers
                 return RedirectToAction(nameof(All));
             }
 
-            if ((await forumService.ForumWithUserId(id, User.Id(), User.IsInRole("Administrator"))) == false)
+            if ((await forumService.ForumWithUserId(id, User.Id(), User.IsInRole("Admin"))) == false)
             {
                 return RedirectToAction(nameof(All));
             }

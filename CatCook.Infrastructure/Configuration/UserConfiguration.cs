@@ -60,6 +60,25 @@ namespace CatCook.Infrastructure.Configuration
 
             users.Add(user);
 
+            user = new ApplicationUser()
+            {
+                Id = "bb7a3df5-42fc-4458-be02-ebc18a9ca65c",
+                UserName = "admin@example.com",
+                NormalizedUserName = "admin@example.com",
+                Email = "admin@example.com",
+                NormalizedEmail = "admin@example.com",
+                FirstName = "The",
+                LastName = "Admin",
+                City = "Unknown",
+                SecurityStamp = Guid.NewGuid().ToString("D"),
+                ProfileName = "Admin"
+            };
+
+            user.PasswordHash =
+                hasher.HashPassword(user, "admin1000");
+
+            users.Add(user);
+
             return users;
         }
     }

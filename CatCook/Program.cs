@@ -30,7 +30,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequireAdministratorRole",
-         policy => policy.RequireRole("Administrator"));
+         policy => policy.RequireRole("Admin"));
 });
 
 builder.Services.AddControllersWithViews()
