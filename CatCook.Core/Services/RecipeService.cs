@@ -197,7 +197,8 @@ namespace CatCook.Core.Services
                     DifficultyId = r.DifficultyId,
                     UserId = r.UserId,
                     UserPoints = r.User.Points,
-                    Rating = r.Rating.ToString("f2")
+                    Rating = r.Rating.ToString("f2"),
+                    IsPrivate = r.IsPrivate
                 })
                 .FirstAsync();
         }

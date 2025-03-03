@@ -26,6 +26,12 @@
                 </div>
             }
 
+            @if (Model.IsPrivate)
+            {
+                <hr />
+                <span class="text-secondary" style="font-size: 20px;"><b>Частна</b></span>
+            }
+
         </div>
         <div class="col-lg-9 col-md-8 row" style="padding: 16px; padding-bottom: 0px;">
             @if (Model.ImageUrl == string.Empty)
