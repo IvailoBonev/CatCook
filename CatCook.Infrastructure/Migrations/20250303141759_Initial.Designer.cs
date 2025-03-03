@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CatCook.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250226063343_Initial")]
+    [Migration("20250303141759_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -136,7 +136,7 @@ namespace CatCook.Infrastructure.Migrations
                             Id = "0464d803-7820-4ec4-bb42-d75b5a1fcb7c",
                             AccessFailedCount = 0,
                             City = "Sofia",
-                            ConcurrencyStamp = "61a2aee3-b7e8-4a09-ad19-3c17ecd898d1",
+                            ConcurrencyStamp = "9709e2dd-e9a9-4c4b-8b51-100d90b77778",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Guest",
@@ -145,11 +145,11 @@ namespace CatCook.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIQp59AnSWBDZ0lDTIzXVuMhAY427cC80GpoO5A7OjgsqKGkgkx5XiUqcVK/rHopzQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEF3rTGPYAI3AYhwWuSpQLoLtSEB6tegjiFIkLvkhbKDBQSwYtNJPIQv94oA43eRFiA==",
                             PhoneNumberConfirmed = false,
                             Points = 0,
                             ProfileName = "Guest",
-                            SecurityStamp = "9f1255aa-eb37-4b55-a71e-593aadf21485",
+                            SecurityStamp = "2b2b1c7f-b29a-409d-8391-81b7ce5bb719",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         },
@@ -158,7 +158,7 @@ namespace CatCook.Infrastructure.Migrations
                             Id = "36998a40-6007-4cea-ac6e-c191880fa9e8",
                             AccessFailedCount = 0,
                             City = "Burgas",
-                            ConcurrencyStamp = "fda642b2-5b78-4162-bdb1-715626d5bf8d",
+                            ConcurrencyStamp = "42e4023d-b533-410b-b728-4b017d5f207a",
                             Email = "ivan.georgiev@example.com",
                             EmailConfirmed = false,
                             FirstName = "Ivan",
@@ -167,11 +167,11 @@ namespace CatCook.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ivan.georgiev@example.com",
                             NormalizedUserName = "ivan.georgiev@example.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPnGzqGA/fs4bzFp42wubEGJDv2IWrHIwTIZfBQFPMWhUe2XsLxKoEiOeopn8cQUDg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECf+yEfdq0rP/WvfU5iHKUZACwcK2GGy1bCEqoAbrnSyDw1JqoFwUX6P7o/EQiLpIg==",
                             PhoneNumberConfirmed = false,
                             Points = 0,
                             ProfileName = "Ivan_G",
-                            SecurityStamp = "7e12d69b-6a45-4177-b039-ef67f9aac646",
+                            SecurityStamp = "35452e57-7ecd-472b-87f9-c26a67bbc35c",
                             TwoFactorEnabled = false,
                             UserName = "ivan.georgiev@example.com"
                         },
@@ -180,7 +180,7 @@ namespace CatCook.Infrastructure.Migrations
                             Id = "bb7a3df5-42fc-4458-be02-ebc18a9ca65c",
                             AccessFailedCount = 0,
                             City = "Unknown",
-                            ConcurrencyStamp = "40cdbe0f-065b-4bdc-a785-1449f63181cc",
+                            ConcurrencyStamp = "253bf8a6-06e3-4901-82ec-65f7d578bf94",
                             Email = "admin@example.com",
                             EmailConfirmed = false,
                             FirstName = "The",
@@ -189,11 +189,11 @@ namespace CatCook.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@example.com",
                             NormalizedUserName = "admin@example.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKHTvKkYjmQxUxjizi+Ri6x16G6YP75JZY+XV3N0SrD8K9WbkLCmbIT/nY5UWwcOgA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAxH9vUaV611CGH2mn8cpufiymjhRvktE+BIda04I+okp3JYvrMMxwUduKLlTGxpzA==",
                             PhoneNumberConfirmed = false,
                             Points = 0,
                             ProfileName = "Admin",
-                            SecurityStamp = "f4b0c410-8220-4064-a962-33e774d63ef1",
+                            SecurityStamp = "2d3ea0ff-ed47-430e-98ba-2b0036aef82c",
                             TwoFactorEnabled = false,
                             UserName = "admin@example.com"
                         });
@@ -298,7 +298,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            DateAdded = new DateTime(2025, 2, 26, 8, 33, 42, 912, DateTimeKind.Local).AddTicks(3638),
+                            DateAdded = new DateTime(2025, 3, 3, 16, 17, 56, 481, DateTimeKind.Local).AddTicks(8132),
                             ForumId = 1,
                             IsDeleted = false,
                             Text = "You might want to add a dash of Worcestershire sauce—it enhances the umami without overpowering. For balance, try adjusting the lemon juice and Parmesan quantities. Also, emulsifying the dressing with a blender can help achieve a smooth, creamy texture. Let us know how it turns out!",
@@ -308,7 +308,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            DateAdded = new DateTime(2025, 2, 26, 8, 33, 42, 912, DateTimeKind.Local).AddTicks(3932),
+                            DateAdded = new DateTime(2025, 3, 3, 16, 17, 56, 481, DateTimeKind.Local).AddTicks(8431),
                             ForumId = 2,
                             IsDeleted = false,
                             Text = "Using a water bath can really help with preventing cracks and keeping the texture smooth. Wrap your springform pan in foil to avoid leaks, and bake it in a roasting pan with hot water. Also, don’t overmix the batter, as that can introduce air bubbles. Good luck with your cheesecake!",
@@ -401,7 +401,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            DateAdded = new DateTime(2025, 2, 26, 8, 33, 42, 912, DateTimeKind.Local).AddTicks(7834),
+                            DateAdded = new DateTime(2025, 3, 3, 16, 17, 56, 482, DateTimeKind.Local).AddTicks(2321),
                             IsDeleted = false,
                             Text = "Hi everyone! I'm trying to make a classic Caesar salad at home, but I’m struggling with the dressing. My main issue is getting the right balance of flavors—it’s either too tangy or too mild. I’m using anchovies, garlic, Dijon mustard, olive oil, lemon juice, and Parmesan, but something feels off. Should I adjust the ratios, or am I missing a key ingredient? Also, any tips for getting the texture just right? Thanks in advance!",
                             Title = "Need Help Perfecting My Caesar Salad Dressing!",
@@ -410,7 +410,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            DateAdded = new DateTime(2025, 2, 26, 8, 33, 42, 912, DateTimeKind.Local).AddTicks(8294),
+                            DateAdded = new DateTime(2025, 3, 3, 16, 17, 56, 482, DateTimeKind.Local).AddTicks(2798),
                             IsDeleted = false,
                             Text = "Hey yall! I’m trying to make a classic cheesecake, but I’m running into a few issues. My main problem is getting the texture right—it’s either too dense or ends up cracking on top. I’m using cream cheese, eggs, sugar, and a graham cracker crust. Should I adjust baking time or temperature? Also, do I need to use a water bath, or is there another trick to keep it smooth? Any advice would be greatly appreciated. Thanks!",
                             Title = "Help Needed with Cheesecake Recipe!",
@@ -496,7 +496,7 @@ namespace CatCook.Infrastructure.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
-                            DateAdded = new DateTime(2025, 2, 26, 8, 33, 42, 908, DateTimeKind.Local).AddTicks(4058),
+                            DateAdded = new DateTime(2025, 3, 3, 16, 17, 56, 477, DateTimeKind.Local).AddTicks(8144),
                             Descipriton = "A Caesar salad is a timeless dish known for its crisp romaine, creamy dressing, and bold flavors. Here’s how to make it step-by-step:\r\n\r\n    Prepare the Croutons: Preheat your oven to 375°F. Cut a baguette or bread into small cubes, toss with olive oil, garlic powder, and a pinch of salt, then bake for 10-15 minutes until golden and crispy.\r\n\r\n    Make the Dressing: In a bowl, whisk together 1 minced garlic clove, 2 anchovy fillets (mashed), 1 teaspoon Dijon mustard, 1 tablespoon fresh lemon juice, and 1 teaspoon Worcestershire sauce. Slowly whisk in ½ cup olive oil until emulsified. Stir in ½ cup grated Parmesan cheese for a creamy texture. Adjust seasoning with salt and pepper to taste.\r\n\r\n    Assemble the Salad: Wash and dry fresh romaine lettuce, then tear it into bite-sized pieces. Toss the lettuce with the dressing until evenly coated.\r\n\r\n    Add Toppings: Top with the homemade croutons and more grated Parmesan cheese for a finishing touch.\r\n\r\nServe immediately for the best texture and flavor. This classic Caesar salad pairs wonderfully with grilled chicken, shrimp, or as a standalone starter. Enjoy your fresh and flavorful creation!",
                             DifficultyId = 2,
                             ImageUrl = "https://natashaskitchen.com/wp-content/uploads/2019/01/Caesar-Salad-Recipe-3.jpg",
@@ -513,7 +513,7 @@ namespace CatCook.Infrastructure.Migrations
                         {
                             Id = 2,
                             CategoryId = 3,
-                            DateAdded = new DateTime(2025, 2, 26, 8, 33, 42, 910, DateTimeKind.Local).AddTicks(7129),
+                            DateAdded = new DateTime(2025, 3, 3, 16, 17, 56, 480, DateTimeKind.Local).AddTicks(1412),
                             Descipriton = "Making a creamy, decadent cheesecake at home is easier than you think. Here’s a step-by-step guide to create the perfect cheesecake:\r\n\r\n    Prepare the Crust: Preheat your oven to 325°F. In a food processor, pulse 1 ½ cups of graham crackers with ¼ cup of sugar and ½ teaspoon of cinnamon. Add 6 tablespoons of melted butter and mix until combined. Press the mixture into the bottom of a greased 9-inch springform pan. Bake for 10 minutes, then set aside to cool.\r\n\r\n    Make the Filling: In a large mixing bowl, beat 4 packages (32 ounces) of cream cheese at room temperature until smooth. Add 1 cup of granulated sugar and beat until combined. Add 1 teaspoon of vanilla extract and 4 large eggs, one at a time, mixing well after each addition. Finally, blend in 1 cup of sour cream for richness.\r\n\r\n    Bake the Cheesecake: Pour the cream cheese mixture onto the cooled crust. Bake at 325°F for 55-60 minutes, or until the center is just set. Let it cool in the oven with the door slightly ajar for 1 hour, then refrigerate for at least 4 hours.\r\n\r\n    Serve: Top with fresh fruit, fruit compote, or a drizzle of caramel for extra flavor. Enjoy your homemade cheesecake!",
                             DifficultyId = 1,
                             ImageUrl = "https://cakesbymk.com/wp-content/uploads/2023/11/Template-Size-for-Blog-Photos-24.jpg",
@@ -566,7 +566,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            DateAdded = new DateTime(2025, 2, 26, 8, 33, 42, 911, DateTimeKind.Local).AddTicks(1301),
+                            DateAdded = new DateTime(2025, 3, 3, 16, 17, 56, 480, DateTimeKind.Local).AddTicks(5789),
                             Description = "When cooking fish, lemons can be a game-changer for flavor! A great tip is to use lemon in layers throughout your cooking process. Start by marinating your fish with a mixture of lemon juice, olive oil, and your favorite herbs—this not only enhances the flavor but also tenderizes the fish.\r\n\r\nDuring cooking, add thin slices of lemon directly on top of the fish. This allows the zest and oils to seep in as it cooks, giving it a bright, citrusy aroma. Finally, finish with a squeeze of fresh lemon juice just before serving to add a vibrant, tangy kick.",
                             IsDeleted = false,
                             Title = "Elevate Your Fish Dishes with Lemon: A Simple Tip",
@@ -575,7 +575,7 @@ namespace CatCook.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            DateAdded = new DateTime(2025, 2, 26, 8, 33, 42, 911, DateTimeKind.Local).AddTicks(1562),
+                            DateAdded = new DateTime(2025, 3, 3, 16, 17, 56, 480, DateTimeKind.Local).AddTicks(6054),
                             Description = "Want to bake cupcakes that are fluffy, moist, and perfectly domed? Here's a simple tip: start with room-temperature ingredients. Let your eggs, butter, and milk sit out for about 30 minutes before mixing. This ensures the batter blends smoothly, creating a light and even texture.\r\n\r\nAnother key is not to overmix your batter—stop as soon as the ingredients are combined. Overmixing can make your cupcakes dense and tough. For beautifully domed tops, fill your liners about two-thirds full and bake at a slightly higher temperature (around 375°F) for the first 5 minutes, then reduce to 350°F to finish baking.",
                             IsDeleted = false,
                             Title = "The Secret to Perfect Cupcakes Every Time",
